@@ -25,7 +25,8 @@ description: >- # this means to ignore newlines until "baseurl:"
   to create and share geospatial data of our city using OpenStreetMap.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://maprva.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-github_username:  MapRVA
+github:  MapRVA
+mastodon: https://en.osm.town/@maprva
 
 # Build settings
 theme: osmus-dogwood
