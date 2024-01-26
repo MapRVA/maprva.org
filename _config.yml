@@ -1,4 +1,5 @@
 title: MapRVA
+copyright: MapRVA
 email: maprva@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   We are a group of mapping enthusiasts in Richmond, Virginia who work
@@ -12,8 +13,61 @@ instagram: false
 twitter: false
 facebook: false
 linkedin: false
+links:
+  - link: /about/
+  - link: /projects/
+  # - link: /blog/
 
 # Build settings
 theme: osmus-dogwood
 plugins:
   - jekyll-feed
+
+collections:
+  feeds:
+    output: true
+  pages:
+    output: true
+  projects:
+    output: true
+  people:
+    output: true
+  posts:
+    output: true
+  redirects:
+    output: true
+defaults:
+  -
+    scope:
+      path: "_pages"
+      type: "pages"
+    values:
+      permalink: /:path/
+      layout: "page"
+  -
+    scope:
+      path: "_redirects"
+      type: "redirects"
+    values:
+      permalink: /:path/
+      layout: "redirect"
+  -
+    scope:
+      path: "_people"
+      type: "people"
+    values:
+      layout: "person"
+  -
+    scope:
+      path: "_projects"
+      type: "projects"
+    values:
+      layout: project
+  -
+    scope:
+      path: "_posts/blog"
+      type: "posts"
+    values:
+      permalink: /blog/:year/:month/:title/
+      category: "Blog"
+      layout: "post"
