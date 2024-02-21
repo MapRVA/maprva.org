@@ -1,6 +1,5 @@
 title: MapRVA
 copyright: MapRVA
-email: maprva@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   We are a group of mapping enthusiasts in Richmond, Virginia who work
   to create and share geospatial data of our city using OpenStreetMap.
@@ -13,6 +12,7 @@ instagram: false
 twitter: false
 facebook: false
 linkedin: false
+slack_page: /slack
 links:
   - link: /about/
   - link: /projects/
