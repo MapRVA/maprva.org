@@ -3,7 +3,7 @@ title: Daniel Schep
 image: https://schep.me/dschep.jpg
 website: https://schep.me
 github: dschep
-mastodon: dschep@mastodon.social
+mastodon: mastodon.social/dschep
 ---
 Daniel Schep is a mapper and software engineer in Richmond Virginia.
 
