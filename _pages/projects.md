@@ -3,8 +3,10 @@ title: Projects
 dropdown_links:
   - link: /projects/sidewalks/
     label: Sidewalks
+links:
+  - link: /projects/sidewalks/
 ---
-Here are the projects we're currently working on.
+Here are the projects we're working on.
 
 {::nomarkdown}
 {% assign subitems="" | split: ',' -%}
