@@ -3,20 +3,17 @@ title: Daniel Schep
 image: https://schep.me/dschep.jpg
 website: https://schep.me
 github: dschep
-mastodon: dschep@mastodon.social
+mastodon: https://mastodon.social/@dschep
 ---
 Daniel Schep is a mapper and software engineer in Richmond Virginia.
 
 ## Projects
 
-### OpenTrailStash
+### [OpenTrailStash](https://open.trailsta.sh)
 
 OpenTrailStash is a map made for having fun on a bicycle, especially off-road.
 
-[Open OpenTrailStash](https://open.trailsta.sh)
 
-### Overpass Ultra
+### [Overpass ultra](https://overpass-ultra.us)
 
 Overpass Ultra is a reimagining of overpass turbo written using MapLibre.
-
-[Open Overpass ultra](https://overpass-ultra.us)
