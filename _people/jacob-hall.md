@@ -1,6 +1,7 @@
 ---
 title: Jacob Hall
 image: https://jacobhall.net/profile.jpg
+osm: jacobwhall
 website: https://jacobhall.net
 github: jacobwhall
 linkedin: jacobwhall

@@ -1,6 +1,7 @@
 ---
 title: Daniel Schep
 image: https://schep.me/dschep.jpg
+osm: dpschep
 website: https://schep.me
 github: dschep
 mastodon: https://mastodon.social/@dschep
