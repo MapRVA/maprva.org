@@ -3,8 +3,14 @@ title: Projects
 dropdown_links:
   - link: /projects/sidewalks/
     label: Sidewalks
+  - link: /projects/opentrailstash/
+    label: OpenTrailStash
+  - link: /projects/overpass-ultra/
+    label: Overpass Ultra
 links:
   - link: /projects/sidewalks/
+  - link: /projects/opentrailstash/
+  - link: /projects/overpass-ultra/
 ---
 Here are the projects we're working on.
 

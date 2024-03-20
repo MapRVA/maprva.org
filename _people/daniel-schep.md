@@ -5,6 +5,13 @@ osm: dpschep
 website: https://schep.me
 github: dschep
 mastodon: https://mastodon.social/@dschep
+roles:
+  - title: Lead Developer
+    at: OpenTrailStash
+  - title: Lead Developer
+    at: Overpass Ultra
+  - title: Validation
+    at: Mapping Pedestrian Infrastructure
 ---
 Daniel Schep is a mapper and software engineer in Richmond Virginia.
 

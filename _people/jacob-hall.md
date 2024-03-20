@@ -5,6 +5,9 @@ osm: jacobwhall
 website: https://jacobhall.net
 github: jacobwhall
 linkedin: jacobwhall
+roles:
+  - title: Project Lead
+    at: Mapping Pedestrian Infrastructure
 ---
 I got into editing OpenStreetMap in spring of 2022, and then moved to Richmond that fall. 
 My primary interests are editing pedestrian infrastructure and public transit.
