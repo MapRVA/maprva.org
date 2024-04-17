@@ -1,5 +1,6 @@
 ---
 title: Jacob Hall
+pronouns: they/them
 image: https://jacobhall.net/profile.jpg
 osm: jacobwhall
 website: https://jacobhall.net
