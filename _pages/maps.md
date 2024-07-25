@@ -1,15 +1,12 @@
 ---
-title: Projects
+title: Maps
 dropdown_links:
-  - link: /projects/sidewalks/
-    label: Sidewalks
-  - link: /projects/overpass-ultra/
-    label: Overpass Ultra
+  - link: /maps/opentrailstash/
+    label: OpenTrailStash
 links:
-  - link: /projects/sidewalks/
-  - link: /projects/overpass-ultra/
+  - link: /maps/opentrailstash/
 ---
-Here are the projects we're working on.
+Here are maps we've built.
 
 {::nomarkdown}
 {% assign subitems="" | split: ',' -%}
