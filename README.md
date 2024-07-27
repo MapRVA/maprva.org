@@ -1,23 +1,12 @@
----
-layout: page
-permalink: /
-featured_work: 
-  - link: /projects/sidewalks/
-  - link: /maps/opentrailstash/
----
-# MapRVA
+# maprva.org
 
-We are a group of mapping enthusiasts in Richmond, Virginia who work to create and share geospatial data of our city using [OpenStreetMap](https://openstreetmap.org).
+This repository holds the website for [MapRVA](https://maprva.org).
 
-## Featured Work
+## Development
 
-{::nomarkdown}
-{% assign subitems="" | split: ',' -%}
-{% for link in page.featured_work %}
-  {% assign item=site.pages | find: "url", link.link %}
-  {%- if item -%}
-    {%- assign subitems=subitems | push: item -%}
-  {%- endif %}
-{% endfor %}
-{% include item_list.html items=subitems %}
-{:/nomarkdown}
+See `DEVELOPMENT.md`, as well as the documentation for [dogwood](https://github.com/osmus/dogwood)
+
+## License
+
+This project uses the MIT license.
+Please see LICENSE.txt for more information.
