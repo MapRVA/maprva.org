@@ -5,9 +5,12 @@ dropdown_links:
     label: Sidewalks
   - link: /projects/overpass-ultra/
     label: Overpass Ultra
+  - link: /projects/historical-mapping/
+    label: Historical Mapping
 links:
   - link: /projects/sidewalks/
   - link: /projects/overpass-ultra/
+  - link: /projects/historical-mapping/
 ---
 Here are the projects we're working on.
 
