@@ -1,12 +1,12 @@
 ---
 layout: project
-title: Overpass Ultra
+title: Ultra
 sign: /img/projects/overpass-ultra/sign.svg
-blurb: Overpass Ultra is a reimagining of overpass turbo written using MapLibre.
+blurb: Ultra is a tool for making map with MapLibre and datasources such as Overpass, QLever, GeoJSON files, etc.
 buttons:
   - link: https://overpass-ultra.us/
     label: Check it out!
-  - link: https://gitlab.com/trailstash/overpass-ultra
+  - link: https://gitlab.com/trailstash/ultra
     label: Source Code
 ---
 
