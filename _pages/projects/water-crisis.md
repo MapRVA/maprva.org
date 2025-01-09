@@ -14,9 +14,7 @@ It is not too late to take [our survey](https://arcg.is/1if9OT1)! Thank you for 
 
 ### Maximum Severity
 
-This is a map of early survey results, where each cell is colored by the worst report in the cell.
-EG: If a cell contains a report of no water and a report of decreased pressure, it is colored as
-having no water(in red).
+This is a map of early survey results, where each cell is colored by the worst report in the cell. For example, if a cell contains a report of no water and a report of decreased pressure, it is colored as having no water (in red).
 
 <iframe
   title="OpenTrailStash"
