@@ -2,6 +2,7 @@
 layout: page
 permalink: /
 featured_work:
+  - link: /projects/water-crisis/
   - link: /projects/sidewalks/
   - link: /maps/opentrailstash/
 ---

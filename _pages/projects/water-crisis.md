@@ -1,7 +1,7 @@
 ---
 layout: project
 title: Mapping the Jan 2025 Water Crisis
-sign: /img/projects/water/sign.svg
+sign: /img/projects/water-crisis/sign.svg
 blurb: We are creating maps of where and when the water crisis affected Richmonders.
 buttons:
   - link: https://arcg.is/1if9OT1
