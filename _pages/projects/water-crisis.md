@@ -10,7 +10,7 @@ buttons:
     label: Get the Data
 ---
 
-It is not too late to take [our survey](https://arcg.is/1if9OT1)! Thank you for contributing to our project.
+**Update:** 1.3k responses and counting, wow! The survey is still open [at this link](https://arcg.is/1if9O).
 
 ### Maximum Severity
 
