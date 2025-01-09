@@ -19,11 +19,11 @@ Daniel Schep is a mapper and software engineer in Richmond Virginia.
 
 ## Projects
 
+### [Ultra](https://overpass-ultra.us)
+
+An IDE for making maps with MapLibre GL JS with data from various sources such as Overpass, QLever, GeoJSON, and more.
+
 ### [OpenTrailStash](https://open.trailsta.sh)
 
 OpenTrailStash is a map made for having fun on a bicycle, especially off-road.
 
-
-### [Ultra](https://overpass-ultra.us)
-
-An IDE for making maps with MapLibre GL JS with data from various sources such as Overpass, QLever, GeoJSON, and more.
