@@ -12,7 +12,7 @@ dropdown_links:
 links:
   - link: /projects/water-crisis/
   - link: /projects/sidewalks/
-  - link: /projects/overpass-ultra/
+  - link: /projects/ultra/
   - link: /projects/historical-mapping/
 ---
 Here are the projects we're working on.
