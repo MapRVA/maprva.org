@@ -72,6 +72,3 @@ defaults:
       permalink: /blog/:year/:month/:title/
       category: "Blog"
       layout: "post"
-  -
-    scope:
-      path: "assets/js"
