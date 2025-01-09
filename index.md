@@ -22,3 +22,9 @@ We are a group of mapping enthusiasts in Richmond, Virginia who work to create a
 {% endfor %}
 {% include item_list.html items=subitems %}
 {:/nomarkdown}
+
+## Upcoming Meetups
+
+MapRVA hosts both in-person and virtual meetups! We'll try to keep the list below up-to-date.
+
+- [Jan 13 2025 @ 6pm, New York Deli](https://osmcal.org/event/3388/)
