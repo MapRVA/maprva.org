@@ -16,7 +16,7 @@ The survey is still open [at this link](https://arcg.is/1if9O).
 
 ### Maximum Severity
 
-This is a map of early survey results, where each cell is colored by the worst report in the cell. For example, if a cell contains a report of no water and a report of decreased pressure, it is colored as having no water (in red).
+In this map each cell is colored by the most severe report in the cell. For example, if a cell contains a report of no water and a report of decreased pressure, it is colored as having no water (in red).
 
 <iframe
   title="OpenTrailStash"
