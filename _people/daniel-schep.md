@@ -9,7 +9,7 @@ roles:
   - title: Lead Developer
     at: OpenTrailStash
   - title: Lead Developer
-    at: Overpass Ultra
+    at: Ultra
   - title: Validation
     at: Mapping Pedestrian Infrastructure
   - title: Lead Cartographer
@@ -24,6 +24,6 @@ Daniel Schep is a mapper and software engineer in Richmond Virginia.
 OpenTrailStash is a map made for having fun on a bicycle, especially off-road.
 
 
-### [Overpass ultra](https://overpass-ultra.us)
+### [Ultra](https://overpass-ultra.us)
 
-Overpass Ultra is a reimagining of overpass turbo written using MapLibre.
+An IDE for making maps with MapLibre GL JS with data from various sources such as Overpass, QLever, GeoJSON, and more.
