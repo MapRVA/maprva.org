@@ -6,6 +6,8 @@ blurb: We are creating a map of where and when the water crisis affected Richmon
 buttons:
   - link: https://arcg.is/1if9OT1
     label: Take the Survey!
+  - link: https://github.com/MapRVA/2025-water-crisis
+    label: Get the Data
 ---
 
 It is not too late to take [our survey](https://arcg.is/1if9OT1)! Thank you for contributing to our project.
