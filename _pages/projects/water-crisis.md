@@ -8,8 +8,6 @@ buttons:
     label: Take the Survey!
   - link: https://github.com/MapRVA/2025-water-crisis
     label: Get the Data
-custom-javascript-list:
-    - "./assets/js/water-crisis-meta.js"
 ---
 
 <b id="meta">1.3k responses so far</b>
