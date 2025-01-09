@@ -10,7 +10,15 @@ buttons:
     label: Get the Data
 ---
 
-**Update:** 1.3k responses and counting, wow! The survey is still open [at this link](https://arcg.is/1if9O).
+<b id="meta">1.3k responses so far</b>
+<script>
+const resp = await fetch("https://maprva.github.io/2025-water-crisis/meta.json");
+const { count, latest } = await resp.json();
+const latestDate = new Date(latest);
+document.getElementById("meta").textContent = `${count} responses as of ${latestDate}`;
+</script>
+
+The survey is still open [at this link](https://arcg.is/1if9O).
 
 ### Maximum Severity
 
