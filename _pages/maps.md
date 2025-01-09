@@ -1,6 +1,8 @@
 ---
 title: Maps
 dropdown_links:
+  - link: /projects/water-crisis/
+    label: Water Crisis
   - link: /maps/opentrailstash/
     label: OpenTrailStash
 links:

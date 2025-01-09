@@ -1,6 +1,8 @@
 ---
 title: Projects
 dropdown_links:
+  - link: /projects/water-crisis/
+    label: Water Crisis
   - link: /projects/sidewalks/
     label: Sidewalks
   - link: /projects/ultra/
@@ -8,6 +10,7 @@ dropdown_links:
   - link: /projects/historical-mapping/
     label: Historical Mapping
 links:
+  - link: /projects/water-crisis/
   - link: /projects/sidewalks/
   - link: /projects/overpass-ultra/
   - link: /projects/historical-mapping/

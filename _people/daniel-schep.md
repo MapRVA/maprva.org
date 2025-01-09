@@ -12,6 +12,8 @@ roles:
     at: Overpass Ultra
   - title: Validation
     at: Mapping Pedestrian Infrastructure
+  - title: Lead Cartographer
+    at: Mapping the Jan 2025 Water Crisis
 ---
 Daniel Schep is a mapper and software engineer in Richmond Virginia.
 
