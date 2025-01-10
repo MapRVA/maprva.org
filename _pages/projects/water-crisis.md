@@ -14,12 +14,23 @@ buttons:
 
 The survey is still open [at this link](https://arcg.is/1if9O).
 
+### Most Common Severity
+
+In this map each cell is colored by the most commonly reported status in the cell.
+
+<iframe
+  width="10000"
+  height="500"
+  src="https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/mode_severity.ultra">
+</iframe>
+
+[View full map](https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/max_severity.ultra)
+
 ### Maximum Severity
 
 In this map each cell is colored by the most severe report in the cell. For example, if a cell contains a report of no water and a report of decreased pressure, it is colored as having no water (in red).
 
 <iframe
-  title="OpenTrailStash"
   width="10000"
   height="500"
   src="https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/max_severity.ultra">
