@@ -16,7 +16,7 @@ The survey is still open [at this link](https://arcg.is/1if9O).
 
 ### Most Common Degree of Water Loss
 
-In this map each cell is colored by the most commonly reported status in the cell.
+In this map each cell is colored by the most commonly reported status in the cell. _Hover or tap a cell to see how many of each type of report was submitted for that area._
 
 <iframe
   width="10000"
@@ -27,6 +27,9 @@ In this map each cell is colored by the most commonly reported status in the cel
 [View full map](https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/mode_severity.ultra)
 
 ### Median Duration of Fully lost water
+
+_Hover or tap a cell to see the number of hours and reports for that area._
+
 <iframe
   width="10000"
   height="500"
@@ -37,6 +40,8 @@ In this map each cell is colored by the most commonly reported status in the cel
 
 ### Median Duration of Down to just a trickle
 
+_Hover or tap the cells to see the number of hours and reports for that area._
+
 <iframe
   width="10000"
   height="500"
@@ -46,6 +51,8 @@ In this map each cell is colored by the most commonly reported status in the cel
 [View full map](https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/sev2_median_duration.ultra)
 
 ### Median Duration of Water pressure was reduced
+
+_Hover or tap a cell to see the number of hours and reports for that area._
 
 <iframe
   width="10000"
