@@ -10,9 +10,9 @@ buttons:
     label: Get the Data
 ---
 
-<b id="meta">1.3k responses so far</b>
+<b id="meta">Loading current response count...</b>
 
-The survey is still open [at this link](https://arcg.is/1if9O).
+The survey is still open [at this link](https://arcg.is/1if9O) ([Español](https://survey123.arcgis.com/share/79b3f9ed360748909963ece1c8badd25?locale=es)). We want to share this survey with underrepresented communities in RVA, please [get in touch](mailto:mappingrva@gmail.com) if you can help.
 
 ### Most Common Degree of Water Loss
 
