@@ -27,9 +27,9 @@ In this map each cell is colored by the most commonly reported status in the cel
 
 [View full map](https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/mode_severity.ultra)
 
-### Median Duration of Fully lost water
+### Median Duration of "Fully Lost Water"
 
-_Hover or tap a cell to see the number of hours and reports for that area._
+_Hover or tap a cell to see the number of hours and reports for that area. Level of detail shown will adjust by zoom level._
 
 <iframe
   width="10000"
@@ -40,9 +40,9 @@ _Hover or tap a cell to see the number of hours and reports for that area._
 
 [View full map](https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/sev1_median_duration.ultra)
 
-### Median Duration of Down to just a trickle
+### Median Duration of "Down to Just a Trickle"
 
-_Hover or tap the cells to see the number of hours and reports for that area._
+_Hover or tap the cells to see the number of hours and reports for that area. Level of detail shown will adjust by zoom level._
 
 <iframe
   width="10000"
@@ -53,9 +53,9 @@ _Hover or tap the cells to see the number of hours and reports for that area._
 
 [View full map](https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/sev2_median_duration.ultra)
 
-### Median Duration of Water pressure was reduced
+### Median Duration of "Water Pressure was Reduced"
 
-_Hover or tap a cell to see the number of hours and reports for that area._
+_Hover or tap a cell to see the number of hours and reports for that area. Level of detail shown will adjust by zoom level._
 
 <iframe
   width="10000"
