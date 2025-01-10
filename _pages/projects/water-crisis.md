@@ -21,6 +21,7 @@ In this map each cell is colored by the most commonly reported status in the cel
 <iframe
   width="10000"
   height="500"
+  loading="lazy"
   src="https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/mode_severity.ultra">
 </iframe>
 
@@ -33,6 +34,7 @@ _Hover or tap a cell to see the number of hours and reports for that area._
 <iframe
   width="10000"
   height="500"
+  loading="lazy"
   src="https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/sev1_median_duration.ultra">
 </iframe>
 
@@ -45,6 +47,7 @@ _Hover or tap the cells to see the number of hours and reports for that area._
 <iframe
   width="10000"
   height="500"
+  loading="lazy"
   src="https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/sev2_median_duration.ultra">
 </iframe>
 
@@ -57,6 +60,7 @@ _Hover or tap a cell to see the number of hours and reports for that area._
 <iframe
   width="10000"
   height="500"
+  loading="lazy"
   src="https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/sev3_median_duration.ultra">
 </iframe>
 
@@ -69,6 +73,7 @@ Our survey yielded many thoughtful comments, and some humorous ones. Here's a lo
 <iframe
   width="10000"
   height="500"
+  loading="lazy"
   src="https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/selected_notes.ultra">
 </iframe>
 
