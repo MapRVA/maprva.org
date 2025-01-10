@@ -24,7 +24,7 @@ In this map each cell is colored by the most commonly reported status in the cel
   src="https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/mode_severity.ultra">
 </iframe>
 
-[View full map](https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/max_severity.ultra)
+[View full map](https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/mode_severity.ultra)
 
 {::nomarkdown}
 {% include page_people_list.html %}
