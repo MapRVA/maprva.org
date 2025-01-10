@@ -28,7 +28,7 @@ In this map each cell is colored by the most commonly reported status in the cel
 
 ### The Richmonders Are Not Alright
 
-Our survey yielded many thoughtful comments, and some humorous ones. Here's a look at how Richmond is feeling during the water crisis. _Hover over a hexagon to view a quote from that area._
+Our survey yielded many thoughtful comments, and some humorous ones. Here's a look at how Richmond is feeling during the water crisis. _Click on a hexagon to view a quote from that area._
 
 <iframe
   width="10000"
