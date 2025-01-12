@@ -8,9 +8,7 @@ buttons:
     label: Get the Data
 ---
 
-<b id="meta">Loading current response count...</b>
-
-The survey is now closed. Thank you everyone for participating!
+<strong>The survey is now closed.</strong> Thank you to everyone who participated! More analysis to follow.
 
 ### Most Common Degree of Water Loss
 
