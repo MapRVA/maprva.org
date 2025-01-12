@@ -4,17 +4,13 @@ title: Mapping the Jan 2025 Water Crisis
 sign: /img/projects/water-crisis/sign.svg
 blurb: We are creating maps of where and when the water crisis affected Richmonders.
 buttons:
-  - link: https://arcg.is/1if9OT1
-    label: Take the Survey!
-  - link: https://survey123.arcgis.com/share/79b3f9ed360748909963ece1c8badd25?locale=es
-    label: ¡Encuesta Disponible en Español!
   - link: https://github.com/MapRVA/2025-water-crisis
     label: Get the Data
 ---
 
 <b id="meta">Loading current response count...</b>
 
-The survey is still open [at this link](https://arcg.is/1if9O) ([Español](https://survey123.arcgis.com/share/79b3f9ed360748909963ece1c8badd25?locale=es)). We want to share this survey with underrepresented communities in RVA, please [get in touch](mailto:mappingrva@gmail.com) if you can help.
+The survey is now closed. Thank you everyone for participating!
 
 ### Most Common Degree of Water Loss
 
