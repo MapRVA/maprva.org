@@ -24,7 +24,7 @@ In this map each cell is colored by the most commonly reported status in the cel
 
 [View full map](https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/mode_severity.ultra)
 
-### Median Duration of "Fully Lost Water"
+### Average Duration of "Fully Lost Water"
 
 _Hover or tap a cell to see the number of hours and reports for that area. Level of detail shown will adjust by zoom level._
 
@@ -32,12 +32,12 @@ _Hover or tap a cell to see the number of hours and reports for that area. Level
   width="10000"
   height="500"
   loading="lazy"
-  src="https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/sev1_median_duration.ultra">
+  src="https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/sev1_mean_duration.ultra">
 </iframe>
 
-[View full map](https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/sev1_median_duration.ultra)
+[View full map](https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/sev1_mean_duration.ultra)
 
-### Median Duration of "Down to Just a Trickle"
+### Average Duration of "Down to Just a Trickle"
 
 _Hover or tap the cells to see the number of hours and reports for that area. Level of detail shown will adjust by zoom level._
 
@@ -45,12 +45,12 @@ _Hover or tap the cells to see the number of hours and reports for that area. Le
   width="10000"
   height="500"
   loading="lazy"
-  src="https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/sev2_median_duration.ultra">
+  src="https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/sev2_mean_duration.ultra">
 </iframe>
 
-[View full map](https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/sev2_median_duration.ultra)
+[View full map](https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/sev2_mean_duration.ultra)
 
-### Median Duration of "Water Pressure was Reduced"
+### Average Duration of "Water Pressure was Reduced"
 
 _Hover or tap a cell to see the number of hours and reports for that area. Level of detail shown will adjust by zoom level._
 
@@ -58,10 +58,23 @@ _Hover or tap a cell to see the number of hours and reports for that area. Level
   width="10000"
   height="500"
   loading="lazy"
-  src="https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/sev3_median_duration.ultra">
+  src="https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/sev3_mean_duration.ultra">
 </iframe>
 
-[View full map](https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/sev3_median_duration.ultra)
+[View full map](https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/sev3_mean_duration.ultra)
+
+### Most Common Degree of Water Loss by Census Block
+
+In this map each census block is colored by the most commonly reported status within it. _Hover or tap a census block to see how many of each type of report was submitted for that area._
+
+<iframe
+  width="10000"
+  height="500"
+  loading="lazy"
+  src="https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/census_block_mode_severity.ultra">
+</iframe>
+
+[View full map](https://overpass-ultra.us/#map&query=url:https://maprva.github.io/2025-water-crisis/census_block_mode_severity.ultra)
 
 ### The Richmonders Are Not Alright
 
