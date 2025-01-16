@@ -21,12 +21,12 @@
     const t = (text) => document.createTextNode(text);
 
     async function events() {
-        let resp = await fetch("https://osmcal.org/api/v2/events/past/?in=us");
-        let pastEvents = await resp.json();
-        pastEvents = pastEvents.filter(({name}) => name.includes("MapRVA"));
-        resp = await fetch("https://osmcal.org/api/v2/events/?in=us");
+        let resp = await fetch("https://osmcal.org/api/v2/events/?in=us");
         let futureEvents = await resp.json();
         futureEvents = futureEvents.filter(({name}) => name.includes("MapRVA"));
+        resp = await fetch("https://osmcal.org/api/v2/events/past/?in=us");
+        let pastEvents = await resp.json();
+        pastEvents = pastEvents.filter(({name}) => name.includes("MapRVA"));
 
         const p = document.querySelector("#meetups + p");
 
