@@ -32,18 +32,6 @@
 
         const p = document.querySelector("#meetups + p");
 
-        if (futureEvents.length > 0) {
-            const lis = [];
-            for (const e of futureEvents) {
-                const displayText = e.location?.venue
-                    ? `${e.name} - ${e.date.human} @ ${e.location.venue}`
-                    : `${e.name} - ${e.date.human}`;
-                lis.push(h("li", {}, h("a", { href: e.url }, displayText)));
-            }
-            const ul = h("ul", {}, ...lis);
-            p.after(ul);
-            p.after(h("h3", {}, t("Upcoming Events")));
-        }
         if (pastEvents.length > 0) {
             const lis = [];
             for (const e of pastEvents) {
@@ -55,6 +43,19 @@
             const ul = h("ul", {}, ...lis);
             p.after(ul);
             p.after(h("h3", {}, t("Recent Events")));
+        }
+
+        if (futureEvents.length > 0) {
+            const lis = [];
+            for (const e of futureEvents) {
+                const displayText = e.location?.venue
+                    ? `${e.name} - ${e.date.human} @ ${e.location.venue}`
+                    : `${e.name} - ${e.date.human}`;
+                lis.push(h("li", {}, h("a", { href: e.url }, displayText)));
+            }
+            const ul = h("ul", {}, ...lis);
+            p.after(ul);
+            p.after(h("h3", {}, t("Upcoming Events")));
         }
     }
     if (window.location.pathname === "/") {
