@@ -21,23 +21,24 @@
     const t = (text) => document.createTextNode(text);
 
     async function events() {
-        let resp = await fetch("https://osmcal.org/api/v2/events/?in=us");
+        let resp = await fetch("https://osmcal.org/api/v2/events/");
         let futureEvents = await resp.json();
-        futureEvents = futureEvents.filter(({name}) => name.includes("MapRVA"));
-        resp = await fetch("https://osmcal.org/api/v2/events/past/?in=us");
+        futureEvents = futureEvents.filter(({ name }) =>
+            name.includes("MapRVA"),
+        );
+        resp = await fetch("https://osmcal.org/api/v2/events/past/");
         let pastEvents = await resp.json();
-        pastEvents = pastEvents.filter(({name}) => name.includes("MapRVA"));
+        pastEvents = pastEvents.filter(({ name }) => name.includes("MapRVA"));
 
         const p = document.querySelector("#meetups + p");
 
         if (futureEvents.length > 0) {
             const lis = [];
             for (const e of futureEvents) {
-                lis.push(h("li", {}, h(
-                    "a",
-                    { href: e.url },
-                    `${e.date.human} @ ${e.location.venue}`,
-                )));
+                const displayText = e.location?.venue
+                    ? `${e.name} - ${e.date.human} @ ${e.location.venue}`
+                    : `${e.name} - ${e.date.human}`;
+                lis.push(h("li", {}, h("a", { href: e.url }, displayText)));
             }
             const ul = h("ul", {}, ...lis);
             p.after(ul);
@@ -46,11 +47,10 @@
         if (pastEvents.length > 0) {
             const lis = [];
             for (const e of pastEvents) {
-                lis.push(h("li", {}, h(
-                    "a",
-                    { href: e.url },
-                    `${e.date.human} @ ${e.location.venue}`,
-                )));
+                const displayText = e.location?.venue
+                    ? `${e.name} - ${e.date.human} @ ${e.location.venue}`
+                    : `${e.name} - ${e.date.human}`;
+                lis.push(h("li", {}, h("a", { href: e.url }, displayText)));
             }
             const ul = h("ul", {}, ...lis);
             p.after(ul);
