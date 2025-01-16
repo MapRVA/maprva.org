@@ -1,11 +1,63 @@
 <script>
-    async function updateWaterCrisisMeta() {
-        const resp = await fetch("https://maprva.github.io/2025-water-crisis/meta.json");
-        const { count, latest } = await resp.json();
-        const latestDate = new Date(latest);
-        document.getElementById("meta").textContent = `${count} responses as of ${latestDate.toLocaleString()}`;
+    // DOM generation helpers
+    const h = (elName, attrs, ...children) => {
+        const el = document.createElement(elName);
+        for (const key in attrs) {
+            if (key in el) {
+                el[key] = attrs[key];
+            } else {
+                el.setAttribute(key, attrs[key]);
+            }
+        }
+        if (children.length === 1 && typeof children[0] === "string") {
+            el.innerHTML = children[0];
+        } else {
+            for (const child of children) {
+                el.appendChild(child);
+            }
+        }
+        return el;
+    };
+    const t = (text) => document.createTextNode(text);
+
+    async function events() {
+        let resp = await fetch("https://osmcal.org/api/v2/events/past/?in=us");
+        let pastEvents = await resp.json();
+        pastEvents = pastEvents.filter(({name}) => name.includes("MapRVA"));
+        resp = await fetch("https://osmcal.org/api/v2/events/?in=us");
+        let futureEvents = await resp.json();
+        futureEvents = futureEvents.filter(({name}) => name.includes("MapRVA"));
+
+        const p = document.querySelector("#meetups + p");
+
+        if (futureEvents.length > 0) {
+            const lis = [];
+            for (const e of futureEvents) {
+                lis.push(h("li", {}, h(
+                    "a",
+                    { href: e.url },
+                    `${e.date.human} @ ${e.location.venue}`,
+                )));
+            }
+            const ul = h("ul", {}, ...lis);
+            p.after(ul);
+            p.after(h("h3", {}, t("Upcoming Events")));
+        }
+        if (pastEvents.length > 0) {
+            const lis = [];
+            for (const e of pastEvents) {
+                lis.push(h("li", {}, h(
+                    "a",
+                    { href: e.url },
+                    `${e.date.human} @ ${e.location.venue}`,
+                )));
+            }
+            const ul = h("ul", {}, ...lis);
+            p.after(ul);
+            p.after(h("h3", {}, t("Recent Events")));
+        }
     }
-    if (window.location.pathname === "/projects/water-crisis/") {
-        updateWaterCrisisMeta();
+    if (window.location.pathname === "/") {
+        events();
     }
 </script>
