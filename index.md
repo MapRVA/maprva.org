@@ -26,3 +26,7 @@ We are a group of mapping enthusiasts in Richmond, Virginia who work to create a
 ## Meetups
 
 MapRVA hosts both in-person and virtual meetups!
+
+## MapRVA In the News
+
+- [Status update: Greater Richmond's water outages](https://www.vpm.org/news/2025-01-07/winter-storm-blair-richmond-henrico-hanover-chesterfield-mutual-aid-help) _VPM News, January 7, 2025_
