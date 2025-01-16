@@ -36,8 +36,8 @@
             const lis = [];
             for (const e of pastEvents) {
                 const displayText = e.location?.venue
-                    ? `${e.name} - ${e.date.human} @ ${e.location.venue}`
-                    : `${e.name} - ${e.date.human}`;
+                    ? `${e.name} – ${e.date.human} @ ${e.location.venue}`
+                    : `${e.name} – ${e.date.human}`;
                 lis.push(h("li", {}, h("a", { href: e.url }, displayText)));
             }
             const ul = h("ul", {}, ...lis);
@@ -49,8 +49,8 @@
             const lis = [];
             for (const e of futureEvents) {
                 const displayText = e.location?.venue
-                    ? `${e.name} - ${e.date.human} @ ${e.location.venue}`
-                    : `${e.name} - ${e.date.human}`;
+                    ? `${e.name} – ${e.date.human} @ ${e.location.venue}`
+                    : `${e.name} – ${e.date.human}`;
                 lis.push(h("li", {}, h("a", { href: e.url }, displayText)));
             }
             const ul = h("ul", {}, ...lis);
