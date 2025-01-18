@@ -1,64 +1,48 @@
 <script>
-    // DOM generation helpers
-    const h = (elName, attrs, ...children) => {
-        const el = document.createElement(elName);
-        for (const key in attrs) {
-            if (key in el) {
-                el[key] = attrs[key];
-            } else {
-                el.setAttribute(key, attrs[key]);
-            }
-        }
-        if (children.length === 1 && typeof children[0] === "string") {
-            el.innerHTML = children[0];
-        } else {
-            for (const child of children) {
-                el.appendChild(child);
-            }
-        }
-        return el;
-    };
-    const t = (text) => document.createTextNode(text);
-
-    async function events() {
-        let resp = await fetch("https://osmcal.org/api/v2/events/");
-        let futureEvents = await resp.json();
-        futureEvents = futureEvents.filter(({ name }) =>
-            name.includes("MapRVA"),
-        );
-        resp = await fetch("https://osmcal.org/api/v2/events/past/");
-        let pastEvents = await resp.json();
-        pastEvents = pastEvents.filter(({ name }) => name.includes("MapRVA"));
-
-        const p = document.querySelector("#meetups + p");
-
-        if (pastEvents.length > 0) {
-            const lis = [];
-            for (const e of pastEvents) {
-                const displayText = e.location?.venue
-                    ? `${e.name} – ${e.date.human} @ ${e.location.venue}`
-                    : `${e.name} – ${e.date.human}`;
-                lis.push(h("li", {}, h("a", { href: e.url }, displayText)));
-            }
-            const ul = h("ul", {}, ...lis);
-            p.after(ul);
-            p.after(h("h3", {}, t("Recent Events")));
-        }
-
-        if (futureEvents.length > 0) {
-            const lis = [];
-            for (const e of futureEvents) {
-                const displayText = e.location?.venue
-                    ? `${e.name} – ${e.date.human} @ ${e.location.venue}`
-                    : `${e.name} – ${e.date.human}`;
-                lis.push(h("li", {}, h("a", { href: e.url }, displayText)));
-            }
-            const ul = h("ul", {}, ...lis);
-            p.after(ul);
-            p.after(h("h3", {}, t("Upcoming Events")));
-        }
+  // DOM generation helpers
+  const h = (elName, attrs, ...children) => {
+    const el = document.createElement(elName);
+    for (const key in attrs) {
+      if (key in el) {
+        el[key] = attrs[key];
+      } else {
+        el.setAttribute(key, attrs[key]);
+      }
     }
-    if (window.location.pathname === "/") {
-        events();
+    if (children.length === 1 && typeof children[0] === "string") {
+      el.innerHTML = children[0];
+    } else {
+      for (const child of children) {
+        el.appendChild(child);
+      }
     }
+    return el;
+  };
+  const t = (text) => document.createTextNode(text);
+
+  async function events(url, selector) {
+    const resp = await fetch(url);
+    let evs = await resp.json();
+    evs = evs.filter(({ name }) => name.includes("MapRVA"));
+
+    const header = document.querySelector(selector);
+
+    if (evs.length > 0) {
+      const lis = [];
+      for (const e of evs) {
+        const displayText = e.location?.venue
+          ? `${e.name} – ${new Date(e.date.start).toLocaleString()} @ ${e.location.venue}`
+          : `${e.name} – ${new Date(e.date.start).toLocaleString()}`;
+        lis.push(h("li", {}, h("a", { href: e.url }, displayText)));
+      }
+      const ul = h("ul", {}, ...lis);
+      header.after(ul);
+    } else {
+      header.after(t(`No ${header.textContent}`));
+    }
+  }
+  if (window.location.pathname === "/") {
+    events("https://osmcal.org/api/v2/events/", "#upcoming-events");
+    events("https://osmcal.org/api/v2/events/past/", "#recent-events");
+  }
 </script>
