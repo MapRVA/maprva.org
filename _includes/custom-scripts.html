@@ -38,7 +38,7 @@
       const ul = h("ul", {}, ...lis);
       header.after(ul);
     } else {
-      header.after(t(`No ${header.textContent}`));
+      header.after(h("p", {}, t(`No ${header.textContent}`)));
     }
   }
   if (window.location.pathname === "/") {
