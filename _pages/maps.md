@@ -3,9 +3,12 @@ title: Maps
 dropdown_links:
   - link: /projects/water-crisis/
     label: Water Crisis
+  - link: /maps/surveillance/
+    label: Surveillance Devices
   - link: /maps/opentrailstash/
     label: OpenTrailStash
 links:
+  - link: /maps/surveillance/
   - link: /maps/opentrailstash/
 ---
 Here are maps we've built.
