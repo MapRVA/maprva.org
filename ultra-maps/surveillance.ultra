@@ -1,8 +1,32 @@
 ---
 type: overpass
-# TODO: popupTemplate
+popupTemplate: >
+  <h3>Type: {{tags["surveillance:type"] | default: "unknown" | replace: "_", " "}}</h3>
+  <h3>Brand: {{tags.brand | default: "unknown"}}</h3>
+  <h3>Manufacturer: {{tags.manufacturer | default: "unknown"}}</h3>
+  <h3>Operator: {{tags.operator | default: "unknown"}}</h3>
+  <a href="https://openstreetmap.org/{{ type }}/{{ id }}" target="_blank">View on OSM</a>
+  <br>
+  <a href="https://openstreetmap.org/edit?{{ type }}={{ id }}" target="_blank">Edit on OSM</a>
+  <details>
+  <summary>OSM Tags</summary>
+  {%- for tag in tags %}
+    {%- if tag[0] contains "website" %}
+      <code>{{ tag[0] }} = <a href="{{ tag[1] }}" target="_blank">{{ tag[1] }}</a></code>
+    {%- elsif tag[0] contains "wikidata" %}
+      <code>{{ tag[0] }} = <a href="https://wikidata.org/wiki/{{ tag[1] }}" target="_blank">{{ tag[1] }}</a></code>
+    {%- elsif tag[0] contains "wikipedia" %}
+      {% assign lang = tag[1] | split: ":" | first %}
+      <code>{{ tag[0] }} = <a href="https://{{ lang }}.wikipedia.org/wiki/{{ tag[1] | replace_first: lang, "" | replace_first: ":", "" }}" target="_blank">{{ tag[1] }}</a></code>
+    {%- else %}
+      <code>{{ tag[0] }} = {{ tag[1] }}</code>
+    {%- endif %}
+    <br>
+  {%- endfor %}
+  </details>
 options:
   bounds: [-77.6093101501465,37.43670283999782,-77.38194465637208,37.60423624970319]
+  hash: m
 controls:
   - type: HTMLControl
     position: bottom-left
@@ -41,6 +65,7 @@ style:
         - blue
         - black
     - type: symbol
+      minzoom: 13
       filter: ['!=', [get, type], boundary]
       icon-image: 
         - case
@@ -63,11 +88,13 @@ style:
 area[wikidata=Q43421][type=boundary] -> .richmond;
 area[wikidata=Q341639][type=boundary] -> .henrico;
 area[wikidata=Q340608][type=boundary] -> .chesterfield;
+area[wikidata=Q673772][type=boundary] -> .bonair;
 // fetch surveillance devices
 (
   nwr[man_made=surveillance](area.richmond);
   nwr[man_made=surveillance](area.henrico);
   nwr[man_made=surveillance](area.chesterfield);
+  nwr[man_made=surveillance](area.bonair);
 );
 out center;
 // fetch admin bounds
@@ -75,5 +102,6 @@ out center;
   nwr[wikidata=Q43421][type=boundary];
   nwr[wikidata=Q341639][type=boundary];
   nwr[wikidata=Q340608][type=boundary];
+  nwr[wikidata=Q673772][type=boundary];
 );
 out geom;
