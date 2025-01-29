@@ -1,5 +1,6 @@
 ---
 title: Daniel Schep
+pronouns: he/him
 image: https://schep.me/dschep.jpg
 osm: dpschep
 website: https://schep.me
