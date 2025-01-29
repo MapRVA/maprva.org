@@ -7,7 +7,8 @@ website: https://obrien.page
 github: mhpob
 bluesky: https://bsky.app/profile/obrien.page
 roles:
-  - at: Surveillance devices
+  - title: Mapper
+    at: Surveillance Devices
 ---
 
 Mike is a fisheries scientist and movement ecologist in Richmond, VA. His OSM 
