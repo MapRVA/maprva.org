@@ -1,7 +1,7 @@
 ---
 layout: project
-title: Surveillance devices
-#sign: /img/maps/opentrailstash/surveillance.svg
+title: Surveillance Devices
+#sign: /img/projects/surveillance.svg
 blurb: Mapping the surveillance state we all live in. Cameras, ALPRs, & gunshot detectors.
 ---
 

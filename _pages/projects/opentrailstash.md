@@ -1,7 +1,7 @@
 ---
 layout: project
 title: OpenTrailStash
-sign: /img/maps/opentrailstash/sign.svg
+sign: /img/projects/opentrailstash/sign.svg
 blurb: OpenTrailStash is a map made for having fun on a bicycle, especially off-road.
 buttons:
   - link: https://open.trailsta.sh
