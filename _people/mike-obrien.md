@@ -10,7 +10,7 @@ roles:
   - at: Surveillance devices
 ---
 
-Mike is a fisheries scientist and movement ecologist in Richmond, VA. His OSM
-mapping interests revolve around [public surveillance](https://maprva.org/maps/surveillance/)
-and urban/suburban waterways, forestry, and agricultural land uses in Richmond and
+Mike is a fisheries scientist and movement ecologist in Richmond, VA. His OSM 
+mapping interests revolve around [public surveillance](https://maprva.org/maps/surveillance/) 
+and urban/suburban waterways, forestry, and agricultural land uses in Richmond and 
 surrounding counties.
