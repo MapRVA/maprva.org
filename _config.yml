@@ -16,7 +16,7 @@ slack_page: /slack
 links:
   - link: /about/
   - link: /projects/
-  - link: /maps/
+  - link: /member-projects/
   # - link: /blog/
 
 # Build settings

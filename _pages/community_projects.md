@@ -1,21 +1,22 @@
 ---
-title: Projects
+title: Get Involved!
+permalink: /projects/
 dropdown_links:
   - link: /projects/water-crisis/
     label: Water Crisis
+  - link: /maps/surveillance/
+    label: Mapping Surveillance
   - link: /projects/sidewalks/
-    label: Sidewalks
-  - link: /projects/ultra/
-    label: Ultra
+    label: Mapping Sidewalks
   - link: /projects/historical-mapping/
     label: Historical Mapping
 links:
+  - link: /maps/surveillance/
   - link: /projects/water-crisis/
   - link: /projects/sidewalks/
-  - link: /projects/ultra/
   - link: /projects/historical-mapping/
 ---
-Here are the projects we're working on.
+Get involved in making better maps of RVA!
 
 {::nomarkdown}
 {% assign subitems="" | split: ',' -%}
