@@ -2,14 +2,14 @@
 title: Member Projects
 permalink: /member-projects/
 dropdown_links:
-  - link: /maps/opentrailstash/
+  - link: /projects/opentrailstash/
     label: OpenTrailStash
   - link: /projects/ultra/
     label: Ultra
 member_projects:
   - name: Daniel Schep
     links:
-      - /maps/opentrailstash/
+      - /projects/opentrailstash/
       - /projects/ultra/
 ---
 Here are some of the projects our members are working on!

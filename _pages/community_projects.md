@@ -4,14 +4,14 @@ permalink: /projects/
 dropdown_links:
   - link: /projects/water-crisis/
     label: Water Crisis
-  - link: /maps/surveillance/
+  - link: /projects/surveillance/
     label: Mapping Surveillance
   - link: /projects/sidewalks/
     label: Mapping Sidewalks
   - link: /projects/historical-mapping/
     label: Historical Mapping
 links:
-  - link: /maps/surveillance/
+  - link: /projects/surveillance/
   - link: /projects/water-crisis/
   - link: /projects/sidewalks/
   - link: /projects/historical-mapping/
