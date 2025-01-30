@@ -5,7 +5,7 @@ image: https://www.obrien.page/mike.jpg
 osm: mhpob
 website: https://obrien.page
 github: mhpob
-bluesky: https://bsky.app/profile/obrien.page
+bluesky: obrien.page
 roles:
   - title: Mapper
     at: Surveillance Devices
