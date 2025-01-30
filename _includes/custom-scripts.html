@@ -20,10 +20,13 @@
   };
   const t = (text) => document.createTextNode(text);
 
-  async function events(url, selector) {
+  async function events(url, selector, futureOnly) {
     const resp = await fetch(url);
     let evs = await resp.json();
     evs = evs.filter(({ name }) => name.includes("MapRVA"));
+    if (futureOnly) {
+      evs = evs.filter((e) => new Date(e.date.end) > new Date());
+    }
 
     const header = document.querySelector(selector);
 
@@ -42,7 +45,7 @@
     }
   }
   if (window.location.pathname === "/") {
-    events("https://osmcal.org/api/v2/events/", "#upcoming-events");
-    events("https://osmcal.org/api/v2/events/past/", "#recent-events");
+    events("https://osmcal.org/api/v2/events/", "#upcoming-events", true);
+    events("https://osmcal.org/api/v2/events/past/", "#recent-events", false);
   }
 </script>
