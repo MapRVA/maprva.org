@@ -5,7 +5,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   to create and share geospatial data of our city using OpenStreetMap.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://maprva.org" # the base hostname & protocol for your site, e.g. http://example.com
-github:  MapRVA
+github: MapRVA
 mastodon: https://en.osm.town/@maprva
 youtube_page: false
 instagram: false
@@ -41,41 +41,32 @@ collections:
   ultra-maps:
     output: true
 defaults:
-  -
-    scope:
+  - scope:
       path: "_pages"
       type: "pages"
     values:
       permalink: /:path/
       layout: "page"
-  -
-    scope:
+  - scope:
       path: "_redirects"
       type: "redirects"
     values:
       permalink: /:path/
       layout: "redirect"
-  -
-    scope:
+  - scope:
       path: "_people"
       type: "people"
     values:
       layout: "person"
-  -
-    scope:
+  - scope:
       path: "_projects"
       type: "projects"
     values:
       layout: project
-  -
-    scope:
+  - scope:
       path: "_posts/blog"
       type: "posts"
     values:
       permalink: /blog/:year/:month/:title/
       category: "Blog"
       layout: "post"
-  -
-    scope:
-      path: "_ultra-maps"
-      type: "projects"
