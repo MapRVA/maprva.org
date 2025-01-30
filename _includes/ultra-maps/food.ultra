@@ -14,12 +14,12 @@ style:
       icon-color: '#2ecc71'
   extends: https://styles.trailsta.sh/protomaps-light.json
 popupTemplate: >
-  <h3>{% if tags.fridge == "yes" %}Community Fridge{% else %}Free Pantry{% endif %}</h3>
-  {% if tags.operator %}{{tags.operator}}{% endif %}
+  <h2>{% if tags.fridge == "yes" %}Community Fridge{% else %}Free Pantry{% endif %}</h2>
+  {% if tags.operator %}<i>{{tags.operator}}</i>{% endif %}
   {% if tags.wikimedia_commons %}
     <br><br>
     <a href="https://commons.wikimedia.org/wiki/{{ tags.wikimedia_commons }}" target="_blank">
-      <img width="100%" src="https://commons.wikimedia.org/wiki/Special:{{ tags.wikimedia_commons | replace: "File:", "FilePath/" }}">
+      <img style="width: 100%; max-width: 25em;" src="https://commons.wikimedia.org/wiki/Special:{{ tags.wikimedia_commons | replace: "File:", "FilePath/" }}">
     </a>
   {% endif %}
   <br><br>
