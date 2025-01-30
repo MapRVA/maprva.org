@@ -1,0 +1,50 @@
+---
+style:
+  layers:
+    - type: circle
+      circle-color:
+        - case
+        - [ ==, [ get, amenity ], food_sharing ]
+        - '#2ecc71'
+        - [ ==, [ get, shop ], supermarket ]
+        - '#3498db'
+        - [ ==, [ get, shop ], grocery ]
+        - '#f1c40f'
+        - '#95a5a6'
+    - type: symbol
+      minzoom: 13
+      filter: [==, [get, amenity], food_sharing]
+      icon-image: temaki:vending_bread
+      icon-halo-color: white
+      icon-halo-width: 2.5
+      icon-color: '#2ecc71'
+  extends: https://styles.trailsta.sh/protomaps-light.json
+controls:
+  - type: HTMLControl
+    position: bottom-left
+    options:
+      html: >
+        <div>
+        <b>Legend:</b>
+        <br>
+        💚 Community Fridge / Pantry
+        <br>
+        🔵 Supermarket
+        <br>
+        🟡 Convenience Store
+        </div>
+      css: >
+        div {
+          background: white;
+          padding: 5px;
+        }
+---
+[out:json][timeout:25];
+(
+  nwr["amenity"="food_sharing"]({{bbox}});
+  nwr["shop"="convenience"]({{bbox}});
+  nwr["shop"="grocery"]({{bbox}});
+  nwr["shop"="supermarket"]({{bbox}});
+
+);
+out center;
