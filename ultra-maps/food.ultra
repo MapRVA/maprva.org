@@ -16,6 +16,12 @@ style:
 popupTemplate: >
   <h3>{% if tags.fridge == "yes" %}Community Fridge{% else %}Free Pantry{% endif %}</h3>
   {% if tags.operator %}{{tags.operator}}{% endif %}
+  {% if tags.wikimedia_commons %}
+    <br><br>
+    <a href="https://commons.wikimedia.org/wiki/{{ tags.wikimedia_commons }}" target="_blank">
+      <img width="100%" src="https://commons.wikimedia.org/wiki/Special:{{ tags.wikimedia_commons | replace: "File:", "FilePath/" }}">
+    </a>
+  {% endif %}
   <br><br>
   <a href="https://openstreetmap.org/{{ type }}/{{ id }}" target="_blank">View on OSM</a>
   <br>
