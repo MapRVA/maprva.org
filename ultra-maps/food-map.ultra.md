@@ -1,3 +1,3 @@
 ---
 ---
-{% include "./food.ultra" %}
+{% include_relative food.ultra %}
