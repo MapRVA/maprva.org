@@ -5,6 +5,7 @@ title: Surveillance Devices
 blurb: Mapping the surveillance state we all live in. Cameras, ALPRs, & gunshot detectors.
 ---
 
+{::nomarkdown}
 <iframe
   title="OpenTrailStash"
   width="10000"
@@ -12,6 +13,5 @@ blurb: Mapping the surveillance state we all live in. Cameras, ALPRs, & gunshot 
   src="https://overpass-ultra.us/#map&query=url:{{ "/ultra-maps/surveillance.ultra" | absolute_url }}">
 </iframe>
 
-{::nomarkdown}
 {% include page_people_list.html %}
 {:/nomarkdown}
