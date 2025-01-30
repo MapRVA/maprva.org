@@ -4,7 +4,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   We are a group of mapping enthusiasts in Richmond, Virginia who work
   to create and share geospatial data of our city using OpenStreetMap.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://maprva.org" # the base hostname & protocol for your site, e.g. http://example.com
+url: "http://localhost:8000" # the base hostname & protocol for your site, e.g. http://example.com
 github:  MapRVA
 mastodon: https://en.osm.town/@maprva
 youtube_page: false
@@ -23,6 +23,7 @@ links:
 theme: osmus-dogwood
 plugins:
   - jekyll-feed
+  - jekyll-include-raw
 
 collections:
   feeds:
@@ -36,6 +37,8 @@ collections:
   posts:
     output: true
   redirects:
+    output: true
+  ultra-maps:
     output: true
 defaults:
   -
@@ -72,3 +75,7 @@ defaults:
       permalink: /blog/:year/:month/:title/
       category: "Blog"
       layout: "post"
+  -
+    scope:
+      path: "_ultra-maps"
+      type: "projects"
