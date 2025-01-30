@@ -10,6 +10,13 @@ buttons:
   - link: https://gitlab.com/trailstash/ultra
     label: Source Code
 ---
+## Ultra map queries used on maprva.org
+
+These are some of the Ultra queries used to make maps on maprva.org:
+
+{% for ultra-map in site.ultra-maps %}
+  * [{{ ultra-map.title }}](https://overpass-ultra.us/#query=url:{{ ultra-map.url | absolute_url }})
+{% endfor %}
 
 {::nomarkdown}
 {% include page_people_list.html %}
