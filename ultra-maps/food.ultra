@@ -2,49 +2,45 @@
 style:
   layers:
     - type: circle
-      circle-color:
-        - case
-        - [ ==, [ get, amenity ], food_sharing ]
-        - '#2ecc71'
-        - [ ==, [ get, shop ], supermarket ]
-        - '#3498db'
-        - [ ==, [ get, shop ], grocery ]
-        - '#f1c40f'
-        - '#95a5a6'
+      circle-color: '#2ecc71'
+      circle-stroke-color: white
+      circle-stroke-width: 3
     - type: symbol
-      minzoom: 13
-      filter: [==, [get, amenity], food_sharing]
+      minzoom: 11.5
+      filter: [ ==, [ get, fridge ], yes ]
       icon-image: temaki:vending_bread
       icon-halo-color: white
       icon-halo-width: 2.5
       icon-color: '#2ecc71'
   extends: https://styles.trailsta.sh/protomaps-light.json
-controls:
-  - type: HTMLControl
-    position: bottom-left
-    options:
-      html: >
-        <div>
-        <b>Legend:</b>
-        <br>
-        💚 Community Fridge / Pantry
-        <br>
-        🔵 Supermarket
-        <br>
-        🟡 Convenience Store
-        </div>
-      css: >
-        div {
-          background: white;
-          padding: 5px;
-        }
+popupTemplate: >
+  <h3>{% if tags.fridge == "yes" %}Community Fridge{% else %}Free Pantry{% endif %}</h3>
+  {% if tags.operator %}{{tags.operator}}{% endif %}
+  <br><br>
+  <a href="https://openstreetmap.org/{{ type }}/{{ id }}" target="_blank">View on OSM</a>
+  <br>
+  <a href="https://openstreetmap.org/edit?{{ type }}={{ id }}" target="_blank">Edit on OSM</a>
+  <details>
+  <summary>OSM Tags</summary>
+  {%- for tag in tags %}
+    {%- if tag[0] contains "website" %}
+      <code>{{ tag[0] }} = <a href="{{ tag[1] }}" target="_blank">{{ tag[1] }}</a></code>
+    {%- elsif tag[0] contains "wikidata" %}
+      <code>{{ tag[0] }} = <a href="https://wikidata.org/wiki/{{ tag[1] }}" target="_blank">{{ tag[1] }}</a></code>
+    {%- elsif tag[0] contains "wikipedia" %}
+      {% assign lang = tag[1] | split: ":" | first %}
+      <code>{{ tag[0] }} = <a href="https://{{ lang }}.wikipedia.org/wiki/{{ tag[1] | replace_first: lang, "" | replace_first: ":", "" }}" target="_blank">{{ tag[1] }}</a></code>
+    {%- else %}
+      <code>{{ tag[0] }} = {{ tag[1] }}</code>
+    {%- endif %}
+    <br>
+  {%- endfor %}
+  </details>
+  
 ---
 [out:json][timeout:25];
 (
   nwr["amenity"="food_sharing"]({{bbox}});
-  nwr["shop"="convenience"]({{bbox}});
-  nwr["shop"="grocery"]({{bbox}});
-  nwr["shop"="supermarket"]({{bbox}});
 
 );
 out center;
