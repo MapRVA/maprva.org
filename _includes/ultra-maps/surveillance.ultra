@@ -1,10 +1,10 @@
 ---
 type: overpass
 popupTemplate: >
-  <h3>Type: {{tags["surveillance:type"] | default: "unknown" | replace: "_", " "}}</h3>
-  <h3>Brand: {{tags.brand | default: "unknown"}}</h3>
-  <h3>Manufacturer: {{tags.manufacturer | default: "unknown"}}</h3>
-  <h3>Operator: {{tags.operator | default: "unknown"}}</h3>
+  <h3 style="text-transform:capitalize;">Type: {{tags["surveillance:type"] | default: "(Unknown)" | replace: "_", " "}}</h3>
+  <h3 >Brand: {{tags.brand | default: "(Unknown)"}}</h3>
+  <h3>Manufacturer: {{tags.manufacturer | default: "(Unknown)"}}</h3>
+  <h3>Operator: {{tags.operator | default: "(Unknown)"}}</h3>
   <a href="https://openstreetmap.org/{{ type }}/{{ id }}" target="_blank">View on OSM</a>
   <br>
   <a href="https://openstreetmap.org/edit?{{ type }}={{ id }}" target="_blank">Edit on OSM</a>
