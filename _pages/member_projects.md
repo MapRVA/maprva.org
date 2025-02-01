@@ -6,11 +6,16 @@ dropdown_links:
     label: OpenTrailStash
   - link: /projects/ultra/
     label: Ultra
+  - link: /projects/skyway/
+    label: skyway
 member_projects:
   - name: Daniel Schep
     links:
       - /projects/opentrailstash/
       - /projects/ultra/
+  - name: Jacob Hall
+    links:
+      - /projects/skyway/
 ---
 Here are some of the projects our members are working on!
 
