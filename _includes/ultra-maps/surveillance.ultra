@@ -49,12 +49,21 @@ controls:
           padding: 5px;
         }
 style:
+  extends: https://americanamap.org/style.json
+  sources:
+    mask:
+      type: geojson
+      data: https://maprva.org/map-data/greater-rva-mask.geojson
   layers:
-    - type: line
-      filter: [==, [get, type], boundary]
-      line-width: 3
+    - id: poi
+      visibility: none
+    - type: fill
+      beforeLayerId: poi
+      source: mask
+      fill-opacity: 0.3
     - type: circle
-      filter: ['!=', [get, type], boundary]
+      circle-stroke-color: white
+      circle-stroke-width: 2
       circle-color:
         - case
         - [ ==, [ get, surveillance:type ],  gunshot_detector ]
@@ -66,7 +75,6 @@ style:
         - black
     - type: symbol
       minzoom: 13
-      filter: ['!=', [get, type], boundary]
       icon-image: 
         - case
         - [ ==, [ get, surveillance:type ],  gunshot_detector ]
@@ -97,11 +105,3 @@ area[wikidata=Q673772][type=boundary] -> .bonair;
   nwr[man_made=surveillance](area.bonair);
 );
 out center;
-// fetch admin bounds
-(
-  nwr[wikidata=Q43421][type=boundary];
-  nwr[wikidata=Q341639][type=boundary];
-  nwr[wikidata=Q340608][type=boundary];
-  nwr[wikidata=Q673772][type=boundary];
-);
-out geom;
