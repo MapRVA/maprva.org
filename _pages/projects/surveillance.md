@@ -1,7 +1,7 @@
 ---
 layout: project
 title: Surveillance Devices
-#sign: /img/projects/surveillance.svg
+sign: /img/projects/surveillance/sign.svg
 blurb: Mapping the surveillance state we all live in. Cameras, ALPRs, & gunshot detectors.
 ---
 
