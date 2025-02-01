@@ -1,6 +1,9 @@
 ---
 type: overpass
 popupTemplate: >
+  {%- if tags["boundary"] -%}
+  <h3>{{ tags["name"] }}</h3>
+  {%- else -%}
   <h3 style="text-transform:capitalize;">Type: {{tags["surveillance:type"] | default: "(Unknown)" | replace: "_", " "}}</h3>
   <h3 >Brand: {{tags.brand | default: "(Unknown)"}}</h3>
   <h3>Manufacturer: {{tags.manufacturer | default: "(Unknown)"}}</h3>
@@ -8,6 +11,7 @@ popupTemplate: >
   <a href="https://openstreetmap.org/{{ type }}/{{ id }}" target="_blank">View on OSM</a>
   <br>
   <a href="https://openstreetmap.org/edit?{{ type }}={{ id }}" target="_blank">Edit on OSM</a>
+  {%- endif -%}
   <details>
   <summary>OSM Tags</summary>
   {%- for tag in tags %}
