@@ -41,7 +41,7 @@ controls:
         <br>
         🔴 Gunshot Detector
         <br>
-        ⚫ Unknown/Other
+        🟣 Unknown/Other
         </div>
       css: >
         div {
@@ -72,7 +72,7 @@ style:
         - green
         - [ ==, [ get, surveillance:type ],  camera ]
         - blue
-        - black
+        - purple
     - type: symbol
       minzoom: 13
       icon-image: 
@@ -90,7 +90,7 @@ style:
         - green
         - [ ==, [ get, surveillance:type ],  camera ]
         - blue
-        - black
+        - purple
 ---
 // fetch Richmond, Henrico, and Chesterfild to search in
 area[wikidata=Q43421][type=boundary] -> .richmond;
