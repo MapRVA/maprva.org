@@ -64,28 +64,20 @@ style:
     - type: line
       filter: [==, [get, type], boundary]
       line-width: 3
+    - type: symbol
+      icon-overlap: always
+      filter: [has, direction]
+      icon-size:
+        stops:
+          - [5, 0]
+          - [15, 1]
+      icon-rotate: [to-number, [get, direction]]
+      icon-image: https://maprva.org/img/surveillance-direction.png
     - type: circle
       filter: ['!=', [get, type], boundary]
+      circle-stroke-width: 1
+      circle-stroke-color: black
       circle-color:
-        - case
-        - [ ==, [ get, surveillance:type ],  gunshot_detector ]
-        - red
-        - [ ==, [ get, surveillance:type ],  ALPR ]
-        - green
-        - [ ==, [ get, surveillance:type ],  camera ]
-        - blue
-        - black
-    - type: symbol
-      minzoom: 13
-      filter: ['!=', [get, type], boundary]
-      icon-image: 
-        - case
-        - [ ==, [ get, surveillance:type ],  gunshot_detector ]
-        - temaki:antenna
-        - temaki:security_camera
-      icon-halo-color: white
-      icon-halo-width: 2.5
-      icon-color:
         - case
         - [ ==, [ get, surveillance:type ],  gunshot_detector ]
         - red
