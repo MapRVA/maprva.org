@@ -53,7 +53,14 @@ controls:
           padding: 5px;
         }
 style:
+  sources:
+    mask:
+      type: geojson
+      data: https://maprva.org/map-data/greater-rva-mask.geojson
   layers:
+    - type: fill
+      source: mask
+      fill-opacity: 0.3
     - type: line
       filter: [==, [get, type], boundary]
       line-width: 3
