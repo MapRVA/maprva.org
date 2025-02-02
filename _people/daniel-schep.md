@@ -13,7 +13,7 @@ roles:
     at: Ultra
   - title: Validation
     at: Mapping Pedestrian Infrastructure
-  - title: Lead Cartographer
+  - title: Cartographer
     at: Mapping the Jan 2025 Water Crisis
   - title: Cartographer
     at: Surveillance Devices
