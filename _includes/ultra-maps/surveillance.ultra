@@ -61,7 +61,16 @@ style:
       beforeLayerId: poi
       source: mask
       fill-opacity: 0.3
+    - type: line
+      filter: [==, [get, type], boundary]
+      line-width: 4
+      line-color: hsl(281, 35%, 86%)
+    - type: line
+      filter: [==, [get, type], boundary]
+      line-width: 1.5
+      line-color: hsl(0, 2%, 47%)
     - type: circle
+      filter: ['!=', [get, type], boundary]
       circle-stroke-color: white
       circle-stroke-width: 2
       circle-color:
@@ -74,6 +83,7 @@ style:
         - blue
         - purple
     - type: symbol
+      filter: ['!=', [get, type], boundary]
       minzoom: 13
       icon-image: 
         - case
@@ -105,3 +115,11 @@ area[wikidata=Q673772][type=boundary] -> .bonair;
   nwr[man_made=surveillance](area.bonair);
 );
 out center;
+// fetch admin bounds
+(
+  nwr[wikidata=Q43421][type=boundary];
+  nwr[wikidata=Q341639][type=boundary];
+  nwr[wikidata=Q340608][type=boundary];
+  nwr[wikidata=Q673772][type=boundary];
+);
+out geom;
