@@ -15,6 +15,8 @@ roles:
     at: Mapping Pedestrian Infrastructure
   - title: Lead Cartographer
     at: Mapping the Jan 2025 Water Crisis
+  - title: Cartographer
+    at: Surveillance Devices
 ---
 Daniel Schep is a mapper and software engineer in Richmond Virginia.
 
