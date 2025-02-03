@@ -1,3 +1,7 @@
+# Development
+
+## Podman
+
 Running a development server locally using podman/python:
 
 1. make sure `_config.yml` has "http://localhost:8000" as the site URL
@@ -11,3 +15,10 @@ Running a development server locally using podman/python:
    In a new terminal while that's running:
    - `cd` to `/path/to/repo/_site`
    - `python -m http.server`
+
+## Docker Compose
+
+To run with docker compose, run:
+```
+docker compose up
+```
