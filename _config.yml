@@ -23,7 +23,12 @@ links:
 theme: osmus-dogwood
 plugins:
   - jekyll-feed
-  - jekyll-include-raw
+  - jekyll-copyr
+
+jekyll-copyr:
+  tasks:
+    - from: "./_ultra-maps/."
+      to: "./_site/ultra-maps/"
 
 collections:
   feeds:
@@ -39,7 +44,7 @@ collections:
   redirects:
     output: true
   ultra-maps:
-    output: true
+    output: false
 defaults:
   - scope:
       path: "_pages"
