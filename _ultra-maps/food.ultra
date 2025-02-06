@@ -1,14 +1,23 @@
 ---
 style:
   layers:
-    - type: circle
-      circle-color: '#2ecc71'
-      circle-stroke-color: white
-      circle-stroke-width: 3
     - type: symbol
-      minzoom: 11.5
-      filter: [ ==, [ get, fridge ], yes ]
-      icon-image: temaki:vending_bread
+      minzoom: 8
+      symbol-sort-key:
+        - case
+        - [ ==, [ get, fridge ], yes ]
+        - 0
+        - 10
+      icon-size:
+        - case
+        - [ ==, [ get, fridge ], yes ]
+        - 1
+        - 0.6
+      icon-image:
+        - case
+        - [ ==, [ get, fridge ], yes ]
+        - temaki:vending_bread
+        - temaki:can
       icon-halo-color: white
       icon-halo-width: 2.5
       icon-color: '#2ecc71'
@@ -50,3 +59,4 @@ popupTemplate: >
 
 );
 out center;
+
