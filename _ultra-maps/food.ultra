@@ -5,7 +5,7 @@ style:
     mask:
       type: geojson
       data: https://maprva.org/map-data/rva-mask.geojson
-      # hacky.. using this attribution to add attribution for icions
+      # hacky.. using this attribution to add attribution for icons
       attribution: Icons by <a href="https://icons8.com/" target="_blank">Icons8</a>
   layers:
     - type: fill
