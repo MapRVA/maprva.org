@@ -1,19 +1,6 @@
 ---
-fitBounds: true
 style:
-  sources:
-    mask:
-      type: geojson
-      data: https://maprva.org/map-data/rva-mask.geojson
-      # hacky.. using this attribution to add attribution for icions
-      attribution: Icons by <a href="https://icons8.com/" target="_blank">Icons8</a>
   layers:
-    - type: fill
-      source: mask
-      fill-opacity: 0.3
-    - type: line
-      source: mask
-      line-width: 2
     - type: symbol
       minzoom: 8
       symbol-sort-key:
@@ -24,13 +11,16 @@ style:
       icon-size:
         - case
         - [ ==, [ get, fridge ], yes ]
-        - .4
-        - 0.3
+        - 1
+        - 0.6
       icon-image:
         - case
         - [ ==, [ get, fridge ], yes ]
-        - data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAABd0lEQVR4nO2awW3DAAzEbo0+/bzdulnX6CRZxH0XSPoqzEgmAQ0QMhKSOImIiIiI/CP9epybJtOghdUAvLS6Aby4eoJ2TKZBC6sBeGl1A3hx9QTtmEyDFlYD8NLqBvDi6gn6LeHz43w6fQPJf02m8eqFGOAiDABjABgDwBgAxgAwBoAxAIwBYOhvrvWbMC+t/hSxZzINWlgNwEurG8CL611P0JHvc9NkGrSwwwC8tMMN4MUdnqAdk2nQwo67B6A/NvbuH0NpYTUAL61uAC+unqAdk2nQwmqA5xL8a+JFvHoHGuAiDABjABgDwBgAxgAwBoAxAIwBYAwAYwAYA8AYAMYAMAaAMQCMAWDoR4j1kSQvrT6U3zOZBi2sBuCl1Q3gxdUTtGMyDVpYDcBLqxvAi6snaMdkGrSwGoCXVjeAF1dP0I7JNGhhNQAvrW4AL66eoB2TadDCagBeWt0AXlw9QTsm06CF1QC8tLoBvLje9QSJiIiI5J35AfQkE2zH1xDCAAAAAElFTkSuQmCC
-        - data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAACnklEQVR4nO2bz2pTQRSHB9zoI6SNvogkFdypxT8o1IUorgRvwJVQqYguBPERBJd36cZlI76BINomwaULoVMEtdc/BXOkSFFik5sxuTlzJt8Hv93c5M58PWcmaa5zAAAAAAAAgRRtJzPN+ozfryTqfzAIUAYByiBAGQQog4BIBWQ1SSqFtVPQtBfgVv1rUAavv3GsH5SkBLQW+rL7zgUlG1gAv+qCMni9e94JCgJqCKACarQg2V+ED7cPB2Wwgg496wYlqRa0l5uLImeefJJGz4/MxdXi4I24LnL6afn1Fx7sVHK9eQHnH+6UTr4xQsKlR1tycuP9WFm55/+5fvnxZzne8WPl3P0vaQlo1X9OdApqLfQnOwUtzvkpKDuKgMpAgDIIUAYByiBAGQQogwBlEKAMApQZ9kl0UMzHl0ekeOHGTzuuDJunGQHW4xHgEEAFuPha0FibcAIpTH8bmkAKBAgCqABntwXlp6abbMavb74FIaAiEKAMAowLyEpON5PuAdN6/WT3gAwBCMipAKEFabWgnM8Bui0oRwAC8nneA3IqAAE5FSB8Gfe/8E95ZRCgDAKUQYCRY2joM1kusvHmPwfEtqBu3gTs5erZH9J8u/3nkdSul8vXvw39Ii6m8eYFXFveleabvya7n00vV1a+Rz/evIATrw6YbO93ll5vRz/evICljRFPx2/66McjoIcAKqBtuAWtbRVy1w9PFvl48y0otgVdQwACqAA/Ry1o1LGv2fHRj09aQKProx+PgB4CqIA2LUhoQVXsAT0f/Xhze0BlWZ/x+5VEe/0RoA0VoAwClPF3nIREu2cXJQmdT7S/C7L6eyEfOB/t9UeANlSAMubOzanNx9wNpzYfczec2nzM3fCczQcAAAAAAFx0/ALhIh3tEIMawQAAAABJRU5ErkJggg==
+        - temaki:vending_bread
+        - temaki:can
+      icon-halo-color: white
+      icon-halo-width: 2.5
+      icon-color: '#2ecc71'
   extends: https://styles.trailsta.sh/protomaps-light.json
 popupTemplate: >
   <h2>{% if tags.fridge == "yes" %}Community Fridge{% else %}Free Pantry{% endif %}</h2>
@@ -64,7 +54,9 @@ popupTemplate: >
   
 ---
 [out:json][timeout:25];
-area[wikidata=Q43421][type=boundary] -> .richmond;
-nwr[amenity=food_sharing](area.richmond);
+(
+  nwr["amenity"="food_sharing"]({{bbox}});
+
+);
 out center;
 
