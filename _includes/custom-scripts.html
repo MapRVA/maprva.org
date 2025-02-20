@@ -25,7 +25,7 @@
     let evs = await resp.json();
     evs = evs.filter(({ name }) => name.includes("MapRVA"));
     if (futureOnly) {
-      evs = evs.filter((e) => new Date(e.date.end) > new Date());
+      evs = evs.filter((e) => !e.date.end || new Date(e.date.end) > new Date());
     }
 
     const header = document.querySelector(selector);
