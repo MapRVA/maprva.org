@@ -1,7 +1,7 @@
 ---
 layout: project
 title: Ultra
-sign: /img/projects/ultra/sign.svg
+sign: https://ultra.trailsta.sh/og:image.png
 image: /img/projects/ultra/screenshot.png
 blurb: Ultra is a tool for making maps with MapLibre and datasources such as Overpass, QLever, GeoJSON files, etc. It powers a number of our maps here on maprva.org
 buttons:
