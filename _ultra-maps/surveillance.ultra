@@ -91,13 +91,11 @@ style:
 area[wikidata=Q43421][type=boundary] -> .richmond;
 area[wikidata=Q341639][type=boundary] -> .henrico;
 area[wikidata=Q340608][type=boundary] -> .chesterfield;
-area[wikidata=Q673772][type=boundary] -> .bonair;
 // fetch surveillance devices
 (
   nwr[man_made=surveillance](area.richmond);
   nwr[man_made=surveillance](area.henrico);
   nwr[man_made=surveillance](area.chesterfield);
-  nwr[man_made=surveillance](area.bonair);
 );
 out center;
 // fetch admin bounds
@@ -105,6 +103,5 @@ out center;
   nwr[wikidata=Q43421][type=boundary];
   nwr[wikidata=Q341639][type=boundary];
   nwr[wikidata=Q340608][type=boundary];
-  nwr[wikidata=Q673772][type=boundary];
 );
 out geom;
