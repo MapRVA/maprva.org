@@ -1,0 +1,41 @@
+---
+style:
+  extends: https://styles.trailsta.sh/protomaps-light.json
+  sources:
+    mask:
+      type: geojson
+      data: https://maprva.org/map-data/greater-rva-mask.geojson
+  layers:
+    - type: fill
+      source: mask
+      fill-opacity: 0.3
+    - type: line
+      source: mask
+      line-width: 3
+    - type: circle
+      paint:
+        circle-color: '#6dad6f'
+        circle-stroke-color: white
+        circle-stroke-width: 2
+        circle-radius: 3
+    - type: symbol
+      paint:
+        icon-color: '#6dad6f'
+        icon-halo-color: white
+        icon-halo-width: 2
+        text-halo-color: white
+        text-halo-width: 2
+      layout:
+        icon-padding: 0
+        text-padding: 0
+        icon-image: maki:garden-centre
+        text-field: '{name}'
+        text-font: [Noto Sans Regular]
+        text-variable-anchor: [left, right, top, bottom]
+        text-optional: true
+        text-justify: auto
+        text-radial-offset: 1
+---
+area[wikidata=Q43421][type=boundary];
+nwr[leisure=garden]["garden:type"=community][access!=private](area);
+out center;
