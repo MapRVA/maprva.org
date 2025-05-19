@@ -1,0 +1,31 @@
+---
+type: sparql
+server: https://qlever.cs.uni-freiburg.de/api/osm-planet
+---
+PREFIX osm2rdfkey: <https://osm2rdf.cs.uni-freiburg.de/rdf/key#>
+PREFIX osmkey: <https://www.openstreetmap.org/wiki/Key:>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+SELECT DISTINCT ?osm_id ?wikidata_id ?shape ?osm_name ?wikidata_name WHERE {
+  ?osm_id osm2rdfkey:name:etymology:wikidata ?wikidata_id .
+  ?osm_id geo:hasGeometry/geo:asWKT ?shape .
+  ?osm_id osmkey:name ?osm_name .
+  SERVICE <https://qlever.cs.uni-freiburg.de/api/wikidata> {
+	{
+	  {
+	    ?wikidata_id
+	    wdt:P945 #allegiance
+	    wd:Q81931 #Confederate States of America
+	  }
+	  UNION
+	  {
+	    ?wikidata_id
+	    wdt:P241 # military branch
+	    wd:Q1125021 # Confederate States Army
+	  }
+	}
+	?wikidata_id @en@rdfs:label ?wikidata_name
+  }
+}
