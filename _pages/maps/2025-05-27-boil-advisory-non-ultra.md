@@ -25,4 +25,12 @@ blurb: An interactive version of the city's boil advisory map to determine if yo
     },
     hash: true,
   });
+  map.addControl(
+    new maplibregl.GeolocateControl({
+        positionOptions: {
+            enableHighAccuracy: true
+        },
+        trackUserLocation: true
+    })
+  );
 </script>
