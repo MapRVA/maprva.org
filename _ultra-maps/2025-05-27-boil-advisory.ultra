@@ -1,0 +1,13 @@
+---
+type: raster
+options:
+  minZoom: 12
+  bounds: [-77.5049099386314,37.526014883959945,-77.4065189650437,37.604288093647014]
+controls:
+  - type: GeolocateControl
+    options:
+      positionOptions:
+        enableHighAccuracy: true
+      trackUserLocation: true
+---
+https://files.trailstash.net/boil-tiles/{z}/{x}/{y}.png
