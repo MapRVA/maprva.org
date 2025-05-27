@@ -20,7 +20,7 @@ blurb: An interactive version of the city's boil advisory map to determine if yo
       "sources":{
         "raster": {
           "type":"raster",
-          "tiles": ["https://files.trailstash.net/boil-tiles/{z}/{x}/{y}.png"],
+          "tiles": ["https://maprva.org/img/boil-tiles/{z}/{x}/{y}.png"],
           "tileSize":256
         }
       }
