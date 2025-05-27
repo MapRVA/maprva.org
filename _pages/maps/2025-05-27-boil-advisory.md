@@ -6,6 +6,8 @@ blurb: An interactive version of the city's boil advisory map to determine if yo
 
 **⚠️this map is out of date. The city has added more areas to the boil advisory and released their own interactive map:** https://cor.maps.arcgis.com/apps/instant/basic/index.html?appid=9b75319efe1f4a01925af1d5ee1a7a3d
 
+This map was created out of frustration when the city had only released a static map in their press release.
+
 <link href="https://cdn.skypack.dev/maplibre-gl@5.1.0/dist/maplibre-gl.css" rel="stylesheet"/>
 
 <div id="boil-map" style="height:600px;width:100%;"></div>
