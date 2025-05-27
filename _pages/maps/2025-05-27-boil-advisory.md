@@ -6,12 +6,12 @@ blurb: An interactive version of the city's boil advisory map to determine if yo
 
 <link href="https://cdn.skypack.dev/maplibre-gl@5.1.0/dist/maplibre-gl.css" rel="stylesheet"/>
 
-<div id="map" style="height:600px;width:100%;"></div>
+<div id="boil-map" style="height:600px;width:100%;"></div>
 
 <script type="module">
   import maplibregl from "https://cdn.skypack.dev/maplibre-gl@5.1.0";
   var map = new maplibregl.Map({
-    container: "map",
+    container: "boil-map",
     minZoom: 12,
     bounds: [-77.5049099386314,37.526014883959945,-77.4065189650437,37.604288093647014],
     style: {
