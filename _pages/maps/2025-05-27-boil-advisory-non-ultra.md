@@ -6,7 +6,7 @@ blurb: An interactive version of the city's boil advisory map to determine if yo
 
 <link href="https://cdn.skypack.dev/maplibre-gl@5.1.0/dist/maplibre-gl.css" rel="stylesheet"/>
 
-<div id="map" height="600" width="100%"></div>
+<div id="map" style="height:600px;width:100%;"></div>
 
 <script type="module">
   import maplibregl from "https://cdn.skypack.dev/maplibre-gl@5.1.0";
