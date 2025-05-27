@@ -12,7 +12,17 @@ blurb: An interactive version of the city's boil advisory map to determine if yo
   import maplibregl from "https://cdn.skypack.dev/maplibre-gl@5.1.0";
   var map = new maplibregl.Map({
     container: "map",
-    style: "./2025-05-27-boil-advisory-style.json",
+    style: {
+      "version":8,
+      "layers":[{"id":"raster","type":"raster","source":"raster"}],
+      "sources":{
+        "raster": {
+          "type":"raster",
+          "tiles": ["https://files.trailstash.net/boil-tiles/{z}/{x}/{y}.png"],
+          "tileSize":256
+        }
+      }
+    },
     hash: true,
   });
 </script>
