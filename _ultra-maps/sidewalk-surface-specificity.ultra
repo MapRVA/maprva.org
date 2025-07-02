@@ -19,10 +19,10 @@ style:
           - [ paved, unpaved ]
           - orange
           - green
-        - red 
+        - red
 ---
 [bbox:{{bbox}}];
 (
-  way[highway=footway];
+  way[highway~"footway|steps"];
 );
 out geom;
