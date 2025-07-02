@@ -1,0 +1,28 @@
+---
+style:
+  version: 8
+  sources:
+    imagery:
+      type: raster
+      tiles:
+        - https://tiles.stadiamaps.com/data/imagery/{z}/{x}/{y}.jpg
+  layers:
+    - type: raster
+      source: imagery
+    - type: line
+      line-width: 4
+      line-color: &color
+        - case
+        - [has, surface]
+        - - match
+          - [ get, surface ]
+          - [ paved, unpaved ]
+          - orange
+          - green
+        - red 
+---
+[bbox:{{bbox}}];
+(
+  way[highway=footway];
+);
+out geom;
