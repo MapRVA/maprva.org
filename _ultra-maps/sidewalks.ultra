@@ -1,0 +1,60 @@
+---
+style:
+  version: 8
+  sources:
+    imagery:
+      type: raster
+      tiles:
+        - https://tiles.stadiamaps.com/data/imagery/{z}/{x}/{y}.jpg
+  layers:
+    - type: raster
+      source: imagery
+    - type: line
+      line-width: 8
+    - type: line
+      filter:
+        - match
+        - [ get, surface ]
+        - [ unpaved, gravel, dirt ]
+        - true
+        - false
+      line-dasharray: [ 2, 2 ]
+      line-width: 4
+      line-color: &color
+        - match
+        - [get, footway]
+        - sidewalk
+        - green
+        - crossing
+        - orange
+        - yellow
+    - type: line
+      filter:
+        - match
+        - [ get, surface ]
+        - [ unpaved, gravel, dirt ]
+        - false
+        - true
+      line-width: 4
+      line-color: *color
+    - type: symbol
+      filter: [==, [geometry-type], Point]
+      icon-halo-color: white
+      icon-halo-width: 2
+      icon-overlap: always
+      icon-image:
+        - case
+        - [==, [get, barrier], kerb]
+        - - concat
+          - 'temaki:kerb-'
+          - - coalesce
+            - [get, kerb]
+            - unspecified
+        - maki:barrier            
+---
+[bbox:{{bbox}}];
+(
+  node[barrier];
+  way[highway=footway];
+);
+out geom;
