@@ -1,60 +1,80 @@
 ---
 style:
-  version: 8
-  sources:
-    imagery:
-      type: raster
-      tiles:
-        - https://tiles.stadiamaps.com/data/imagery/{z}/{x}/{y}.jpg
+  extends: https://tiles.stadiamaps.com/styles/alidade_satellite.json
   layers:
-    - type: raster
-      source: imagery
     - type: line
       line-width: 8
-    - type: line
+    - &line
+      type: line
       filter:
-        - match
-        - [ get, surface ]
-        - [ unpaved, gravel, dirt ]
-        - true
-        - false
-      line-dasharray: [ 2, 2 ]
+        - all
+        - ["!=", [get, informal], yes]
+        - ["!=", [get, footway], link]
+        - - match
+          - [ get, surface ]
+          - [ unpaved, gravel, dirt ]
+          - false
+          - true
       line-width: 4
       line-color: &color
         - match
-        - [get, footway]
+        - [ get, footway ]
         - sidewalk
         - green
         - crossing
         - orange
         - yellow
-    - type: line
+    - <<: *line
       filter:
-        - match
-        - [ get, surface ]
-        - [ unpaved, gravel, dirt ]
-        - false
-        - true
-      line-width: 4
-      line-color: *color
+        - all
+        - ["!=", [get, informal], yes]
+        - ["!=", [get, footway], link]
+        - - match
+          - [ get, surface ]
+          - [ unpaved, gravel, dirt ]
+          - true
+          - false
+      line-dasharray: [ 2, 1 ]
+    - <<: *line
+      filter:
+        - all
+        - [==, [get, informal], yes]
+        - ["!=", [get, footway], link]
+      line-dasharray: [ 2, 1, .5, 1 ]
+    - <<: *line
+      filter:
+        - all
+        - ["!=", [get, informal], yes]
+        - [==, [get, footway], link]
+      line-dasharray: [ .5, 1 ]
     - type: symbol
-      filter: [==, [geometry-type], Point]
+      filter: [ ==, [ geometry-type ], Point ]
       icon-halo-color: white
       icon-halo-width: 2
       icon-overlap: always
+      icon-size:
+        - case
+        - [ has, noexit ]
+        - 0.5
+        - 0.75
       icon-image:
         - case
-        - [==, [get, barrier], kerb]
+        - [ has, noexit ]
+        - maki:roadblock
+        - [ ==, [ get, barrier ], kerb ]
         - - concat
           - 'temaki:kerb-'
           - - coalesce
-            - [get, kerb]
+            - [ get, kerb ]
             - unspecified
-        - maki:barrier            
+        - maki:barrier
 ---
 [bbox:{{bbox}}];
 (
   node[barrier];
+  node[noexit];
   way[highway=footway];
+  way[highway=path];
+  way[highway=cycleway];
 );
 out geom;
