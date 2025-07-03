@@ -71,10 +71,13 @@ style:
 ---
 [bbox:{{bbox}}];
 (
-  node[barrier];
-  node[noexit];
-  way[highway=footway];
-  way[highway=path];
-  way[highway=cycleway];
+  (
+    way[highway=footway];
+    way[highway=path];
+    way[highway=cycleway];
+  );
+  ._;
+  node(w)[barrier];
+  node(w)[noexit];
 );
 out geom;
