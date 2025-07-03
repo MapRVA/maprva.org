@@ -10,9 +10,6 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["trunk"]
-    # Updates to Ultra maps do not directly impact site, so do not need to trigger this workflow
-    paths-ignore:
-      - '_ultra-maps/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
