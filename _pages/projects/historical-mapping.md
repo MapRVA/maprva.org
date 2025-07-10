@@ -7,7 +7,7 @@ buttons:
   - link: https://www.openhistoricalmap.org/#map=13/37.5273/-77.4366
     label: View RVA on OHM
   - link: https://docs.google.com/presentation/d/1OB4P4SXu0VkWjcQppFmxI5p8L1ApLOj0Awh6E0sQ9pU/edit
-    label: Slide Deck
+    label: Slide Deck (2023)
   - link: https://tasks.openhistoricalmap.org/projects/34/tasks
     label: Contribute!
 ---
