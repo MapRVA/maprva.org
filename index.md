@@ -31,12 +31,14 @@ MapRVA hosts both in-person and virtual meetups!
 
 MapRVA is cohosting a summer talk series with PlanRVA, convening regional leaders in Richmond to discuss open mapping opportunities for our city. The series will take place at the [PlanRVA office above Benchtop Brewing](https://www.google.com/maps/dir/?api=1&destination=424%20Hull%20Street,%20Suite%20300,%20Richmond,%20VA,%2023224) over three events. [Find more information and reserve your spot here!](https://openstreetmap.app.neoncrm.com/nx/portal/neonevents/events?path=%2Fportal%2Fevents%2F20452)
 
-- [July 10, 2025 @ 6:30pm](https://openstreetmap.app.neoncrm.com/nx/portal/neonevents/events?path=%2Fportal%2Fevents%2F20452%2Fstorefront%2F119473): **Open Mapping in Richmond: A Community Meeting**
 - [July 24, 2025 @ 6:30pm](https://openstreetmap.app.neoncrm.com/nx/portal/neonevents/events?path=%2Fportal%2Fevents%2F20452%2Fstorefront%2F119474): **The Future of Pedestrian and Bike Infrastructure Mapping in RVA**
 - [August 7, 2025 @ 6:30pm](https://openstreetmap.app.neoncrm.com/nx/portal/neonevents/events?path=%2Fportal%2Fevents%2F20452%2Fstorefront%2F119475): **Transportation Mapping Workshop**
 
+- [July 30, 2025 @ 8pm](https://openstreetmap.app.neoncrm.com/np/clients/openstreetmap/event.jsp?event=178&): **Mappy Hour: Map Pedestrian Infrastructure in RVA!**
+
 ### Recent Events
 
+- [July 10, 2025 @ 6:30pm](https://openstreetmap.app.neoncrm.com/nx/portal/neonevents/events?path=%2Fportal%2Fevents%2F20452%2Fstorefront%2F119473): **Open Mapping in Richmond: A Community Meeting**
 ## MapRVA In the News
 
 - [Status update: Greater Richmond's water outages](https://www.vpm.org/news/2025-01-07/winter-storm-blair-richmond-henrico-hanover-chesterfield-mutual-aid-help) _VPM News, January 7, 2025_
