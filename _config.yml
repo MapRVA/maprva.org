@@ -4,7 +4,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   We are a group of mapping enthusiasts in Richmond, Virginia who work
   to create and share geospatial data of our city using OpenStreetMap.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://maprva.org" # the base hostname & protocol for your site, e.g. http://example.com
+url: "http://localhost:8000" # PLEASE DO NOT EDIT, this is set to https://maprva.org using _config-publish.yml
 calendar: https://calendar.google.com/calendar/embed?src=mappingrva%40gmail.com&ctz=America%2FNew_York
 github: MapRVA
 mastodon: https://en.osm.town/@maprva
