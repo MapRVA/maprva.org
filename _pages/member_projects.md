@@ -17,7 +17,7 @@ member_projects:
     links:
       - /projects/skyway/
 ---
-Here are some of the projects our members are working on!
+These projects are each maintained by a member of MapRVA.
 
 {::nomarkdown}
 {% for member in page.member_projects %}

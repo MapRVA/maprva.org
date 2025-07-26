@@ -17,7 +17,9 @@ linkedin: false
 slack_page: /slack
 links:
   - link: /about/
+  - link: /get-involved/
   - link: /projects/
+  - link: /resources/
   - link: /member-projects/
   # - link: /blog/
 

@@ -1,5 +1,5 @@
 ---
-title: Get Involved!
+title: Our Work
 permalink: /projects/
 dropdown_links:
   - link: /projects/water-crisis/
@@ -16,8 +16,6 @@ links:
   - link: /projects/sidewalks/
   - link: /projects/historical-mapping/
 ---
-Get involved in making better maps of RVA!
-
 {::nomarkdown}
 {% assign subitems="" | split: ',' -%}
 {% for link in page.links %}
