@@ -7,6 +7,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://maprva.org" # the base hostname & protocol for your site, e.g. http://example.com
 github: MapRVA
 mastodon: https://en.osm.town/@maprva
+bluesky: false
 youtube_page: false
 instagram: false
 twitter: false
