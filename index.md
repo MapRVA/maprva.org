@@ -37,6 +37,10 @@ MapRVA hosts both in-person and virtual meetups! We're planning our next meetup 
 - [July 10, 2025 @ 6:30pm](https://openstreetmap.app.neoncrm.com/nx/portal/neonevents/events?path=%2Fportal%2Fevents%2F20452%2Fstorefront%2F119473): **Open Mapping in Richmond: A Community Meeting**
 - [July 24, 2025 @ 6:30pm](https://openstreetmap.app.neoncrm.com/nx/portal/neonevents/events?path=%2Fportal%2Fevents%2F20452%2Fstorefront%2F119474): **The Future of Pedestrian and Bike Infrastructure Mapping in RVA**
 
+### Event Calendar
+
+<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&showPrint=0&showCalendars=0&title=MapRVA%20Event%20Calendar&src=bWFwcGluZ3J2YUBnbWFpbC5jb20&color=%23f4511e" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
 ## MapRVA In the News
 
 - [Stamen at State of the Map US 2025](https://stamen.com/stamen-at-state-of-the-map-us-2025/) _Stamen Design, July 16, 2025_
@@ -45,4 +49,3 @@ MapRVA hosts both in-person and virtual meetups! We're planning our next meetup 
 - [A School Budget Draft, a Water Outage Map, and Local Artwork](https://buttondown.com/CheersRVA/archive/a-school-budget-draft-a-water-outage-map-and/) _Cheers RVA!, January 23, 2025_
 - [From pooping outside to brushing with La Croix: how Richmonders survived the water crisis](https://www.axios.com/local/richmond/2025/01/13/richmond-water-crisis-funny-survived) _Axios Richmond, January 13, 2025_
 - [Status update: Greater Richmond's water outages](https://www.vpm.org/news/2025-01-07/winter-storm-blair-richmond-henrico-hanover-chesterfield-mutual-aid-help) _VPM News, January 7, 2025_
-
