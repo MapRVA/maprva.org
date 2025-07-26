@@ -17,6 +17,11 @@ A running list of mapping resources for the Richmond region.
 - [Chesterfield County](https://opengeospace.chesterfield.gov/)
 - [Henrico County](https://data-henrico.opendata.arcgis.com/)
 
+## Universities
+
+- [University of Richmond](https://sal-urichmond.hub.arcgis.com/)
+  - [Digital Scholarship Lab](https://dsl.richmond.edu/)
+
 ## Imagery
 
 - [Henrico's Historic Aerial Layers](https://portal.henrico.gov/mapping/rest/services/Imagery/AerialPhotosAll/MapServer)
