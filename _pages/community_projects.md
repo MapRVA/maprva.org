@@ -2,14 +2,14 @@
 title: Our Work
 permalink: /projects/
 dropdown_links:
-  - link: /projects/water-crisis/
-    label: Water Crisis
   - link: /projects/surveillance/
     label: Mapping Surveillance
   - link: /projects/sidewalks/
     label: Mapping Sidewalks
   - link: /projects/historical-mapping/
     label: Historical Mapping
+  - link: /projects/water-crisis/
+    label: Water Crisis
 links:
   - link: /projects/surveillance/
   - link: /projects/water-crisis/
