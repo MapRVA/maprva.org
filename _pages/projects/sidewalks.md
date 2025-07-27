@@ -11,11 +11,18 @@ buttons:
 The goal of this project is to develop a complete, up-to-date geospatial dataset of pedestrian infrastructure in Richmond on OpenStreetMap. This would help us work toward:
 - Providing better pedestrian navigation using OpenStreetMap-powered apps like [AccessMap](https://www.accessmap.app), to help residents and tourists find their way around our city
 - Building a deeper understanding of our infrastructure, allowing us to better advocate for its improvement
-- Creating valuable data suitable for nuanced network analysis, and comparison with other well-mapped cities on OpenStreetMap 
+- Creating valuable data suitable for nuanced network analysis, and comparison with other well-mapped cities on OpenStreetMap
 
 ## Progress
 
 Our progress can be visualized on [our tasks page](https://tasks.openstreetmap.us/projects/438/tasks), where you can click on "Contributions" to see estimated percent completion and a visual of which parts of the city we've mapped.
+
+<iframe
+  width="10000"
+  height="500"
+  loading="lazy"
+  src="https://overpass-ultra.us/#map&m=10.5/37.527/-77.491&query=url:{{ "/ultra-maps/sidewalks-tm-progress.ultra" | absolute_url }}">
+</iframe>
 
 ## Contributing
 
