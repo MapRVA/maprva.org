@@ -4,6 +4,9 @@ permalink: /get-involved/
 involvement_tiles:
   - image: /img/get-involved/pedestrian-infrastructure.svg
     link: /projects/sidewalks/
+  - image: /img/get-involved/bicycle-infrastructure.svg
+    link: /get-involved/bicycle-infrastructure/
+  - image: /img/get-involved/road-network.svg
   - image: /img/get-involved/surveillance-devices.svg
     link: /projects/surveillance/
 ---
