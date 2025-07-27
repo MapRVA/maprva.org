@@ -1,5 +1,7 @@
 ---
 title: About Us
+image: /img/pages/about/planrva-july-2025.jpg
+caption: "[Jacob](/people/jacob-hall.html) presents at a joint event hosted by [PlanRVA](https://planrva.org/) in July 2025."
 dropdown_links:
   - link: /people/
   - link: /contact/
