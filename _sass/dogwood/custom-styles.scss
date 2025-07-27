@@ -1,0 +1,12 @@
+.tile-gallery {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+}
+.tile {
+    width: 18em;
+    max-width: 95vw;
+    border-radius: 10%;
+    aspect-ratio: 1;
+}

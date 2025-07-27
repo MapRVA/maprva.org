@@ -1,19 +1,23 @@
 ---
 title: Get Involved!
 permalink: /get-involved/
-opportunities:
- -  link: /projects/sidewalks/
-    label: Mapping Sidewalks
+involvement_tiles:
+  - image: /img/get-involved/pedestrian-infrastructure.svg
+    link: /projects/sidewalks/
+  - image: /img/get-involved/surveillance-devices.svg
+    link: /projects/surveillance/
 ---
-MapRVA is powered by volunteers! While all of our projects are open to contributions, these are well-documented and ready for a beginner to get involved.
+MapRVA is powered by volunteers! We are building out guides for on website to help newcomers contribute to our mapping projects.
+
+## I want to map...
 
 {::nomarkdown}
-{% assign subitems="" | split: ',' -%}
-{% for link in page.opportunities %}
-  {% assign item=site.pages | find: "url", link.link %}
-  {%- if item -%}
-    {%- assign subitems=subitems | push: item -%}
-  {%- endif %}
+<div class="tile-gallery">
+{% for tile in page.involvement_tiles %}
+  {% include tile.html image=tile.image link=tile.link %}
 {% endfor %}
-{% include item_list.html items=subitems %}
+</div>
 {:/nomarkdown}
+
+
+Dreaming of making an entirely new map of RVA? [Get in touch](/contact) and let's build it together!
