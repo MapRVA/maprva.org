@@ -8,12 +8,7 @@ blurb: Mapping the surveillance state we all live in. Cameras, ALPRs, & gunshot 
 The map below shows surveillance devices we've mapped in Richmond.
 The directionality of security cameras and ALPRs is denoted by a triangular shadow.
 
-<iframe
-  title="OpenTrailStash"
-  width="10000"
-  height="500"
-  src="https://overpass-ultra.us/#map&query=url:{{ "/ultra-maps/surveillance.ultra" | absolute_url }}">
-</iframe>
+{% include ultra-map.html name="surveillance" %}
 
 ## Contributing
 

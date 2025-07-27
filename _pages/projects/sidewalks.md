@@ -15,14 +15,9 @@ The goal of this project is to develop a complete, up-to-date geospatial dataset
 
 ## Progress
 
-In the map below, blue grid cells are mapped and green cells have been mapped + validated.
+In the map below, blue grid cells are mapped and green cells have been mapped and validated.
 
-<iframe
-  width="10000"
-  height="500"
-  loading="lazy"
-  src="https://overpass-ultra.us/#map&m=10.5/37.527/-77.491&query=url:{{ "/ultra-maps/sidewalks-tm-progress.ultra" | absolute_url }}">
-</iframe>
+{% include ultra-map.html name="sidewalks-tm-progress" m="10.5/37.527/-77.491" %}
 
 ## Contributing
 
