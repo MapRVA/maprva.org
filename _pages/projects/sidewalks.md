@@ -15,7 +15,7 @@ The goal of this project is to develop a complete, up-to-date geospatial dataset
 
 ## Progress
 
-Our progress can be visualized on [our tasks page](https://tasks.openstreetmap.us/projects/438/tasks), where you can click on "Contributions" to see estimated percent completion and a visual of which parts of the city we've mapped.
+In the map below, blue grid cells are mapped and green cells have been mapped + validated.
 
 <iframe
   width="10000"
@@ -26,7 +26,7 @@ Our progress can be visualized on [our tasks page](https://tasks.openstreetmap.u
 
 ## Contributing
 
-Any and all are welcome to contribute. If you are new to editing OpenStreetMap, please [get in touch with us](/contact/) and we'll be happy to get you going. If you are a seasoned mapper, please visit our [the tasks page](https://tasks.openstreetmap.us/projects/438/tasks) for detailed mapping instructions. Thank you for your help!
+Any and all are welcome to contribute. If you are new to OpenStreetMap, you can sign up for an account [here](https://www.openstreetmap.org/user/new). Please [get in touch with us](/contact/) and we'll be happy to get you going. If you are a seasoned mapper, please visit our [the tasks page](https://tasks.openstreetmap.us/projects/438/tasks) (log in with your OSM account) for detailed mapping instructions. Thank you for your help!
 
 {::nomarkdown}
 {% include page_people_list.html %}
