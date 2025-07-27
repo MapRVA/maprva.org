@@ -15,7 +15,7 @@ buttons:
 [OpenHistoricalMap](https://www.openhistoricalmap.org) is a sister project to OpenStreetMap, focused on mapping historical data around the world.
 The website [includes a time slider](https://www.openhistoricalmap.org/#map=13/37.5273/-77.4366), allowing you to see what your area looked like at any point in history!
 
-We are excited to promote OpenHistoricalMap usage and contributions in Richmond.
+Check out our [resources page](/resources) for data sources relevant to mapping Richmond's history, and [get in touch](/contact) to learn more about how to edit OpenHistoricalMap in our city.
 
 {::nomarkdown}
 {% include page_people_list.html %}

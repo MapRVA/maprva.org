@@ -4,12 +4,16 @@ title: Contact Us
 
 ## OpenStreetMap US Slack
 
-We are most active on the OpenStreetMap US Slack, please see [/slack](/slack) for info on getting started.
+We plan events, discuss projects, and share geographic oddities in our Slack channel. Please see [/slack](/slack) for info on how to join.
 
 ## Mastodon
 
-We also announce upcoming meetings and project updates on [our Mastodon](https://en.osm.town/@maprva).
+We announce upcoming events and project updates on [our Mastodon]({{ site.mastodon }}).
 
 ## GitHub
 
-All of our public coding project (including this website!) are available on our [GitHub organization page](https://github.com/MapRVA).
+All of our public coding projects (including this website!) are available on our [GitHub organization page](https://github.com/{{ site.github }}).
+
+## Calendar
+
+Subscribe to our events calendar [here]({{ site.calendar }}).

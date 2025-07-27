@@ -2,7 +2,7 @@
 title: About Us
 image: /img/pages/about/planrva-july-2025.jpg
 caption: "[Jacob](/people/jacob-hall.html) presents at a joint event hosted by [PlanRVA](https://planrva.org/) in July 2025."
-dropdown_links:
+links:
   - link: /people/
   - link: /contact/
     label: Contact
@@ -16,9 +16,11 @@ The venues for our meetings alternate between local breweries and libraries, for
 ## OpenStreetMap
 
 Our work is generally focused on improving [OpenStreetMap](https://openstreetmap.org) (OSM), a free database of geospatial information editable by anyone in the world.
-By contributing data to OSM, we are enabling anyone to create high-quality routing or cartographic products of our city.
+By contributing data to OSM, we enable anyone to create high-quality routing or cartographic products of our city.
 
 _Check out our page on the OSM Wiki [here](https://wiki.openstreetmap.org/wiki/Richmond,_Virginia)!_
+
+MapRVA proudly affiliates with [OpenStreetMap US](https://openstreetmap.us/), a nonprofit that helps support and grow OpenStreetMap in the United States.
 
 ### Editing Guidelines
 
