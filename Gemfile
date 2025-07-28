@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 gem "rake"
 gem "logger"
+gem "json"
 
 gem "jekyll", "~> 4.4.1"
 
