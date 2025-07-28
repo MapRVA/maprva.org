@@ -12,9 +12,9 @@ dropdown_links:
     label: Water Crisis
 links:
   - link: /projects/surveillance/
-  - link: /projects/water-crisis/
   - link: /projects/sidewalks/
   - link: /projects/historical-mapping/
+  - link: /projects/water-crisis/
 member_projects:
   - name: Daniel Schep
     links:
