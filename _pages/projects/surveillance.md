@@ -15,4 +15,3 @@ The directionality of security cameras and ALPRs is denoted by a triangular shad
 Please see our [tagging guidelines](https://wiki.openstreetmap.org/wiki/Richmond,_Virginia/Tags#Surveillance) for mapping surveillance devices in OpenStreetMap.
 
 {% include page_people_list.html %}
-{:/nomarkdown}
