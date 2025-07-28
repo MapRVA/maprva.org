@@ -10,11 +10,11 @@ dropdown_links:
     label: Historical Mapping
   - link: /projects/water-crisis/
     label: Water Crisis
-links:
-  - link: /projects/surveillance/
-  - link: /projects/sidewalks/
-  - link: /projects/historical-mapping/
-  - link: /projects/water-crisis/
+community_projects:
+  - /projects/surveillance/
+  - /projects/sidewalks/
+  - /projects/historical-mapping/
+  - /projects/water-crisis/
 member_projects:
   - name: Daniel Schep
     links:
@@ -26,8 +26,8 @@ member_projects:
 ---
 {::nomarkdown}
 {% assign subitems="" | split: ',' -%}
-{% for link in page.links %}
-  {% assign item=site.pages | find: "url", link.link %}
+{% for link in page.community_projects %}
+  {% assign item=site.pages | find: "url", link %}
   {%- if item -%}
     {%- assign subitems=subitems | push: item -%}
   {%- endif %}
