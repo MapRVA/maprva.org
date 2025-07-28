@@ -1,4 +1,4 @@
-FROM docker.io/ruby:3.3.4-bookworm
+FROM docker.io/ruby:3.4.5-bookworm
 
 WORKDIR /mnt
 
