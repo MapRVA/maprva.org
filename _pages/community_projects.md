@@ -35,6 +35,8 @@ member_projects:
 {% include item_list.html items=subitems %}
 {:/nomarkdown}
 
+---
+
 ## Member Projects
 
 These projects are each maintained by a member of MapRVA.
