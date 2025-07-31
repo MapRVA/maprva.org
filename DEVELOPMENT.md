@@ -6,7 +6,7 @@ Using either Podman or Docker Compose, follow these instructions to serve maprva
 
 Running a development server locally using podman:
 ```
-podman build -t maprva.org . && podman run -d -v .:/mnt:Z -p 4000:4000 --replace --name maprva.org maprva.org
+podman build -t maprva.org . && podman run -d -v .:/mnt:Z -p 4000:4000 -p 35729:35729 --replace --name maprva.org maprva.org
 ```
 
 ## Docker Compose
