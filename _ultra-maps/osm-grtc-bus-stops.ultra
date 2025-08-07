@@ -8,7 +8,16 @@ style:
     grtc:
       type: geojson
       data: https://catbriar.org/data/grtc_stops.geojson
+    mask:
+      type: geojson
+      data: https://maprva.org/map-data/greater-rva-mask.geojson
   layers:
+    - type: fill
+      source: mask
+      fill-opacity: 0.3
+    - type: line
+      source: mask
+      line-width: 3
     - type: circle
       source: grtc
       circle-radius: 5
