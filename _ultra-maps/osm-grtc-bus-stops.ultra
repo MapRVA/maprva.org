@@ -1,4 +1,16 @@
 ---
+popupTemplate: >
+  <h2>
+    {%- if tags['stop_id'] %}
+    <a href="https://www.openstreetmap.org/edit#map=20/{{ tags['stop_lat'] }}/{{ tags['stop_lon'] }}" target="_blank">Open editor here ✏️</a>
+    {%- else %}
+    Node <a href="https://openstreetmap.org/edit?{{ type }}={{ id }}" target="_blank">{{ id }} ✏️</a>
+    {%- endif %}
+  </h2>
+  {%- for tag in tags %}
+    <code>{{ tag[0] }} = {{ tag[1] }}</code>
+    <br>
+  {%- endfor %}
 querySources: [ultra, grtc]
 options:
   bounds: [-77.6093101501465,37.43670283999782,-77.38194465637208,37.60423624970319]
