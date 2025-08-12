@@ -25,12 +25,13 @@ We are a group of mapping enthusiasts in Richmond, Virginia who work to create a
 
 ## Meetups
 
-MapRVA hosts both in-person and virtual meetups! We're planning our next meetup for late August -- stay tuned or follow along in the [#local-rva Slack channel](https://maprva.org/slack).
+MapRVA hosts both in-person and virtual meetups! Check out our events calendar below, and get in touch with us [via Slack](https://maprva.org/slack).
 
 ### Upcoming Events
 
 - August 21, 2025 @6pm: **Carytown Meetup + Survey Trip!** - Meet at New York Deli
 - September 4, 2025 @6pm: **Meetup at Main Library**
+- September 18, 2025 @6pm: **Virtual Map & Yap**
 
 ### Recent Events
 
