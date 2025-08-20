@@ -25,17 +25,20 @@ We are a group of mapping enthusiasts in Richmond, Virginia who work to create a
 
 ## Meetups
 
-MapRVA hosts both in-person and virtual meetups! We're planning our next meetup for late August -- stay tuned or follow along in the [#local-rva Slack channel](https://maprva.org/slack).
+MapRVA hosts both in-person and virtual meetups! Check out our events calendar below, and get in touch with us [via Slack](https://maprva.org/slack).
 
 ### Upcoming Events
 
-- [July 30, 2025 @ 8pm](https://openstreetmap.app.neoncrm.com/np/clients/openstreetmap/event.jsp?event=178&): **Mappy Hour: Map Pedestrian Infrastructure in RVA!**
-- August 7, 2025 @ 6:30pm: MapRVA is cohosting a summer talk series with PlanRVA, convening regional leaders in Richmond to discuss open mapping opportunities for our city. The final seminar of series, a *hands-on* **Transportation Mapping Workshop** will take place at the [PlanRVA office above Benchtop Brewing](https://www.google.com/maps/dir/?api=1&destination=424%20Hull%20Street,%20Suite%20300,%20Richmond,%20VA,%2023224). [Find more information and reserve your spot here!](https://openstreetmap.app.neoncrm.com/nx/portal/neonevents/events?path=%2Fportal%2Fevents%2F20452)
+- August 21, 2025 @6pm: **Carytown Meetup + Survey Trip!** - Meet at New York Deli
+- September 4, 2025 @6pm: **Meetup at Main Library**
+- September 18, 2025 @6pm: **Virtual Map & Yap**
 
 ### Recent Events
 
-- [July 10, 2025 @ 6:30pm](https://openstreetmap.app.neoncrm.com/nx/portal/neonevents/events?path=%2Fportal%2Fevents%2F20452%2Fstorefront%2F119473): **Open Mapping in Richmond: A Community Meeting**
-- [July 24, 2025 @ 6:30pm](https://openstreetmap.app.neoncrm.com/nx/portal/neonevents/events?path=%2Fportal%2Fevents%2F20452%2Fstorefront%2F119474): **The Future of Pedestrian and Bike Infrastructure Mapping in RVA**
+- August 7, 2025: **Transportation Mapping Workshop** _(Joint event with [PlanRVA](https://planrva.org))_
+- July 30, 2025: **Mappy Hour: Map Pedestrian Infrastructure in RVA!** _(Hosted by [OpenStreetMap US](https://openstreetmap.us))_
+- July 24, 2025: **The Future of Pedestrian and Bike Infrastructure Mapping in RVA** _(Joint event with [PlanRVA](https://planrva.org))_
+- July 10, 2025: **Open Mapping in Richmond: A Community Meeting** _(Joint event with [PlanRVA](https://planrva.org))_
 
 ### Event Calendar
 
@@ -43,6 +46,7 @@ MapRVA hosts both in-person and virtual meetups! We're planning our next meetup 
 
 ## MapRVA In the News
 
+- [🗺️ An easier-to-navigate Richmond speeding map](https://www.chlookout.com/p/yesterday-s-park-house-price-today-s-park-house-price-fccb) _The Church Hill Lookout, August 8, 2025_
 - [Stamen at State of the Map US 2025](https://stamen.com/stamen-at-state-of-the-map-us-2025/) _Stamen Design, July 16, 2025_
 - [Mapper Highlight: MapRVA](https://openstreetmap.us/news/2025/04/maprva-highlight/) _OpenStreetMap US Staff, Jacob Hall, and Daniel Schep, April 24, 2025_
 - [New RVA maps unlocked](https://www.chlookout.com/p/new-rva-maps-unlocked) _The Church Hill Lookout, February 7, 2025_

@@ -6,6 +6,7 @@ osm: dpschep
 website: https://schep.me
 github: dschep
 mastodon: https://mastodon.social/@dschep
+bluesky: trailsta.sh
 roles:
   - title: Lead Developer
     at: OpenTrailStash
