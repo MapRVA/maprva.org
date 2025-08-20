@@ -13,6 +13,13 @@ The goal of this project is to develop a complete, up-to-date geospatial dataset
 - Building a deeper understanding of our infrastructure, allowing us to better advocate for its improvement
 - Creating valuable data suitable for nuanced network analysis, and comparison with other well-mapped cities on OpenStreetMap
 
+## Mapping Tutorial
+
+Just getting started? This video series will walk you through making your first sidewalk edits.
+Supplement with an [intro to the iD editor](https://learnosm.org/en/beginner/id-editor/) from LearnOSM.
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/videoseries?si=vx8JgsEmCM-Wbhr3&amp;list=PLUhTX6xwIsqr8PBjgFRuNSk7z1MH505F_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## Progress
 
 In the map below, blue grid cells are mapped and green cells have been mapped and validated.
