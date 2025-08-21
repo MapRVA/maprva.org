@@ -19,9 +19,10 @@ A running list of mapping resources for the Richmond region.
 
 ## Universities
 
-- [University of Richmond](https://sal-urichmond.hub.arcgis.com/)
+- University of Richmond
   - [Boatwright Memorial Library geographic resources](https://libguides.richmond.edu/geography)
   - [Digital Scholarship Lab](https://dsl.richmond.edu/)
+  - [Spatial Analysis Lab](https://sal-urichmond.hub.arcgis.com/)
 
 ## Imagery
 
