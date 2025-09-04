@@ -1,13 +1,13 @@
-.tile-gallery {
+.card-gallery {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: left;
     gap: 2em;
 }
-.tile {
+.card {
     width: 18em;
-    max-width: 95vw;
+    max-width: 100%;
     border-radius: 10%;
     aspect-ratio: 1;
 }
