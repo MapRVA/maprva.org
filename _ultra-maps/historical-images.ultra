@@ -1,0 +1,17 @@
+---
+type: dsv
+style:
+  layers:
+    - type: circle
+      circle-radius: 5
+    - type: symbol
+      icon-overlap: always
+      filter: [!=, direction, '']
+      icon-size:
+        stops:
+          - [5, 0]
+          - [15, 1]
+      icon-rotate: [to-number, [get, direction]]
+      icon-image: https://maprva.org/img/surveillance-direction.png
+---
+https://docs.google.com/spreadsheets/d/1XcV32XZuyFVc6NnnV0P4erEB6gfSgPlLIiZwuC8G5TY/gviz/tq?tqx=out:csv&sheet=Sheet1
