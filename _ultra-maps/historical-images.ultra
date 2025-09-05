@@ -5,13 +5,17 @@ style:
     - type: circle
       circle-radius: 5
     - type: symbol
+      filter: ["!=", "direction", ""]
       icon-overlap: always
-      filter: [!=, direction, '']
       icon-size:
         stops:
           - [5, 0]
           - [15, 1]
       icon-rotate: [to-number, [get, direction]]
       icon-image: https://maprva.org/img/surveillance-direction.png
+popupTemplate: >
+    <a href="{{ properties.source }}" target="_blank">
+      <img style="width: 100%; max-width: 25em;" src="{{ properties.img_url }}">
+    </a>
 ---
 https://docs.google.com/spreadsheets/d/1XcV32XZuyFVc6NnnV0P4erEB6gfSgPlLIiZwuC8G5TY/gviz/tq?tqx=out:csv&sheet=Sheet1
