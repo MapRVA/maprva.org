@@ -14,8 +14,13 @@ style:
       icon-rotate: [to-number, [get, direction]]
       icon-image: https://maprva.org/img/surveillance-direction.png
 popupTemplate: >
-    <a href="{{ properties.source }}" target="_blank">
+    <a href="{{ properties.source_url }}" target="_blank">
       <img style="width: 100%; max-width: 25em;" src="{{ properties.img_url }}">
     </a>
+    <p>
+    Source: <a href="{{ properties.source_url }}" target="_blank">
+      {{ properties.source }}
+    </a>
+    </p>
 ---
-https://docs.google.com/spreadsheets/d/1XcV32XZuyFVc6NnnV0P4erEB6gfSgPlLIiZwuC8G5TY/gviz/tq?tqx=out:csv&sheet=Sheet1
+https://docs.google.com/spreadsheets/d/1XcV32XZuyFVc6NnnV0P4erEB6gfSgPlLIiZwuC8G5TY/gviz/tq?tqx=out:csv&sheet=Images
