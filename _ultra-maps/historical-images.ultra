@@ -1,5 +1,11 @@
 ---
 type: dsv
+controls:
+  - type: GeolocateControl
+    options:
+      positionOptions:
+        enableHighAccuracy: true
+      trackUserLocation: true
 style:
   layers:
     - type: circle
@@ -18,7 +24,8 @@ popupTemplate: >
       <img style="width: 100%; max-width: 25em;" src="{{ properties.img_url }}">
     </a>
     <p>
-    Year: {% if properties.year == "" %}Unknown{% else %}{{ properties.year }}{% endif %}<br>
+    Year: {% if properties.year is "" %}{{ properties.year }}{% else %}Unknown{% endif %}
+    <br>
     Source: <a href="{{ properties.source_url }}" target="_blank">
       {{ properties.source }}
     </a>
