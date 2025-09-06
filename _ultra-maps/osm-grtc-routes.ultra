@@ -1,0 +1,75 @@
+---
+querySources: [ultra, grtc]
+options:
+  bounds: [-77.6093101501465,37.43670283999782,-77.38194465637208,37.60423624970319]
+  hash: m
+style:
+  sources:
+    grtc:
+      type: geojson
+      data: https://catbriar.org/data/grtc.geojson
+    mask:
+      type: geojson
+      data: https://maprva.org/map-data/greater-rva-mask.geojson
+  layers:
+    - type: fill
+      source: mask
+      fill-opacity: 0.3
+    - type: line
+      source: mask
+      line-width: 3
+    - type: line
+      source: grtc
+      line-width: 3
+      line-color: [
+        match, [get, route_id],
+        "1", "#a53bae",
+        "5", "#65c14c",
+        "12", "#655fd2",
+        "14", "#adb739",
+        "18", "#c373e2",
+        "19", "#419233",
+        "20", "#db56ac",
+        "29", "#4cc37d",
+        "50", "#d63a78",
+        "56", "#5db78e",
+        "64", "#d13e4d",
+        "76", "#43c4c4",
+        "77", "#d94e2e",
+        "78", "#5da1d8",
+        "79", "#df8830",
+        "82", "#848be4",
+        "86", "#d2a73b",
+        "87", "#89509f",
+        "88", "#6f8e30",
+        "91", "#5567aa",
+        "95", "#8f7823",
+        "1A", "#d591ce",
+        "1B", "#3e7f45",
+        "1C", "#9e5083",
+        "2A", "#a1b76e",
+        "2B", "#9f425c",
+        "2C", "#2b7f63",
+        "3A", "#e58092",
+        "3B", "#54631e",
+        "3C", "#e78668",
+        "4A", "#7f7f43",
+        "4B", "#b45e5c",
+        "7A", "#d3a16b",
+        "7B", "#a94d27",
+        "BRT", "#956230",
+        "gray"
+      ]
+    - type: circle
+      circle-radius: 5
+      circle-color: blue
+---
+area[wikidata=Q43421][type=boundary] -> .richmond;
+area[wikidata=Q341639][type=boundary] -> .henrico;
+area[wikidata=Q340608][type=boundary] -> .chesterfield;
+(
+nwr[highway=bus_stop](area.richmond);
+nwr[highway=bus_stop](area.henrico);
+nwr[highway=bus_stop](area.chesterfield);
+);
+out center;
