@@ -2,9 +2,9 @@
 layout: page
 permalink: /
 featured_work:
+  - link: /projects/yesterdays/
   - link: /projects/sidewalks/
   - link: /projects/surveillance/
-  - link: /projects/water-crisis/
 ---
 # MapRVA
 
