@@ -29,16 +29,13 @@ MapRVA hosts both in-person and virtual meetups! Check out our events calendar b
 
 ### Upcoming Events
 
-- August 21, 2025 @6pm: **Carytown Meetup + Survey Trip!** - Meet at New York Deli
-- September 4, 2025 @6pm: **Meetup at Main Library**
-- September 18, 2025 @6pm: **Virtual Map & Yap**
+- December 6, 2025: **MapRVA Holiday Party** (details will be on [Slack](/slack/))
 
 ### Recent Events
 
-- August 7, 2025: **Transportation Mapping Workshop** _(Joint event with [PlanRVA](https://planrva.org))_
-- July 30, 2025: **Mappy Hour: Map Pedestrian Infrastructure in RVA!** _(Hosted by [OpenStreetMap US](https://openstreetmap.us))_
-- July 24, 2025: **The Future of Pedestrian and Bike Infrastructure Mapping in RVA** _(Joint event with [PlanRVA](https://planrva.org))_
-- July 10, 2025: **Open Mapping in Richmond: A Community Meeting** _(Joint event with [PlanRVA](https://planrva.org))_
+- October 29, 2025: **Cemetery Mapping Meetup**
+- October 16, 2025: **MapRVA Meetup at New York Deli**
+- October 9, 2025 @6pm: **Virtual Map & Yap**
 
 ### Event Calendar
 
