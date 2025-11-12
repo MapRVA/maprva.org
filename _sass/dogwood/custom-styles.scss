@@ -4,10 +4,15 @@
     flex-wrap: wrap;
     justify-content: left;
     gap: 2em;
+    align-items: stretch;
 }
 .card {
     width: 18em;
     max-width: 100%;
-    border-radius: 10%;
-    aspect-ratio: 1;
+    border-radius: 12px;
+    border: 0.1em solid black;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }

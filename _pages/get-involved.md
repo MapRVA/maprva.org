@@ -17,7 +17,7 @@ involvement_cards:
     description: Place old photos of RVA on the map
     link: /projects/yesterdays
 ---
-MapRVA is powered by volunteers! We are building out guides for on website to help newcomers contribute to our mapping projects.
+MapRVA is powered by volunteers! We are building out guides on this website to empower everyone to map Richmond.
 
 ## I want to map...
 

@@ -3,20 +3,20 @@ title: Pedestrian Infrastructure
 permalink: /get-involved/pedestrian-infrastructure/
 involvement_cards:
   - title: Trace Sidewalks
-    description: Help us build a pedestrian map, one line at a time.
+    description: Help us build a pedestrian map, one line at a time
     link: /projects/sidewalks
   - title: Collect Street Imagery
     description: Use your phone (or borrow a 360 camera) to collect valuable images
     link: /get-involved/street-level-imagery/
   - title: Survey In-person
-    description: Use mobile surveying apps to validate and update sidewalk metadata
+    description: Validate and update sidewalk data with your smartphone
     link: /get-involved/mobile-surveying/
 data_cards:
   - title: MapRVA Data Hub
-    description: Download the latest pedestrian layers (and more)!
+    description: Download the latest pedestrian layers (and more)
     link: https://data.maprva.org
-  - title: OpenTrailMap by OSMUS
-    description: A hiking-focused map using OpenStreetMap data.
+  - title: OpenTrailMap
+    description: A hiking-focused map from OpenStreetMap US
     link: https://opentrailmap.us/#map=15.75/37.529382/-77.4531
 ---
 
