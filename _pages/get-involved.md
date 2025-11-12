@@ -4,6 +4,8 @@ permalink: /get-involved/
 opportunities:
  -  link: /projects/sidewalks/
     label: Mapping Sidewalks
+ -  link: /projects/yesterdays/
+    label: Yesterdays
 ---
 MapRVA is powered by volunteers! While all of our projects are open to contributions, these are well-documented and ready for a beginner to get involved.
 
