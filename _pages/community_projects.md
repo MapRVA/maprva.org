@@ -11,6 +11,7 @@ dropdown_links:
   - link: /projects/historical-mapping/
     label: Historical Mapping
 community_projects:
+  - /projects/yesterdays/
   - /projects/surveillance/
   - /projects/sidewalks/
   - /projects/historical-mapping/
