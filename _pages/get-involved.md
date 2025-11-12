@@ -3,16 +3,19 @@ title: Get Involved!
 permalink: /get-involved/
 involvement_cards:
   - title: Pedestrian Infrastructure
-    description: Sidewalks, crosswalks, curb ramps...
+    description: Sidewalks, crosswalks, curb ramps
     link: /get-involved/pedestrian-infrastructure/
   - title: Bicycle Infrastructure
-    description: Bike lanes, MTB trails, bike racks...
+    description: Bike lanes, MTB trails, bike racks
     link: /get-involved/bicycle-infrastructure/
   - title: Surveillance
-    description: Cameras, ALPRs, gunshot detectors...
+    description: Cameras, ALPRs, gunshot detectors
     link: /get-involved/surveillance/
-  - title: Road network
-    description: Road geometry, name etymologies, parking lanes...
+  # - title: Road network
+  #   description: Road geometry, name etymologies, parking lanes...
+  - title: Historical Photos
+    description: Place old photos of RVA on the map
+    link: /projects/yesterdays
 ---
 MapRVA is powered by volunteers! We are building out guides for on website to help newcomers contribute to our mapping projects.
 

@@ -30,4 +30,4 @@ As a part of our OSM work in Richmond, we maintain [local editing guidelines](ht
 
 We welcome any and all to attend our meetings and/or collaborate with us.
 Part of our mission is to be a resource to other residents of Richmond with regard to maps and GIS projects.
-Please see [/contact](/contact) to get in touch!
+Please see {::nomarkdown}<a href="/contact">/&NoBreak;contact</a>{:/nomarkdown} to get in touch!

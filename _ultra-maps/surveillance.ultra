@@ -1,5 +1,6 @@
 ---
 type: overpass
+server: https://overpass.private.coffee/api
 popupTemplate: >
   {%- if tags["boundary"] -%}
   <h3>{{ tags["name"] }}</h3>
