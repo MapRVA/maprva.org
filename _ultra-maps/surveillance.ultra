@@ -1,6 +1,6 @@
 ---
 type: overpass
-server: https://maps.mail.ru/osm/tools/overpass/api
+server: https://overpass.osm.jp/api
 popupTemplate: >
   {%- if tags["boundary"] -%}
   <h3>{{ tags["name"] }}</h3>
