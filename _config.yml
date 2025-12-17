@@ -5,6 +5,9 @@ description: >- # this means to ignore newlines until "baseurl:"
   to create and share geospatial data of our city using OpenStreetMap.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://localhost:8000" # PLEASE DO NOT EDIT, this is set to https://maprva.org using _config-publish.yml
+logo: /img/logo.svg
+logo_mono: /img/logo-mono.svg
+date_format: "%b %-d, %Y"
 calendar: https://calendar.google.com/calendar/embed?src=mappingrva%40gmail.com&ctz=America%2FNew_York
 github: MapRVA
 mastodon: https://en.osm.town/@maprva
@@ -24,15 +27,41 @@ links:
   # - link: /blog/
 
 # Build settings
-theme: osmus-dogwood
 plugins:
   - jekyll-feed
   - jekyll-copyr
+  - jekyll-archives
+  - jekyll-include-cache
+
+exclude:
+  - DEVELOPMENT.md
+  - README.md
+  - LICENSE.md
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json
+  - Dockerfile
+  - docker-compose.yml
 
 jekyll-copyr:
   tasks:
     - from: "./_ultra-maps/."
       to: "./_site/ultra-maps/"
+
+jekyll-archives:
+  enabled:
+    - year
+    - month
+    - tags
+  layouts:
+    year: archives/posts-year
+    month: archives/month
+    tag: archives/posts-tag
+  permalinks:
+    year: '/:year/'
+    month: '/:year/:month/'
+    tag: '/tags/:name/'
 
 collections:
   feeds:

@@ -1,0 +1,23 @@
+<div class="footer dark">
+  <div class="container">
+    <div class="top">
+      <a href="{{site.url}}{{site.baseurl}}" class="site-wordmark">
+        <img class="logo" src="{{site.logo_mono | default: site.logo | absolute_url}}">
+        <span class="text">{{ site.title }}</span>
+      </a>
+      {%- include_cached social_links.html item=site -%}
+    </div>
+    <br>
+    {%- include sitemap.html -%}
+    <hr>
+    <div class="smallprint">
+      {%- assign copystart = site.start | date: "%Y" -%}
+      {%- assign copyend = site.time | date: "%Y" -%}
+      {%- assign copydates = copyend -%}
+      {%- if copystart and copystart != copyend -%}
+        {%- assign copydates = copystart | append: '–' | append: copyend -%}
+      {%- endif -%}
+      <p>© {{copydates}} {{ site.copyright | default: site.title }}</p><p>Site powered by <a href="https://github.com/osmus/dogwood" target="_blank">Dogwood</a></p>
+    </div>
+  </div>
+</div>
