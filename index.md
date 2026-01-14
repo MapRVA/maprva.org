@@ -25,14 +25,16 @@ We are a group of mapping enthusiasts in Richmond, Virginia who work to create a
 
 ## Meetups
 
-MapRVA hosts both in-person and virtual meetups! Check out our events calendar below, and get in touch with us [via Slack](https://maprva.org/slack).
+MapRVA hosts both in-person and virtual meetups, usually every-other week! Check out our events calendar below, and get in touch with us [via Slack](https://maprva.org/slack). Our 2026 calendar is still being finalized, so stay tuned for more details!
 
 ### Upcoming Events
 
-- December 6, 2025: **MapRVA Holiday Party** (details will be on [Slack](/slack/))
+- January 15, 2026, 6:30pm: **MapRVA Meetup at New York Deli**
+- March 26, 2026, 6pm, RPL Main Branch: **Invited Seminar: [Dr. Kyle Redican](https://geography.richmond.edu/faculty/kredican), University of Richmond**
 
 ### Recent Events
 
+- December 6, 2025: **MapRVA Holiday Party**
 - October 29, 2025: **Cemetery Mapping Meetup**
 - October 16, 2025: **MapRVA Meetup at New York Deli**
 - October 9, 2025 @6pm: **Virtual Map & Yap**
