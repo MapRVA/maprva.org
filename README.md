@@ -4,7 +4,7 @@ This repository holds the website for [MapRVA](https://maprva.org).
 
 ## Development
 
-See `DEVELOPMENT.md`, as well as the documentation for [dogwood](https://github.com/osmus/dogwood)
+See `DEVELOPMENT.md`
 
 ## License
 

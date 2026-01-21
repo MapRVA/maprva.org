@@ -1,0 +1,67 @@
+---
+layout: default
+---
+{% if page.cover %}
+  {% include cover.html %}
+{% else %}
+  <div class='cover'></div>
+{% endif %}
+  <div class='content sections'>
+    <div class="section">
+      <div>
+        <div class="avatar hero-avatar" role="img" {%- if page.image -%}style="background-image: url('{{page.image | absolute_url}}'), url('{{site.url}}{{site.baseurl}}/assets/avatar.jpg')"{%- endif -%}></div>
+      </div>
+      <div>
+        <div class="section-body name-section">
+          <div class="name-header"><h1>{{page.title}}</h1>{%- if page.pronouns -%} <span class="pronouns">{{ page.pronouns }}</span>{%- endif -%}</div>
+          {%- if page.osm -%}
+            <a href="https://www.openstreetmap.org/user/{{page.osm}}">@{{page.osm}}</a>
+          {%- endif -%}
+        </div>
+        {%- assign trimmed_content = page.content | strip_newlines -%}
+        {%- if trimmed_content != '' -%}
+          <div class="section-body prose">
+            {{ page.content }}
+          </div>
+        {%- endif -%}
+        {%- include person_roles.html person=page-%}
+        {%- include person_social_links.html person=page-%}
+      </div>
+    </div>
+    {%- assign talks = site.posts | where: "speaker", page.title -%}
+    {%- if talks.size > 0 -%}
+      <div class="section">
+        <h3>Talks</h3>
+        <div class="section-body condensed">
+          {%- include item_list.html items=talks type="simple" ignore_name=page.title -%}
+        </div>
+      </div>
+    {%- endif -%}
+    {%- assign authored_posts = site.posts | where: "author", page.title -%}
+    {%- if authored_posts.size > 0 -%}
+      <div class="section">
+        <h3>Authored posts</h3>
+        <div class="section-body condensed">
+          {%- include item_list.html items=authored_posts type="simple" ignore_name=page.title -%}
+        </div>
+      </div>
+    {%- endif -%}
+    {%- assign tagged_posts = site.posts | where: "tags", page.title -%}
+    {%- if tagged_posts.size > 0 -%}
+      <div class="section">
+        <h3>Mentions</h3>
+        <div class="section-body condensed">
+          {%- include item_list.html items=tagged_posts type="simple" -%}
+        </div>
+      </div>
+    {%- endif -%}
+    <div class="section">
+      <h3></h3>
+      <div class="section-body prose">
+        {%- include person_footer.html -%}
+        {%- if page.updated -%}
+          <p><em>Last updated {{page.updated | date: "%B %Y" }}.</em></p>
+        {% endif %}
+      </div>
+    </div>
+  </div>

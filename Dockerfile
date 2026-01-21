@@ -3,7 +3,6 @@ FROM docker.io/ruby:3.4.5-bookworm
 WORKDIR /mnt
 
 COPY Gemfile /mnt/Gemfile
-COPY dogwood /mnt/dogwood
 RUN bundle install
 
 COPY . /mnt
