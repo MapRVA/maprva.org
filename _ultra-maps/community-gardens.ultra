@@ -1,6 +1,7 @@
 ---
+server: https://overpass.maprva.org/api
 style:
-  extends: https://styles.trailsta.sh/protomaps-light.json
+  extends: https://api.protomaps.com/styles/v3/light/en.json?key=fb6ab11f8b77171f
   sources:
     mask:
       type: geojson
