@@ -29,15 +29,17 @@ MapRVA hosts both in-person and virtual meetups, usually every-other week! Check
 
 ### Upcoming Events
 
-- January 15, 2026, 6:30pm: **MapRVA Meetup at New York Deli**
+- February 18, 2026, 6:30pm, RPL Main Branch, Annex Room: **Dr. Steven Keener: Surveillance Inequality: Race, Poverty, and the Geography of Automated License Plate Reader Deployment**
+- February 26, 2026, 6pm: **MapRVA Virtual Map & Yap**
+- March 12, 2026, 6pm: **MapRVA Meetup at New York Deli**
 - March 26, 2026, 6pm, RPL Main Branch: **Invited Seminar: [Dr. Kyle Redican](https://geography.richmond.edu/faculty/kredican), University of Richmond**
 
 ### Recent Events
 
+- January 15, 2026, 6:30pm: **MapRVA Meetup at New York Deli**
 - December 6, 2025: **MapRVA Holiday Party**
 - October 29, 2025: **Cemetery Mapping Meetup**
 - October 16, 2025: **MapRVA Meetup at New York Deli**
-- October 9, 2025 @6pm: **Virtual Map & Yap**
 
 ### Event Calendar
 
