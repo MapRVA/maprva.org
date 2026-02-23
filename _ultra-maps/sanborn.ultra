@@ -1,0 +1,62 @@
+---
+title: Sanborn Style
+type: vector
+style:
+  version: 8
+  sources:
+    parcels:
+      type: vector
+      url: pmtiles://https://tiles.maprva.org/parcels-tmp.pmtiles
+  layers:
+    - type: background
+      paint:
+        background-color: '#FEFFFB'
+    - type: fill
+      source-layer: water
+      fill-color: '#E4F2EE'
+    - type: line
+      source-layer: water
+      line-color: '#999891'
+    - type: line
+      source: parcels
+      source-layer: parcels
+      line-color: '#999891'
+    - type: fill
+      source-layer: buildings
+      fill-color:
+        - match
+        - [ get, 'building:material' ]
+        - brick
+        - '#F6D0D1'
+        - stone
+        - '#B6D7E2'
+        - steel
+        - '#FDFAC2'
+        - wood
+        - '#FEFFFB'
+        - '#F6D0D1'
+    - type: line
+      source-layer: buildings
+      line-color: '#999891'
+    - type: line
+      source-layer: railways
+      filter: [ "==", [ get, railway ], rail ]
+      line-color: '#999891'
+      line-width: 6
+    - type: line
+      source-layer: railways
+      filter: [ "==", [ get, railway ], rail ]
+      line-color: '#FEFFFB'
+      line-width: 4
+    - type: symbol
+      source-layer: highways
+      filter: [ all, [ has, name ], [ "!=", [ get, highway ], cycleway ] ]
+      text-field: [ get, name ]
+      symbol-placement: line
+      text-size: 12
+      text-color: '#444440'
+      text-halo-color: '#FFFFFF'
+      text-halo-width: 1.5
+      
+---
+pmtiles://https://tiles.maprva.org/sourdough.pmtiles
