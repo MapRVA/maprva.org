@@ -1,12 +1,7 @@
 ---
 server: https://overpass.maprva.org/api
 style:
-  version: 8
-  sources:
-    imagery:
-      type: raster
-      tiles:
-        - https://tiles.stadiamaps.com/data/imagery/{z}/{x}/{y}.jpg
+  extends: https://styles.maprva.org/vgin-vbmp-imagery-latest.json
   layers:
     - type: raster
       source: imagery
