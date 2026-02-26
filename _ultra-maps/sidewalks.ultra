@@ -1,7 +1,7 @@
 ---
 server: https://overpass.maprva.org/api
 style:
-  extends: https://tiles.stadiamaps.com/styles/alidade_satellite.json
+  extends: https://styles.maprva.org/vgin-vbmp-imagery-latest.json
   layers:
     - type: line
       line-width: 8
