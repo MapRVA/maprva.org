@@ -1,0 +1,193 @@
+---
+type: overpass
+server: https://overpass.maprva.org/api/
+options:
+  bounds: [-77.42355, 37.52362, -77.40670, 37.53640] 
+style:
+  extends: https://styles.maprva.org/dark-matter.json
+  layers:
+    # 1. The Building Footprints
+    - type: fill
+      paint:
+        fill-color: "#FF8303"
+        fill-opacity: 0.7
+      filter: [ "==", [ "geometry-type" ], "Polygon" ]
+
+    # 2. The Plaque Node
+    - type: symbol
+      icon-image: pinhead:plaque
+      icon-rotate: [ to-number, [ get, "calculated_direction" ] ]
+      icon-rotation-alignment: map
+      filter: [ "==", [ "geometry-type" ], "Point" ]
+      icon-color: [ case, [ "has", "fixme" ], "red", "yellow" ]
+
+# Post-Processing Logic
+transform: |
+  export default async function enhanceMapData(data) {
+    // ==========================================
+    // 1. EXTRACT KEYS & FETCH DESCRIPTIONS
+    // ==========================================
+
+    // Scrape unique wikimedia_commons values from the GeoJSON
+    const COMMONS_API = "https://commons.wikimedia.org/w/api.php";
+
+    const titleSet = new Set();
+    data.features.forEach(feature => {
+      const title = feature.properties?.wikimedia_commons;
+      if (title) {
+        titleSet.add(title);
+      }
+    });
+
+    const titles = Array.from(titleSet);
+
+    // Only perform network requests if we actually found titles
+    if (titles.length > 0) {
+      // Split into chunks of 50 to respect MediaWiki API limits
+      const chunkSize = 50;
+      const chunks = [];
+      for (let i = 0; i < titles.length; i += chunkSize) {
+        chunks.push(titles.slice(i, i + chunkSize));
+      }
+
+      // Fetch individual image data for each chunk
+      const fetchPromises = chunks.map(async (chunk) => {
+        const infoParams = new URLSearchParams({
+          action: "query",
+          titles: chunk.join("|"),
+          prop: "imageinfo",
+          iiprop: "extmetadata",
+          iiextmetadatafilter: "ImageDescription",
+          format: "json",
+          origin: "*"
+        });
+        const infoRes = await fetch(`${COMMONS_API}?${infoParams}`);
+        const infoData = await infoRes.json();
+        return infoData.query?.pages || {};
+      });
+
+      const chunkedPages = await Promise.all(fetchPromises);
+
+      // Create a lookup map for the descriptions
+      const descriptionMap = new Map();
+      chunkedPages.forEach(pagesObj => {
+        Object.values(pagesObj).forEach(page => {
+          const desc = page.imageinfo?.[0]?.extmetadata?.ImageDescription?.value || "";
+          if (desc) descriptionMap.set(page.title, desc);
+        });
+      });
+
+      // Apply the fetched descriptions to our GeoJSON features
+      data.features.forEach(feature => {
+        const wikiKey = feature.properties?.wikimedia_commons;
+        if (wikiKey && descriptionMap.has(wikiKey)) {
+          feature.properties.desc = descriptionMap.get(wikiKey);
+        }
+      });
+    }
+
+    // ==========================================
+    // 2. CALCULATE PLAQUE DIRECTIONS
+    // ==========================================
+
+    const points = data.features.filter(f => f.geometry?.type === 'Point');
+    const polys = data.features.filter(f => f.geometry?.type === 'Polygon');
+
+    // Helper: Normalize Vector
+    const norm = (v) => {
+      const mag = Math.sqrt(v[0]*v[0] + v[1]*v[1]);
+      return mag === 0 ? [0,0] : [v[0]/mag, v[1]/mag];
+    };
+
+    points.forEach(point => {
+      const [px, py] = point.geometry.coordinates;
+      
+      // Latitude correction factor
+      const cosLat = Math.cos(py * Math.PI / 180);
+      
+      // 1. Match Plaque to Building
+      const parent = polys.find(poly => {
+        return poly.geometry.coordinates.some(ring => 
+          ring.some(([rx, ry]) => rx === px && ry === py)
+        );
+      });
+
+      if (parent) {
+        const ring = parent.geometry.coordinates[0];
+        const idx = ring.findIndex(([rx, ry]) => rx === px && ry === py);
+        
+        if (idx !== -1) {
+          // 2. Identify Wall Segments
+          const len = ring.length;
+          const effLen = len - 1; // Handle closed ring dupes
+          
+          const prevIdx = (idx - 1 + effLen) % effLen;
+          const nextIdx = (idx + 1) % effLen;
+          
+          const [prevX, prevY] = ring[prevIdx];
+          const [nextX, nextY] = ring[nextIdx];
+
+          // 3. Calculate Normals (Rotated 90 deg right for "Out")
+          const v1 = [(px - prevX) * cosLat, py - prevY]; 
+          const v2 = [(nextX - px) * cosLat, nextY - py]; 
+
+          const n1 = [v1[1], -v1[0]];
+          const n2 = [v2[1], -v2[0]];
+
+          // 4. Average for Corner Bisector
+          const n1_norm = norm(n1);
+          const n2_norm = norm(n2);
+          const bisector = [n1_norm[0] + n2_norm[0], n1_norm[1] + n2_norm[1]];
+
+          // 5. Convert to MapLibre Bearing (Degrees Clockwise from North)
+          const rads = Math.atan2(bisector[1], bisector[0]);
+          let deg = 90 - (rads * 180 / Math.PI);
+          
+          point.properties.calculated_direction = deg;
+        }
+      }
+    });
+
+    return data;
+  }
+popupTemplate: >
+  {% if tags.name %}
+    <h2> {{tags.name }} </h2>
+  {% endif %}  {% if tags.wikimedia_commons %}
+    <a href="https://commons.wikimedia.org/wiki/{{ tags.wikimedia_commons }}" target="_blank">
+      <img style="width: 100%; max-width: 25em;" src="https://commons.wikimedia.org/wiki/Special:{{ tags.wikimedia_commons | replace: "File:", "FilePath/" }}">
+    </a>
+  {% endif %}      <br> {% if tags.desc %} <details>
+    <summary>Plaque Text</summary>
+    {{tags.desc}}
+  </details> {% endif %} <a href="https://openstreetmap.org/{{ type }}/{{ id }}"
+  target="_blank">View on OSM</a> <br> <a
+  href="https://openstreetmap.org/edit?{{ type }}={{ id }}" target="_blank">Edit
+  on OSM</a> <details> <summary>OSM Tags</summary> {%- for tag in tags %}
+    {%- if tag[0] contains "website" %}
+      <code>{{ tag[0] }} = <a href="{{ tag[1] }}" target="_blank">{{ tag[1] }}</a></code>
+    {%- elsif tag[0] contains "wikidata" %}
+      <code>{{ tag[0] }} = <a href="https://wikidata.org/wiki/{{ tag[1] }}" target="_blank">{{ tag[1] }}</a></code>
+    {%- elsif tag[0] contains "wikipedia" %}
+      {% assign lang = tag[1] | split: ":" | first %}
+      <code>{{ tag[0] }} = <a href="https://{{ lang }}.wikipedia.org/wiki/{{ tag[1] | replace_first: lang, "" | replace_first: ":", "" }}" target="_blank">{{ tag[1] }}</a></code>
+    {%- elsif tag[0] contains "wikimedia_commons" %}
+      <code>{{ tag[0] }} = <a href="https://commons.wikimedia.org/wiki/{{ tag[1] }}" target="_blank">{{ tag[1] }}</a></code>    
+    {%- elsif tag[0] contains "_is" %}
+    {%- else %}
+      <code>{{ tag[0] }} = {{ tag[1] }}</code>
+    {%- endif %}
+    <br>
+  {%- endfor %} </details>
+---
+[out:json][bbox:{{bbox}}];
+
+// 1. Fetch Plaques
+node["memorial"="plaque"]["operator"="Historic Richmond"]->.plaques;
+
+// 2. Fetch Buildings containing those plaques
+way(bn.plaques)["building"]->.buildings;
+
+// 3. Output Geometry
+(.plaques; .buildings;);
+out geom;
