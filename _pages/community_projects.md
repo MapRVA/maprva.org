@@ -14,6 +14,8 @@ community_projects:
   - /projects/yesterdays/
   - /projects/surveillance/
   - /projects/sidewalks/
+  - /projects/murals/
+  - /projects/hrf-plaques/
   - /projects/historical-mapping/
   - /projects/water-crisis/
 member_projects:
