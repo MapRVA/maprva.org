@@ -25,21 +25,22 @@ We are a group of mapping enthusiasts in Richmond, Virginia who work to create a
 
 ## Meetups
 
-MapRVA hosts both in-person and virtual meetups, usually every-other week! Check out our events calendar below, and get in touch with us [via Slack](https://maprva.org/slack). Our 2026 calendar is still being finalized, so stay tuned for more details!
+MapRVA hosts both in-person and virtual meetups, usually every-other week! Check out our events calendar below, and get in touch with us [via Slack](https://maprva.org/slack). Our calendar is continually updated, so check back often!
 
 ### Upcoming Events
 
-- February 18, 2026, 6:30pm, RPL Main Branch, Annex Room: **Dr. Steven Keener: Surveillance Inequality: Race, Poverty, and the Geography of Automated License Plate Reader Deployment**
-- February 26, 2026, 6pm: **MapRVA Virtual Map & Yap**
 - March 12, 2026, 6pm: **MapRVA Meetup at New York Deli**
+- March 17, 2026, 10am, Library of Virginia: **MapRVA's Yesterdays**
 - March 26, 2026, 6pm, RPL Main Branch: **Invited Seminar: [Dr. Kyle Redican](https://geography.richmond.edu/faculty/kredican), University of Richmond**
 
 ### Recent Events
 
+- February 26, 2026, 6pm: **MapRVA Virtual Map & Yap**
+- February 18, 2026, 6:30pm, RPL Main Branch, Annex Room: **Mapping surveillance in Richmond**
 - January 15, 2026, 6:30pm: **MapRVA Meetup at New York Deli**
 - December 6, 2025: **MapRVA Holiday Party**
 - October 29, 2025: **Cemetery Mapping Meetup**
-- October 16, 2025: **MapRVA Meetup at New York Deli**
+
 
 ### Event Calendar
 
@@ -47,6 +48,9 @@ MapRVA hosts both in-person and virtual meetups, usually every-other week! Check
 
 ## MapRVA In the News
 
+- [weeklyOSM 814](https://weeklyosm.eu/archives/18440#wn814_34154) _weeklyOSM, March 1, 2026_
+- [In Church Hill, a mapping maniac is born](https://www.chlookout.com/p/in-church-hill-a-mapping-maniac-is-born) _The Church Hill Lookout, February 13, 2026_
+- [Like Google Street View, but for Richmond history](https://www.chlookout.com/p/like-google-street-view-but-for-richmond-history) _The Church Hill Lookout, October 3, 2025_
 - [🗺️ An easier-to-navigate Richmond speeding map](https://www.chlookout.com/p/yesterday-s-park-house-price-today-s-park-house-price-fccb) _The Church Hill Lookout, August 8, 2025_
 - [Stamen at State of the Map US 2025](https://stamen.com/stamen-at-state-of-the-map-us-2025/) _Stamen Design, July 16, 2025_
 - [Mapper Highlight: MapRVA](https://openstreetmap.us/news/2025/04/maprva-highlight/) _OpenStreetMap US Staff, Jacob Hall, and Daniel Schep, April 24, 2025_
