@@ -3,6 +3,9 @@ layout: project
 title: Richmond's Murals
 sign: /img/projects/murals/sign.svg
 blurb: Mapping murals from the Richmond Mural Project and beyond!
+buttons:
+  - link: https://maproulette.org/browse/challenges/54376
+    label: Contribute!
 ---
 
 The map below shows the murals we've mapped in Richmond. Red points and faded lines are currently without pictures. We'd love for you to add some as described below.
