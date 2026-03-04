@@ -1,5 +1,6 @@
 ---
 title: Murals
+server: https://overpass.maprva.org/api
 transform: |
   export default function(geojson) {
     const newFeatures = [];

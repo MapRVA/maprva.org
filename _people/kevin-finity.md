@@ -8,6 +8,8 @@ mastodon: https://mastodon.social/@kfinity
 roles:
   - title: Mapper
     at: Surveillance Devices
+  - title: Project Lead
+    at: Richmond's Murals
 ---
 Hi! I got into mapping through various interests in urban forestry, housing inequality, government surveillance, and the criminal justice system. It turns out that so many kinds of fascinating public open data are map and GIS related!
 

@@ -9,6 +9,8 @@ bluesky: obrien.page
 roles:
   - title: Mapper
     at: Surveillance Devices
+  - title: Mapper
+    at: Richmond's Murals
 ---
 
 Mike is a fisheries scientist and movement ecologist in Richmond, VA. His OSM 
