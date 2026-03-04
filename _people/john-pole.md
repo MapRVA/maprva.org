@@ -5,6 +5,8 @@ image: https://avatars.githubusercontent.com/u/4940844?v=4
 osm: John Pole
 bluesky: jpole1.bsky.social
 roles:
+  - title: Project Lead
+    at: Historic Richmond Foundation Plaques
   - title: Mapper
     at: Richmond's Murals
 ---

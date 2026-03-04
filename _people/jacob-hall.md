@@ -14,6 +14,8 @@ roles:
     at: Mapping the Jan 2025 Water Crisis
   - title: Mapper
     at: Richmond's Murals
+  - title: Cartographer
+    at: Historic Richmond Foundation Plaques
   - title: Developer
     at: skyway
 ---
