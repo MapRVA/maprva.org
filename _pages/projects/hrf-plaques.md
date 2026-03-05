@@ -7,7 +7,7 @@ blurb: Historic plaques in Church Hill
 
 The map below shows the Historic Richmond Foundation plaques we've mapped in the Church Hill neighborhood of Richmond. Red plaques are currently without pictures and text descriptions. We'd love for you to add some as described below.
 
-{% include ultra-map.html name="hrf-plaques" %}
+{% include ultra-map.html name="plaques" %}
 
 ## Contributing
 
