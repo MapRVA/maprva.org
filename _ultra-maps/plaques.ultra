@@ -20,7 +20,31 @@ style:
       icon-rotation-alignment: map
       filter: [ "==", [ "geometry-type" ], "Point" ]
       icon-color: [ case, [ "has", "fixme" ], "red", "yellow" ]
-
+      icon-overlap: always
+      icon-halo-color: 
+        - interpolate
+        - [linear]
+        - [zoom]
+        - 17.99
+        - [ case, [ "has", "fixme" ], "red", "yellow" ]
+        - 18
+        - black
+      icon-halo-width:
+        - interpolate
+        - [exponential, 2]
+        - [zoom]
+        - 16
+        - .25
+        - 22
+        - 16
+      icon-size:
+        - interpolate
+        - [exponential, 2]
+        - [zoom]
+        - 16
+        - .125
+        - 22
+        - 8
 # Post-Processing Logic
 transform: |
   export default async function enhanceMapData(data) {
