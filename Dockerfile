@@ -3,6 +3,7 @@ FROM docker.io/ruby:3.4.5-bookworm
 WORKDIR /mnt
 
 COPY Gemfile /mnt/Gemfile
+COPY Gemfile.lock /mnt/Gemfile.lock
 RUN bundle install
 
 COPY . /mnt
