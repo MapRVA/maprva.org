@@ -4,7 +4,7 @@ server: https://overpass.maprva.org/api/
 options:
   bounds: [-77.42355, 37.52362, -77.40670, 37.53640] 
 style:
-  extends: https://styles.maprva.org/dark-matter.json
+  extends: https://tiles.stadiamaps.com/styles/alidade_smooth_dark.json
   layers:
     # 1. The Building Footprints
     - type: fill
@@ -20,7 +20,31 @@ style:
       icon-rotation-alignment: map
       filter: [ "==", [ "geometry-type" ], "Point" ]
       icon-color: [ case, [ "has", "fixme" ], "red", "yellow" ]
-
+      icon-overlap: always
+      icon-halo-color: 
+        - interpolate
+        - [linear]
+        - [zoom]
+        - 17.99
+        - [ case, [ "has", "fixme" ], "red", "yellow" ]
+        - 18
+        - black
+      icon-halo-width:
+        - interpolate
+        - [exponential, 2]
+        - [zoom]
+        - 16
+        - .25
+        - 22
+        - 16
+      icon-size:
+        - interpolate
+        - [exponential, 2]
+        - [zoom]
+        - 16
+        - .125
+        - 22
+        - 8
 # Post-Processing Logic
 transform: |
   export default async function enhanceMapData(data) {
@@ -145,6 +169,9 @@ transform: |
           
           point.properties.calculated_direction = deg;
         }
+      } else {
+        // Fall back to tagged direction if not attached to building
+        point.properties.calculated_direction = point.properties.direction;
       }
     });
 
@@ -155,7 +182,7 @@ popupTemplate: >
     <h2> {{tags.name }} </h2>
   {% endif %}  {% if tags.wikimedia_commons %}
     <a href="https://commons.wikimedia.org/wiki/{{ tags.wikimedia_commons }}" target="_blank">
-      <img style="width: 100%; max-width: 25em;" src="https://commons.wikimedia.org/wiki/Special:{{ tags.wikimedia_commons | replace: "File:", "FilePath/" }}">
+      <img style="width: 100%; max-width: 25em; max-height: 25em;" src="https://commons.wikimedia.org/wiki/Special:FilePath/{{ tags.wikimedia_commons | remove: 'File:' | remove: 'file' }}">
     </a>
   {% endif %}      <br> {% if tags.desc %} <details>
     <summary>Plaque Text</summary>
