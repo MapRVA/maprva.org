@@ -53,63 +53,67 @@ transform: |
     // ==========================================
 
     // Scrape unique wikimedia_commons values from the GeoJSON
+    const features = data.features;
     const COMMONS_API = "https://commons.wikimedia.org/w/api.php";
-
-    const titleSet = new Set();
-    data.features.forEach(feature => {
-      const title = feature.properties?.wikimedia_commons;
-      if (title) {
-        titleSet.add(title);
+    
+    // 1. Build unique title list & normalization map in one pass
+    const titleMap = {}; // original -> normalized
+    const uniqueTitles = [];
+    
+    for (let i = 0; i < features.length; i++) {
+      const raw = features[i].properties?.wikimedia_commons;
+      if (raw && !titleMap[raw]) {
+        const clean = raw.replace(/ /g, '_');
+        titleMap[raw] = clean;
+        uniqueTitles.push(raw);
       }
-    });
-
-    const titles = Array.from(titleSet);
-
-    // Only perform network requests if we actually found titles
-    if (titles.length > 0) {
-      // Split into chunks of 50 to respect MediaWiki API limits
-      const chunkSize = 50;
-      const chunks = [];
-      for (let i = 0; i < titles.length; i += chunkSize) {
-        chunks.push(titles.slice(i, i + chunkSize));
-      }
-
-      // Fetch individual image data for each chunk
-      const fetchPromises = chunks.map(async (chunk) => {
-        const infoParams = new URLSearchParams({
-          action: "query",
-          titles: chunk.join("|"),
-          prop: "imageinfo",
-          iiprop: "extmetadata",
-          iiextmetadatafilter: "ImageDescription",
-          format: "json",
-          origin: "*"
-        });
-        const infoRes = await fetch(`${COMMONS_API}?${infoParams}`);
-        const infoData = await infoRes.json();
-        return infoData.query?.pages || {};
-      });
-
-      const chunkedPages = await Promise.all(fetchPromises);
-
-      // Create a lookup map for the descriptions
-      const descriptionMap = new Map();
-      chunkedPages.forEach(pagesObj => {
-        Object.values(pagesObj).forEach(page => {
-          const desc = page.imageinfo?.[0]?.extmetadata?.ImageDescription?.value || "";
-          if (desc) descriptionMap.set(page.title, desc);
-        });
-      });
-
-      // Apply the fetched descriptions to our GeoJSON features
-      data.features.forEach(feature => {
-        const wikiKey = feature.properties?.wikimedia_commons;
-        if (wikiKey && descriptionMap.has(wikiKey)) {
-          feature.properties.desc = descriptionMap.get(wikiKey);
-        }
-      });
     }
-
+  
+    if (uniqueTitles.length === 0) return data;
+  
+    // 2. Batch and Fetch (Chunks of 50)
+    const fetchPromises = [];
+    for (let i = 0; i < uniqueTitles.length; i += 50) {
+      const chunk = uniqueTitles.slice(i, i + 50);
+      const params = new URLSearchParams({
+        action: "query",
+        titles: chunk.join("|"),
+        prop: "imageinfo",
+        iiprop: "extmetadata",
+        iiextmetadatafilter: "ImageDescription",
+        format: "json",
+        origin: "*"
+      });
+      fetchPromises.push(fetch(`${COMMONS_API}?${params}`).then(r => r.json()));
+    }
+  
+    const results = await Promise.all(fetchPromises);
+  
+    // 3. Populate a optimized Lookup Map
+    const descLookup = {};
+    for (let i = 0; i < results.length; i++) {
+      const pages = results[i].query?.pages;
+      if (!pages) continue;
+      for (const id in pages) {
+        const page = pages[id];
+        const desc = page.imageinfo?.[0]?.extmetadata?.ImageDescription?.value;
+        if (desc) {
+          // Store using the normalized (underscore) key
+          descLookup[page.title.replace(/ /g, '_')] = desc;
+        }
+      }
+    }
+  
+    // 4. Final Augmentation pass
+    for (let i = 0; i < features.length; i++) {
+      const raw = features[i].properties.wikimedia_commons;
+      if (raw) {
+        const clean = raw.replace(/ /g, '_');
+        const desc = descLookup[clean];
+        if (desc) features[i].properties.desc = desc;
+      }
+    }
+  
     // ==========================================
     // 2. CALCULATE PLAQUE DIRECTIONS
     // ==========================================
@@ -178,11 +182,12 @@ transform: |
     return data;
   }
 popupTemplate: >
+  <div style="max-width: 25em; overflow-wrap: break-word; font-family: sans-serif;">
   {% if tags.name %}
     <h2> {{tags.name }} </h2>
   {% endif %}  {% if tags.wikimedia_commons %}
     <a href="https://commons.wikimedia.org/wiki/{{ tags.wikimedia_commons }}" target="_blank">
-      <img style="width: 100%; max-width: 25em; max-height: 25em;" src="https://commons.wikimedia.org/wiki/Special:FilePath/{{ tags.wikimedia_commons | remove: 'File:' | remove: 'file' }}">
+      <img style="width: 100%; max-width: 25em; height: auto; max-height: 25em; object-fit: contain; display: block;" src="https://commons.wikimedia.org/wiki/Special:FilePath/{{ tags.wikimedia_commons | remove: 'File:' | remove: 'file' }}">
     </a>
   {% endif %}      <br> {% if tags.desc %} <details>
     <summary>Plaque Text</summary>
@@ -205,7 +210,7 @@ popupTemplate: >
       <code>{{ tag[0] }} = {{ tag[1] }}</code>
     {%- endif %}
     <br>
-  {%- endfor %} </details>
+  {%- endfor %} </details> </div>
 ---
 [out:json][bbox:{{bbox}}];
 
