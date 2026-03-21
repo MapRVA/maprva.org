@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import PageLayout from "../../layouts/PageLayout.astro";
-import PersonAvatar from "../../components/PersonAvatar.astro";
+import PeopleGrid from "../../components/PeopleGrid.astro";
 import { base } from "../../utils/base";
 
 export async function getStaticPaths() {
@@ -65,17 +65,13 @@ const contributors = people
     {contributors.length > 0 && (
         <div class="my-8">
             <hr class="my-6" />
-            <h2 class="text-2xl font-bold mb-4">People</h2>
-            <div class="flex flex-wrap gap-6">
-                {contributors.map((c) => (
-                    <PersonAvatar
-                        name={c.data.title}
-                        title={c.roleTitle}
-                        image={c.data.image}
-                        href={base(`/people/${c.id}`)}
-                    />
-                ))}
-            </div>
+            <h2 class="text-[2rem] leading-[1.2] font-bold mb-4">People</h2>
+            <PeopleGrid justify="left" items={contributors.map((c) => ({
+                name: c.data.title,
+                title: c.roleTitle,
+                image: c.data.image,
+                href: base(`/people/${c.id}`),
+            }))} />
         </div>
     )}
 

@@ -9,30 +9,54 @@ import { getCollection } from "astro:content";
 import PersonAvatar from "./PersonAvatar.astro";
 import { base } from "../utils/base";
 
+interface PersonItem {
+    name: string;
+    title?: string;
+    image?: string;
+    href?: string;
+}
+
 interface Props {
     /** Cap the number of people shown (e.g. 4 on the homepage) */
     limit?: number;
+    /** Pass explicit items instead of loading from the collection */
+    items?: PersonItem[];
+    /** Grid justification: "center" (default) or "left" */
+    justify?: "center" | "left";
 }
 
-const { limit } = Astro.props;
+const { limit, items, justify = "center" } = Astro.props;
+const justifyClass = justify === "center" ? "justify-center" : "justify-start";
 
-let people = (await getCollection("people")).sort((a, b) =>
-    a.data.title.localeCompare(b.data.title),
-);
+let people: PersonItem[];
+
+if (items) {
+    people = items;
+} else {
+    const collection = (await getCollection("people")).sort((a, b) =>
+        a.data.title.localeCompare(b.data.title),
+    );
+    people = collection.map((p) => ({
+        name: p.data.title,
+        image: p.data.image,
+        href: base(`/people/${p.id}`),
+    }));
+}
 
 if (limit) {
     people = people.slice(0, limit);
 }
 ---
 
-<section class="px-6 pb-20" id="people">
-    <div class="grid grid-cols-[repeat(auto-fill,11rem)] justify-center justify-items-center gap-8 max-w-[1100px] mx-auto">
+<section class="pb-20" id="people">
+    <div class:list={["grid grid-cols-[repeat(auto-fill,minmax(3em,10em))] justify-items-center gap-6 mx-auto", justifyClass]}>
         {
             people.map((person) => (
                 <PersonAvatar
-                    name={person.data.title}
-                    image={person.data.image}
-                    href={base(`/people/${person.id}`)}
+                    name={person.name}
+                    title={person.title}
+                    image={person.image}
+                    href={person.href}
                 />
             ))
         }

@@ -23,9 +23,9 @@ const imageSrc = image && image.startsWith("/") ? base(image) : image;
 ---
 
 {href ? (
-    <a href={href} class="flex flex-col items-center no-underline text-base-content">
-        <div class="avatar placeholder">
-            <div class="avatar-circle w-40 h-40 rounded-full overflow-hidden border-3 border-base-content/8 bg-primary/10 flex items-center justify-center">
+    <a href={href} class="flex flex-col items-center min-w-0 no-underline text-base-content">
+        <div class="avatar placeholder w-full">
+            <div class="avatar-circle aspect-square max-w-[10em] mx-auto rounded-full overflow-hidden border-3 border-base-content/8 bg-primary/10 flex items-center justify-center">
                 {image ? (
                     <img src={imageSrc} alt={name ? `Photo of ${name}` : ""} class="w-full h-full object-cover" />
                 ) : (
@@ -33,13 +33,13 @@ const imageSrc = image && image.startsWith("/") ? base(image) : image;
                 )}
             </div>
         </div>
-        {name && <span class="mt-3 text-[1.4rem] font-semibold text-center tracking-tight">{name}</span>}
-        {title && <span class="italic text-center text-base-content/55 font-light">{title}</span>}
+        {name && <span class="mt-3 text-[1.4rem] font-semibold text-center tracking-tight max-w-full">{name}</span>}
+        {title && <span class="italic text-center text-base-content/55 font-light max-w-full">{title}</span>}
     </a>
 ) : (
-    <div class="flex flex-col items-center no-underline text-base-content">
-        <div class="avatar placeholder">
-            <div class="avatar-circle w-40 h-40 rounded-full overflow-hidden border-3 border-base-content/8 bg-primary/10 flex items-center justify-center">
+    <div class="flex flex-col items-center min-w-0 no-underline text-base-content">
+        <div class="avatar placeholder w-full">
+            <div class="avatar-circle aspect-square max-w-[10em] mx-auto rounded-full overflow-hidden border-3 border-base-content/8 bg-primary/10 flex items-center justify-center">
                 {image ? (
                     <img src={imageSrc} alt={name ? `Photo of ${name}` : ""} class="w-full h-full object-cover" />
                 ) : (
@@ -47,7 +47,7 @@ const imageSrc = image && image.startsWith("/") ? base(image) : image;
                 )}
             </div>
         </div>
-        {name && <span class="mt-3 text-[1.4rem] font-semibold text-center tracking-tight">{name}</span>}
-        {title && <span class="italic text-center text-base-content/55 font-light">{title}</span>}
+        {name && <span class="mt-3 text-[1.4rem] font-semibold text-center tracking-tight max-w-full">{name}</span>}
+        {title && <span class="italic text-center text-base-content/55 font-light max-w-full">{title}</span>}
     </div>
 )}
