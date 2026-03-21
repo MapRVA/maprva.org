@@ -4,6 +4,10 @@ on:
   # Trigger the workflow every time you push to the `trunk` branch
   push:
     branches: [trunk]
+  # Rebuild nightly at 2AM Eastern
+  schedule:
+    - cron: "0 2 * * *"
+      timezone: "America/New_York"
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
