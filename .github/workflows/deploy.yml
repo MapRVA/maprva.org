@@ -1,0 +1,50 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Trigger the workflow every time you push to the `trunk` branch
+  push:
+    branches: [trunk]
+  # Allows you to run this workflow manually from the Actions tab on GitHub.
+  workflow_dispatch:
+
+# Allow this job to clone the repo and create a page deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@v5
+      - name: Verify required secrets
+        run: |
+          if [ -z "$GOOGLE_CALENDAR_ID" ] || [ -z "$GOOGLE_API_KEY" ]; then
+            echo "::error::Missing required secrets: GOOGLE_CALENDAR_ID and/or GOOGLE_API_KEY"
+            exit 1
+          fi
+        env:
+          GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+      - name: Set base path for fork deployments
+        if: github.repository != 'MapRVA/maprva.org'
+        run: |
+          echo "ASTRO_SITE=https://${{ github.repository_owner }}.github.io" >> $GITHUB_ENV
+          echo "ASTRO_BASE=/${{ github.event.repository.name }}" >> $GITHUB_ENV
+      - name: Install, build, and upload your site
+        uses: withastro/action@v5
+        env:
+          GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

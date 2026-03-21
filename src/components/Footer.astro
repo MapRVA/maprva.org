@@ -1,0 +1,118 @@
+---
+/* Footer.astro — dark footer with sitemap, social icons, and smallprint */
+import { getCollection } from "astro:content";
+import IconSprite from "./IconSprite.astro";
+import { base } from "../utils/base";
+
+const projects = await getCollection("projects");
+projects.sort((a, b) => (a.data.sortOrder ?? 99) - (b.data.sortOrder ?? 99));
+---
+
+<IconSprite />
+
+<footer class="bg-neutral text-neutral-content py-12 px-6 pb-8">
+    <div class="max-w-[960px] mx-auto">
+        <div class="flex items-center justify-between flex-wrap gap-4">
+            <a href={base("/")} class="flex items-center gap-2.5 no-underline text-neutral-content">
+                <img class="h-8 w-auto" src={base("/img/logo-mono.svg")} alt="MapRVA" />
+                <span class="font-[family-name:var(--logo-font)] text-2xl font-bold">MapRVA</span>
+            </a>
+            <ul class="flex gap-3 list-none m-0 p-0">
+                <li>
+                    <a href={base("/slack")} aria-label="Slack" class="icon-btn">
+                        <svg class="w-[1.1rem] h-[1.1rem] fill-current" aria-hidden="true"><use xlink:href="#icon-slack" /></svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/MapRVA" target="_blank" rel="noopener noreferrer" aria-label="MapRVA on GitHub" class="icon-btn">
+                        <svg class="w-[1.1rem] h-[1.1rem] fill-current" aria-hidden="true"><use xlink:href="#icon-github" /></svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://en.osm.town/@maprva" target="_blank" rel="me noopener noreferrer" aria-label="MapRVA on Mastodon" class="icon-btn">
+                        <svg class="w-[1.1rem] h-[1.1rem] fill-current" aria-hidden="true"><use xlink:href="#icon-mastodon" /></svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://calendar.google.com/calendar/embed?src=mappingrva%40gmail.com&ctz=America%2FNew_York" aria-label="Events calendar" class="icon-btn">
+                        <svg class="w-[1.1rem] h-[1.1rem] fill-current" aria-hidden="true"><use xlink:href="#icon-calendar" /></svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <br />
+
+        <div class="flex flex-wrap gap-y-8 gap-x-12">
+            <ul class="list-none p-0 m-0">
+                <li><a class="footer-link first-link" href={base("/about")}>About Us</a></li>
+                <li><a class="footer-link" href={base("/people")}>People</a></li>
+                <li><a class="footer-link" href={base("/contact")}>Contact</a></li>
+                <li><a class="footer-link" href={base("/slack")}>Slack</a></li>
+            </ul>
+            <ul class="list-none p-0 m-0">
+                <li><a class="footer-link first-link" href={base("/events")}>Events</a></li>
+            </ul>
+            <ul class="list-none p-0 m-0">
+                <li><a class="footer-link first-link" href={base("/projects")}>Our Work</a></li>
+                {projects.map((project) => (
+                    <li>
+                        <a class="footer-link" href={base(`/projects/${project.id}`)}>
+                            {project.data.title}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+            <ul class="list-none p-0 m-0">
+                <li><a class="footer-link first-link" href={base("/resources")}>Resources</a></li>
+            </ul>
+        </div>
+
+        <hr class="border-neutral-content/15 my-8 mb-4" />
+
+        <div class="flex justify-between flex-wrap gap-x-6 gap-y-2 text-xs text-neutral-content/50">
+            <p>&copy; {new Date().getFullYear()} MapRVA</p>
+            <p>
+                Site powered by <a href="https://astro.build" target="_blank" class="underline text-neutral-content/65 hover:text-neutral-content transition-colors">Astro</a>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .icon-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.25rem;
+        height: 2.25rem;
+        border-radius: 50%;
+        background: color-mix(in oklch, var(--color-neutral-content) 10%, transparent);
+        color: var(--color-neutral-content);
+        transition: background 0.2s;
+    }
+
+    .icon-btn:hover {
+        background: color-mix(in oklch, var(--color-neutral-content) 20%, transparent);
+    }
+
+    .footer-link {
+        display: block;
+        padding: 0.2rem 0;
+        color: color-mix(in oklch, var(--color-neutral-content) 75%, transparent);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+        color: var(--color-neutral-content);
+    }
+
+    .first-link {
+        font-weight: 700;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+</style>

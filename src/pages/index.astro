@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import MapBackground from "../components/MapBackground.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import UpcomingEvents from "../components/UpcomingEvents.astro";
+import ProjectGrid from "../components/ProjectGrid.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout title="MapRVA">
+    <MapBackground />
+    <div class="relative z-10">
+        <Navbar />
+        <Hero />
+        <div class="bg-base-100 pt-12">
+            <UpcomingEvents limit={3} />
+            <ProjectGrid
+                slugs={["yesterdays", "surveillance", "murals"]}
+                heading="Featured Projects"
+            />
+            <Footer
+                dataCopyright='Data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
+            />
+        </div>
+    </div>
+</BaseLayout>

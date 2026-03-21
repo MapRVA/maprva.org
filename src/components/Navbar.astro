@@ -1,0 +1,33 @@
+---
+/* Navbar.astro — DaisyUI-based navigation bar */
+import NavItems from "./NavItems.astro";
+import { base } from "../utils/base";
+---
+
+<div class="navbar bg-base-100 px-4 min-h-[4.5rem]">
+    <div class="navbar-start">
+        <a href={base("/")} class="flex items-center gap-[0.3em] font-[family-name:var(--logo-font)] text-2xl">
+            <img src={base("/img/logo.svg")} alt="MapRVA" class="h-8 w-auto" />
+            <span>MapRVA</span>
+        </a>
+    </div>
+
+    <div class="navbar-end hidden md:flex">
+        <ul class="menu menu-horizontal px-1 text-base">
+            <NavItems submenuClass="z-20 bg-base-100 rounded-box w-40 p-2 shadow" />
+        </ul>
+    </div>
+
+    <div class="navbar-end md:hidden">
+        <div class="dropdown dropdown-end">
+            <button tabindex="0" class="btn btn-ghost" aria-label="Open menu">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
+                <NavItems />
+            </ul>
+        </div>
+    </div>
+</div>

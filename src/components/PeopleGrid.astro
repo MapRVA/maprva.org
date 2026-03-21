@@ -1,0 +1,48 @@
+---
+/*
+  PeopleGrid.astro
+  Queries the `people` content collection and renders a grid of
+  circular portraits with names. Used on the /people index page
+  and optionally on the homepage with a limit.
+*/
+import { getCollection } from "astro:content";
+import PersonAvatar from "./PersonAvatar.astro";
+import { base } from "../utils/base";
+
+interface Props {
+    /** Cap the number of people shown (e.g. 4 on the homepage) */
+    limit?: number;
+}
+
+const { limit } = Astro.props;
+
+let people = (await getCollection("people")).sort((a, b) =>
+    a.data.title.localeCompare(b.data.title),
+);
+
+if (limit) {
+    people = people.slice(0, limit);
+}
+---
+
+<section class="px-6 pb-20" id="people">
+    <div class="grid grid-cols-[repeat(auto-fill,11rem)] justify-center justify-items-center gap-8 max-w-[1100px] mx-auto">
+        {
+            people.map((person) => (
+                <PersonAvatar
+                    name={person.data.title}
+                    image={person.data.image}
+                    href={base(`/people/${person.id}`)}
+                />
+            ))
+        }
+    </div>
+
+    {
+        limit && people.length >= limit && (
+            <div class="text-center mt-7">
+                <a href={base("/people")} class="btn btn-outline btn-primary">Meet everyone &rarr;</a>
+            </div>
+        )
+    }
+</section>

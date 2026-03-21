@@ -1,0 +1,90 @@
+---
+import { getCollection } from "astro:content";
+import { formatDay, formatMonth, formatWeekday, formatTime } from "../utils/date";
+import { base } from "../utils/base";
+
+interface Props {
+    limit?: number;
+}
+
+const { limit = 5 } = Astro.props;
+const allEvents = await getCollection("events");
+const events = allEvents
+    .sort((a, b) => {
+        const da = new Date(a.data.start.dateTime || a.data.start.date || 0);
+        const db = new Date(b.data.start.dateTime || b.data.start.date || 0);
+        return da.getTime() - db.getTime();
+    })
+    .slice(0, limit);
+---
+
+{
+    events.length > 0 && (
+        <section class="max-w-5xl mx-auto mb-6 px-4" id="events">
+            <div class="card bg-base-100 shadow-lg p-6 md:p-8">
+                <h2 class="font-[family-name:var(--logo-font)] text-[1.75rem] font-bold text-center mb-6">Upcoming Events</h2>
+
+                <div class="divide-y divide-base-300">
+                    {events.map((event) => (
+                        <div class="flex items-start gap-5 py-4 first:pt-0 last:pb-0 group">
+                            <div class="flex flex-col items-center justify-center min-w-14 p-2 rounded-lg bg-primary">
+                                <span class="text-[0.65rem] font-bold uppercase tracking-wide text-primary-content/70">
+                                    {formatMonth(event.data.start)}
+                                </span>
+                                <span class="text-2xl font-bold leading-none text-primary-content">
+                                    {formatDay(event.data.start)}
+                                </span>
+                                <span class="text-[0.65rem] text-primary-content/50">
+                                    {formatWeekday(event.data.start)}
+                                </span>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h3 class="font-bold text-lg leading-snug">
+                                    {event.data.htmlLink ? (
+                                        <a
+                                            href={event.data.htmlLink}
+                                            target="_blank"
+                                            rel="noopener"
+                                            class="link link-hover text-base-content hover:text-primary transition-colors"
+                                        >
+                                            {event.data.summary}
+                                        </a>
+                                    ) : (
+                                        event.data.summary
+                                    )}
+                                </h3>
+                                <div class="flex flex-wrap items-center gap-2 mt-1.5">
+                                    <span class="badge badge-sm badge-ghost gap-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                                        </svg>
+                                        {formatTime(event.data.start)}
+                                    </span>
+                                    {event.data.location && (
+                                        <span class="badge badge-sm badge-ghost gap-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                                            </svg>
+                                            <span class="truncate max-w-[20ch] sm:max-w-none">{event.data.location}</span>
+                                        </span>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="text-center">
+                    <a href={base("/events")} class="btn btn-primary">
+                        View all events
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    )
+}

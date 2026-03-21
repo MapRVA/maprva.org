@@ -1,0 +1,29 @@
+---
+import { base } from "../utils/base";
+
+interface Props {
+    title: string;
+    slug: string;
+    sign?: string;
+    blurb?: string;
+    hideTitle?: boolean;
+}
+
+const { title, slug, sign, blurb, hideTitle } = Astro.props;
+---
+
+<a href={base(`/projects/${slug}`)}>
+    <div class="card bg-base-100 shadow-md hover:shadow-lg transition-shadow">
+        {sign && (
+            <figure>
+                <img src={base(sign)} alt={title} loading="lazy" />
+            </figure>
+        )}
+        {!hideTitle && (
+            <div class="card-body p-4">
+                <h3 class="card-title text-lg">{title}</h3>
+                {blurb && <p class="text-sm opacity-60">{blurb}</p>}
+            </div>
+        )}
+    </div>
+</a>

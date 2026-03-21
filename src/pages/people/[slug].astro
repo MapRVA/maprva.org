@@ -1,0 +1,166 @@
+---
+/*
+  [slug].astro — Individual person profile page
+*/
+import { getCollection, render } from "astro:content";
+import PageLayout from "../../layouts/PageLayout.astro";
+import IconSprite from "../../components/IconSprite.astro";
+import PersonAvatar from "../../components/PersonAvatar.astro";
+import { base } from "../../utils/base";
+
+export async function getStaticPaths() {
+    const people = await getCollection("people");
+    return people.map((person) => ({
+        params: { slug: person.id },
+        props: { person },
+    }));
+}
+
+const { person } = Astro.props;
+const {
+    title,
+    pronouns,
+    image,
+    osm,
+    website,
+    mastodon,
+    github,
+    linkedin,
+    twitter,
+    bluesky,
+    roles,
+} = person.data;
+const { Content } = await render(person);
+
+/* Resolve role project slugs → human-readable titles */
+const projects = await getCollection("projects");
+const projectLookup = Object.fromEntries(projects.map((p) => [p.id, p.data]));
+---
+
+<PageLayout title={`${title} — MapRVA`} maxWidth="max-w-xl">
+            <IconSprite />
+            <div class="text-center mb-10">
+                <PersonAvatar name={title} image={image} />
+
+                {pronouns && <span class="text-base font-light text-base-content/45 ml-2">{pronouns}</span>}
+
+                <div class="flex flex-wrap justify-center gap-2 mt-4">
+                    {
+                        osm && (
+                            <a
+                                href={`https://www.openstreetmap.org/user/${osm}`}
+                                target="_blank"
+                                rel="noopener"
+                                class="btn btn-ghost btn-sm gap-1 text-xs"
+                            >
+                                <svg class="w-3.5 h-3.5 fill-current shrink-0"><use xlink:href="#icon-map-marker" /></svg> {osm}
+                            </a>
+                        )
+                    }
+                    {
+                        website && (
+                            <a
+                                href={website}
+                                target="_blank"
+                                rel="noopener"
+                                class="btn btn-ghost btn-sm gap-1 text-xs"
+                            >
+                                <svg class="w-3.5 h-3.5 fill-current shrink-0"><use xlink:href="#icon-globe" /></svg> Website
+                            </a>
+                        )
+                    }
+                    {
+                        github && (
+                            <a
+                                href={`https://github.com/${github}`}
+                                target="_blank"
+                                rel="noopener"
+                                class="btn btn-ghost btn-sm gap-1 text-xs"
+                            >
+                                <svg class="w-3.5 h-3.5 fill-current shrink-0"><use xlink:href="#icon-github" /></svg> {github}
+                            </a>
+                        )
+                    }
+                    {
+                        mastodon && (
+                            <a
+                                href={mastodon}
+                                target="_blank"
+                                rel="me noopener"
+                                class="btn btn-ghost btn-sm gap-1 text-xs"
+                            >
+                                <svg class="w-3.5 h-3.5 fill-current shrink-0"><use xlink:href="#icon-mastodon" /></svg> Mastodon
+                            </a>
+                        )
+                    }
+                    {
+                        linkedin && (
+                            <a
+                                href={`https://www.linkedin.com/in/${linkedin}`}
+                                target="_blank"
+                                rel="noopener"
+                                class="btn btn-ghost btn-sm gap-1 text-xs"
+                            >
+                                <svg class="w-3.5 h-3.5 fill-current shrink-0"><use xlink:href="#icon-linkedin" /></svg> LinkedIn
+                            </a>
+                        )
+                    }
+                    {
+                        twitter && (
+                            <a
+                                href={`https://x.com/${twitter}`}
+                                target="_blank"
+                                rel="noopener"
+                                class="btn btn-ghost btn-sm gap-1 text-xs"
+                            >
+                                <svg class="w-3.5 h-3.5 fill-current shrink-0"><use xlink:href="#icon-twitter" /></svg> Twitter
+                            </a>
+                        )
+                    }
+                    {
+                        bluesky && (
+                            <a
+                                href={`https://bsky.app/profile/${bluesky}`}
+                                target="_blank"
+                                rel="noopener"
+                                class="btn btn-ghost btn-sm gap-1 text-xs"
+                            >
+                                <svg class="w-3.5 h-3.5 fill-current shrink-0"><use xlink:href="#icon-bluesky" /></svg> Bluesky
+                            </a>
+                        )
+                    }
+                </div>
+            </div>
+
+            <article class="prose max-w-none">
+                <Content />
+            </article>
+
+            {
+                roles.length > 0 && (
+                    <div class="mb-8">
+                        <hr class="my-6" />
+                        <h2 class="text-2xl font-bold mb-4">Projects</h2>
+                        <ul class="list-none flex flex-col gap-2">
+                            {roles.map((role) => {
+                                const project = projectLookup[role.at];
+                                return (
+                                    <li>
+                                        <span class="font-semibold">{role.title}</span>,{" "}
+                                        {project ? (
+                                            <a href={base(`/projects/${role.at}`)} class="link link-primary link-hover font-medium">
+                                                {project.title}
+                                            </a>
+                                        ) : (
+                                            <span>{role.at}</span>
+                                        )}
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </div>
+                )
+            }
+
+            <a href={base("/people")} class="btn btn-sm btn-outline mt-6">← All people</a>
+</PageLayout>

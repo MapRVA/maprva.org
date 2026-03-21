@@ -1,0 +1,28 @@
+---
+/*
+  PageLayout.astro
+  Standard layout for all non-homepage pages.
+  Wraps content in a centered <main> with Navbar and Footer.
+*/
+import BaseLayout from "./BaseLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+    title: string;
+    description?: string;
+    maxWidth?: string;
+}
+
+const { title, description, maxWidth = "max-w-5xl" } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+    <div class="min-h-screen flex flex-col">
+        <Navbar />
+        <main class:list={[maxWidth, "flex-1 w-full mx-auto px-6 pb-12"]}>
+            <slot />
+        </main>
+        <Footer />
+    </div>
+</BaseLayout>

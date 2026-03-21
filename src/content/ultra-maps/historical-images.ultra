@@ -1,0 +1,34 @@
+---
+type: dsv
+controls:
+  - type: GeolocateControl
+    options:
+      positionOptions:
+        enableHighAccuracy: true
+      trackUserLocation: true
+style:
+  layers:
+    - type: circle
+      circle-radius: 5
+    - type: symbol
+      filter: ["!=", "direction", ""]
+      icon-overlap: always
+      icon-size:
+        stops:
+          - [5, 0]
+          - [15, 1]
+      icon-rotate: [to-number, [get, direction]]
+      icon-image: https://maprva.org/img/surveillance-direction.png
+popupTemplate: >
+    <a href="{{ properties.source_url }}" target="_blank">
+      <img style="width: 100%; max-width: 25em;" src="{{ properties.img_url }}">
+    </a>
+    <p>
+    Year: {% if properties.year is "" %}{{ properties.year }}{% else %}Unknown{% endif %}
+    <br>
+    Source: <a href="{{ properties.source_url }}" target="_blank">
+      {{ properties.source }}
+    </a>
+    </p>
+---
+https://docs.google.com/spreadsheets/d/1XcV32XZuyFVc6NnnV0P4erEB6gfSgPlLIiZwuC8G5TY/gviz/tq?tqx=out:csv&sheet=Images

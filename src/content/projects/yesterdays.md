@@ -1,0 +1,24 @@
+---
+title: Yesterdays
+sign: /img/projects/yesterdays/sign.svg
+image: /img/projects/yesterdays/city-hall-screenshot.jpg
+blurb: Explore thousands of historic photos of Richmond on an interactive map.
+buttons:
+  - link: https://yesterdays.maprva.org
+    label: Click here to explore!
+  - link: https://github.com/MapRVA/yesterdays
+    label: Source Code
+---
+
+Explore tens of thousands of photos of Richmond—from the Civil War to COVID-19—all in one place for the first time. Our database includes photos from The Valentine, Library of Virginia, VCU, and Richmond Public Library.
+
+Browse photos on top of old maps, such as Sanborn insurance maps courtesy of [OldInsuranceMaps.net](https://oldinsurancemaps.net/). In this example, we filter for photos taken in the 50s, overlaid on a 1952 insurance map:
+
+<img src="/img/projects/yesterdays/50s-capitol.jpg" alt="Screenshot of a photo on top of a Sanborn insurance map in Yesterdays">
+
+While many photos in our database include date and description metadata from the source, the best way to search is using our [AI-powered semantic search](https://yesterdays.maprva.org/search/).
+This allows you to search the contents of photos using natural language.
+
+  <img src="/img/projects/yesterdays/semantic-search.jpg" alt="Screenshot of a semantic search in Yesterdays" style="width: 100%;">
+
+Yesterdays is free to use, and built entirely by volunteers. We invite you to join us!

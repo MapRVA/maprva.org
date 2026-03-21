@@ -4,7 +4,8 @@ This repository holds the website for [MapRVA](https://maprva.org).
 
 ## Development
 
-See `DEVELOPMENT.md`
+1. [Install bun](https://bun.com/docs/installation)
+2. `bun dev`
 
 ## License
 

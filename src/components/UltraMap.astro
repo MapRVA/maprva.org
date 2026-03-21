@@ -1,0 +1,27 @@
+---
+interface Props {
+  name: string;
+  title?: string;
+  m?: string;
+  height?: string;
+}
+
+const { name, title = name, m, height = "500" } = Astro.props;
+
+const queryPath = `/ultra-maps/${name}.ultra`;
+const siteOrigin = Astro.url.origin;
+const queryUrl = `${siteOrigin}${queryPath}`;
+
+let src = `https://overpass-ultra.us/#map&query=url:${queryUrl}`;
+if (m) {
+  src = `https://overpass-ultra.us/#map&m=${m}&query=url:${queryUrl}`;
+}
+---
+
+<iframe
+  title={title}
+  width="100%"
+  height={height}
+  src={src}
+  loading="lazy"
+></iframe>

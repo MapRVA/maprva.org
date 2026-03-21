@@ -1,0 +1,49 @@
+---
+/*
+  ProjectList.astro
+  Displays projects as horizontal rows: rounded thumbnail on the left,
+  title and blurb on the right. Pass `slugs` to pick which projects
+  appear (in that order), or omit to show all sorted by sortOrder.
+*/
+import { getCollection } from "astro:content";
+import { base } from "../utils/base";
+
+interface Props {
+    slugs?: string[];
+    exclude?: string[];
+}
+
+const { slugs, exclude } = Astro.props;
+const allProjects = await getCollection("projects");
+const excludeSet = new Set(exclude ?? []);
+
+const projects = slugs
+    ? slugs
+          .map((s) => allProjects.find((p) => p.id === s))
+          .filter((p) => p != null)
+    : allProjects
+          .filter((p) => !excludeSet.has(p.id))
+          .sort(
+              (a, b) => (a.data.sortOrder ?? 999) - (b.data.sortOrder ?? 999),
+          );
+---
+
+<ul class="list-none flex flex-col">
+    {
+        projects.map((project) => (
+            <li>
+                <a href={base(`/projects/${project.id}`)} class="project-row flex items-center gap-5 py-5 px-4 border-b border-base-content/8 no-underline text-base-content transition-colors duration-200 hover:bg-base-content/[0.03]">
+                    {project.data.sign && (
+                        <div class="shrink-0 w-[30em]">
+                            <img src={base(project.data.sign)} alt={project.data.title} loading="lazy" class="aspect-[2.25] object-cover w-full rounded-xl" />
+                        </div>
+                    )}
+                    <div class="flex-1 min-w-0">
+                        <h2 class="font-[family-name:var(--logo-font)] text-[1.75rem] font-bold mb-1">{project.data.title}</h2>
+                        {project.data.blurb && <p class="text-base text-base-content/60 leading-relaxed">{project.data.blurb}</p>}
+                    </div>
+                </a>
+            </li>
+        ))
+    }
+</ul>

@@ -1,0 +1,72 @@
+---
+/*
+  ProjectGrid.astro
+  Queries the `projects` content collection, sorts by frontmatter
+  order, and renders cards in a grid.
+  Pass `slugs` to hand-pick which projects appear (in that order).
+*/
+import { getCollection } from "astro:content";
+import ProjectCard from "./ProjectCard.astro";
+import { base } from "../utils/base";
+
+interface Props {
+    slugs?: string[];
+    exclude?: string[];
+    heading?: string;
+}
+
+const { slugs, exclude, heading } = Astro.props;
+const allProjects = await getCollection("projects");
+
+const excludeSet = new Set(exclude ?? []);
+
+const projects = slugs
+    ? slugs
+          .map((s) => allProjects.find((p) => p.id === s))
+          .filter((p) => p != null)
+    : allProjects
+          .filter((p) => !excludeSet.has(p.id))
+          .sort(
+              (a, b) =>
+                  (a.data.sortOrder ?? 999) - (b.data.sortOrder ?? 999),
+          );
+---
+
+<section class="max-w-5xl mx-auto mb-6 px-4" id="projects">
+    {
+        heading ? (
+            <div class="card bg-base-100 shadow-md p-6">
+                <h2 class="font-[family-name:var(--logo-font)] text-[1.75rem] font-bold text-center mb-6">{heading}</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {projects.map((project) => (
+                        <ProjectCard
+                            title={project.data.title}
+                            slug={project.id}
+                            sign={project.data.sign}
+                            blurb={project.data.blurb}
+                        />
+                    ))}
+                </div>
+                <div class="text-center mt-4">
+                    <a href={base("/projects")} class="btn btn-primary">
+                        View all projects
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        ) : (
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {projects.map((project) => (
+                    <ProjectCard
+                        title={project.data.title}
+                        slug={project.id}
+                        sign={project.data.sign}
+                        blurb={project.data.blurb}
+                    />
+                ))}
+            </div>
+        )
+    }
+</section>

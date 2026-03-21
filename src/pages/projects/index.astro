@@ -1,0 +1,87 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import ProjectList from "../../components/ProjectList.astro";
+import { getCollection } from "astro:content";
+import yaml from "js-yaml";
+import { readFileSync } from "node:fs";
+
+const allProjects = await getCollection("projects");
+const people = await getCollection("people");
+
+/* Load category ordering from the YAML data file */
+const categoriesRaw = yaml.load(
+    readFileSync("src/content/project-categories.yaml", "utf-8"),
+) as { name: string; projects: string[] }[];
+
+/*
+  Collect project slugs that are marked personal in any person's roles.
+  The `at` field may be a display name (e.g. "OpenTrailStash") rather than
+  the slug ("opentrailstash"), so we match case-insensitively.
+*/
+const projectSlugsByName = new Map(
+    allProjects.map((p) => [p.data.title.toLowerCase(), p.id]),
+);
+const projectSlugsById = new Set(allProjects.map((p) => p.id));
+
+/* Resolve a role's `at` value to a project slug */
+function resolveSlug(at: string): string | null {
+    const atLower = at.toLowerCase();
+    if (projectSlugsById.has(atLower)) return atLower;
+    return projectSlugsByName.get(atLower) ?? null;
+}
+
+/* Group personal project slugs by member */
+const personalSlugs = new Set<string>();
+const memberProjects: { name: string; slug: string; projectSlugs: string[] }[] = [];
+
+for (const person of people) {
+    const slugs: string[] = [];
+    for (const role of person.data.roles) {
+        if (!role.personal) continue;
+        const slug = resolveSlug(role.at);
+        if (slug) {
+            slugs.push(slug);
+            personalSlugs.add(slug);
+        }
+    }
+    if (slugs.length > 0) {
+        memberProjects.push({
+            name: person.data.title,
+            slug: person.id,
+            projectSlugs: slugs,
+        });
+    }
+}
+
+/* Filter out personal projects from categories */
+const categories = categoriesRaw.map((cat) => ({
+    name: cat.name,
+    projects: cat.projects.filter((s) => !personalSlugs.has(s)),
+})).filter((cat) => cat.projects.length > 0);
+---
+
+<PageLayout title="Projects · MapRVA">
+    <h1 class="text-4xl font-bold mb-8">Our Work</h1>
+
+    {categories.map((cat) => (
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold mb-2">{cat.name}</h2>
+            <ProjectList slugs={cat.projects} />
+        </section>
+    ))}
+
+    {memberProjects.length > 0 && (
+        <section class="py-8">
+            <h2 class="text-4xl font-bold mb-6">Member Projects</h2>
+            <p class="opacity-60 mb-4">
+                These projects are each maintained by a member of MapRVA.
+            </p>
+            {memberProjects.map(({ name, slug, projectSlugs }) => (
+                <h3 class="text-xl font-bold mt-5">
+                    <a href={`/people/${slug}`}>{name}</a>
+                </h3>
+                <ProjectList slugs={projectSlugs} />
+            ))}
+        </section>
+    )}
+</PageLayout>
