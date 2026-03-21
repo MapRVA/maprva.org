@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar.astro";
 import Hero from "../components/Hero.astro";
 import UpcomingEvents from "../components/UpcomingEvents.astro";
 import ProjectGrid from "../components/ProjectGrid.astro";
+import InTheNews from "../components/InTheNews.astro";
 import Footer from "../components/Footer.astro";
 ---
 
@@ -19,6 +20,7 @@ import Footer from "../components/Footer.astro";
                 slugs={["yesterdays", "surveillance", "murals"]}
                 heading="Featured Projects"
             />
+            <InTheNews limit={5} />
             <Footer
                 dataCopyright='Data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
             />

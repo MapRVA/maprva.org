@@ -1,0 +1,41 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import fs from "node:fs";
+import yaml from "js-yaml";
+
+const newsItems = yaml.load(fs.readFileSync("src/content/news.yaml", "utf-8")) as Array<{ title: string; link: string; publisher: string; date: string }>;
+
+// Parse DD-MM-YYYY and format as "Month Day, YYYY"
+function formatDate(dateStr: string): string {
+    const [day, month, year] = dateStr.split("-");
+    const date = new Date(Number(year), Number(month) - 1, Number(day));
+    return date.toLocaleDateString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+    });
+}
+
+const items = newsItems
+    .slice()
+    .sort((a, b) => {
+        const [ad, am, ay] = a.date.split("-").map(Number);
+        const [bd, bm, by] = b.date.split("-").map(Number);
+        return new Date(by, bm - 1, bd).getTime() - new Date(ay, am - 1, ad).getTime();
+    });
+---
+
+<PageLayout title="In the News · MapRVA">
+    <article class="prose">
+        <h1 class="text-4xl font-bold mb-8">In the News</h1>
+
+        <ul class="space-y-3">
+            {items.map((item) => (
+                <li>
+                    <a href={item.link} target="_blank" rel="noopener" class="link link-hover text-base-content hover:text-primary transition-colors font-semibold">{item.title}</a>
+                    {" "}<em>{item.publisher}</em>, {formatDate(item.date)}
+                </li>
+            ))}
+        </ul>
+    </article>
+</PageLayout>
