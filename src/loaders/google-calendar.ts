@@ -37,6 +37,13 @@ export function googleCalendarLoader(options: GoogleCalendarLoaderOptions): Load
     load: async ({ store, logger, meta }: LoaderContext) => {
       const { calendarId, apiKey, maxResults = 50, daysAhead = 365, daysBehind } = options;
 
+      if (!calendarId || !apiKey) {
+        logger.warn(
+          "Missing GOOGLE_CALENDAR_ID or GOOGLE_API_KEY — skipping calendar fetch"
+        );
+        return;
+      }
+
       // In dev, skip fetch if we already have cached data from a recent load
       const lastFetched = meta.get("lastFetched");
       if (import.meta.env.DEV && lastFetched && store.keys().length > 0) {
