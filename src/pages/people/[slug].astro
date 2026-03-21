@@ -28,13 +28,16 @@ const {
     linkedin,
     twitter,
     bluesky,
-    roles,
 } = person.data;
 const { Content } = await render(person);
 
-/* Resolve role project slugs → human-readable titles */
+/* Find roles for this person across all projects */
 const projects = await getCollection("projects");
-const projectLookup = Object.fromEntries(projects.map((p) => [p.id, p.data]));
+const roles = projects.flatMap((p) =>
+    (p.data.roles ?? [])
+        .filter((r) => r.person === person.id)
+        .map((r) => ({ title: r.title, projectSlug: p.id, projectTitle: p.data.title }))
+);
 ---
 
 <PageLayout title={`${title} — MapRVA`} maxWidth="max-w-xl">
@@ -142,21 +145,14 @@ const projectLookup = Object.fromEntries(projects.map((p) => [p.id, p.data]));
                         <hr class="my-6" />
                         <h2 class="text-2xl font-bold mb-4">Projects</h2>
                         <ul class="list-none flex flex-col gap-2">
-                            {roles.map((role) => {
-                                const project = projectLookup[role.at];
-                                return (
-                                    <li>
-                                        <span class="font-semibold">{role.title}</span>,{" "}
-                                        {project ? (
-                                            <a href={base(`/projects/${role.at}`)} class="link link-primary link-hover font-medium">
-                                                {project.title}
-                                            </a>
-                                        ) : (
-                                            <span>{role.at}</span>
-                                        )}
-                                    </li>
-                                );
-                            })}
+                            {roles.map((role) => (
+                                <li>
+                                    <span class="font-semibold">{role.title}</span>,{" "}
+                                    <a href={base(`/projects/${role.projectSlug}`)} class="link link-primary link-hover font-medium">
+                                        {role.projectTitle}
+                                    </a>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 )

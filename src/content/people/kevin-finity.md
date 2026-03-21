@@ -5,9 +5,6 @@ image: https://catbriar.org/images/profile2.jpg
 osm: kfinity
 github: kfinity
 mastodon: https://mastodon.social/@kfinity
-roles:
-  - title: Mapper
-    at: surveillance
 ---
 Hi! I got into mapping through various interests in urban forestry, housing inequality, government surveillance, and the criminal justice system. It turns out that so many kinds of fascinating public open data are map and GIS related!
 

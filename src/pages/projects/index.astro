@@ -7,6 +7,7 @@ import { readFileSync } from "node:fs";
 
 const allProjects = await getCollection("projects");
 const people = await getCollection("people");
+const peopleLookup = Object.fromEntries(people.map((p) => [p.id, p.data]));
 
 /* Load category ordering from the YAML data file */
 const categoriesRaw = yaml.load(
@@ -14,44 +15,28 @@ const categoriesRaw = yaml.load(
 ) as { name: string; projects: string[] }[];
 
 /*
-  Collect project slugs that are marked personal in any person's roles.
-  The `at` field may be a display name (e.g. "OpenTrailStash") rather than
-  the slug ("opentrailstash"), so we match case-insensitively.
+  Collect personal project slugs and group by member,
+  based on the `personal` flag in each project's roles.
 */
-const projectSlugsByName = new Map(
-    allProjects.map((p) => [p.data.title.toLowerCase(), p.id]),
-);
-const projectSlugsById = new Set(allProjects.map((p) => p.id));
-
-/* Resolve a role's `at` value to a project slug */
-function resolveSlug(at: string): string | null {
-    const atLower = at.toLowerCase();
-    if (projectSlugsById.has(atLower)) return atLower;
-    return projectSlugsByName.get(atLower) ?? null;
-}
-
-/* Group personal project slugs by member */
 const personalSlugs = new Set<string>();
-const memberProjects: { name: string; slug: string; projectSlugs: string[] }[] = [];
+const memberMap = new Map<string, string[]>();
 
-for (const person of people) {
-    const slugs: string[] = [];
-    for (const role of person.data.roles) {
+for (const project of allProjects) {
+    for (const role of project.data.roles) {
         if (!role.personal) continue;
-        const slug = resolveSlug(role.at);
-        if (slug) {
-            slugs.push(slug);
-            personalSlugs.add(slug);
-        }
-    }
-    if (slugs.length > 0) {
-        memberProjects.push({
-            name: person.data.title,
-            slug: person.id,
-            projectSlugs: slugs,
-        });
+        personalSlugs.add(project.id);
+        const slugs = memberMap.get(role.person) ?? [];
+        if (!slugs.includes(project.id)) slugs.push(project.id);
+        memberMap.set(role.person, slugs);
     }
 }
+
+const memberProjects = [...memberMap.entries()]
+    .map(([personSlug, projectSlugs]) => ({
+        name: peopleLookup[personSlug]?.title ?? personSlug,
+        slug: personSlug,
+        projectSlugs,
+    }));
 
 /* Filter out personal projects from categories */
 const categories = categoriesRaw.map((cat) => ({

@@ -13,20 +13,21 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
-const { title, blurb, image, buttons } = project.data;
+const { title, blurb, image, buttons, roles } = project.data;
 const { Content } = await render(project);
 
 const primaryButton = buttons[0];
 const secondaryButtons = buttons.slice(1);
 
-/* Find people who have roles on this project */
+/* Look up people referenced by this project's roles */
 const people = await getCollection("people");
-const contributors = people
-    .filter((p) => p.data.roles.some((r) => r.at === project.id))
-    .map((p) => ({
-        ...p,
-        roleTitle: p.data.roles.find((r) => r.at === project.id)!.title,
-    }));
+const peopleLookup = Object.fromEntries(people.map((p) => [p.id, p]));
+const contributors = (roles ?? [])
+    .map((role) => {
+        const p = peopleLookup[role.person];
+        return p ? { ...p, roleTitle: role.title } : null;
+    })
+    .filter((c) => c != null);
 ---
 
 <PageLayout title={`${title} — MapRVA`}>

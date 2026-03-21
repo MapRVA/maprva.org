@@ -24,6 +24,15 @@ const projects = defineCollection({
         }),
       )
       .default([]),
+    roles: z
+      .array(
+        z.object({
+          person: z.string(),
+          title: z.string(),
+          personal: z.boolean().optional(),
+        }),
+      )
+      .default([]),
   }),
 });
 

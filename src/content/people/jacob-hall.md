@@ -7,17 +7,6 @@ website: https://jacobhall.net
 mastodon: https://sometime.social/@jacob
 github: jacobwhall
 linkedin: jacobwhall
-roles:
-  - title: Project Lead
-    at: sidewalks
-  - title: Survey Architect
-    at: water-crisis
-  - title: Mapper
-    at: murals
-  - title: Cartographer
-    at: hrf-plaques
-  - title: Developer
-    at: skyway
 ---
 I got into editing OpenStreetMap in spring of 2022, and then moved to Richmond that fall.
 My primary interests are editing pedestrian infrastructure and public transit.

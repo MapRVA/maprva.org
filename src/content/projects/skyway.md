@@ -9,4 +9,7 @@ buttons:
     label: Documentation
   - link: https://github.com/MapRVA/skyway
     label: Source Code
+roles:
+  - person: jacob-hall
+    title: Developer
 ---

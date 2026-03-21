@@ -7,6 +7,10 @@ buttons:
     label: Check it out!
   - link: https://gitlab.com/trailstash/openstyle
     label: Source Code
+roles:
+  - person: daniel-schep
+    title: Lead Developer
+    personal: true
 ---
 
 <iframe

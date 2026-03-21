@@ -7,19 +7,6 @@ website: https://schep.me
 github: dschep
 mastodon: https://mastodon.social/@dschep
 bluesky: trailsta.sh
-roles:
-  - title: Lead Developer
-    at: opentrailstash
-    personal: true
-  - title: Lead Developer
-    at: ultra
-    personal: true
-  - title: Validation
-    at: sidewalks
-  - title: Cartographer
-    at: water-crisis
-  - title: Cartographer
-    at: surveillance
 ---
 Daniel Schep is a mapper and software engineer in Richmond Virginia.
 

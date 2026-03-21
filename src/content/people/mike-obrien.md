@@ -6,9 +6,6 @@ osm: mhpob
 website: https://obrien.page
 github: mhpob
 bluesky: obrien.page
-roles:
-  - title: Mapper
-    at: surveillance
 ---
 
 Mike is a fisheries scientist and movement ecologist in Richmond, VA. His OSM 
