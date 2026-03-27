@@ -1,0 +1,23 @@
+---
+import { readdirSync } from "node:fs";
+
+const siteOrigin = Astro.url.origin;
+const files = readdirSync("public/ultra-maps")
+  .filter((f) => f.endsWith(".ultra"))
+  .sort();
+
+const maps = files.map((f) => {
+  const name = f.replace(/\.ultra$/, "");
+  const title = name.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  const url = `${siteOrigin}/ultra-maps/${f}`;
+  return { name, title, url };
+});
+---
+
+<ul>
+  {maps.map((m) => (
+    <li>
+      <a href={`https://overpass-ultra.us/#query=url:${m.url}`}>{m.title}</a>
+    </li>
+  ))}
+</ul>

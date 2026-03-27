@@ -1,0 +1,135 @@
+backend:
+  name: github
+  repo: maprva/maprva-site # Update to match your GitHub repo
+  branch: main
+
+media_folder: public/img
+public_folder: /img
+
+collections:
+  - name: projects
+    label: Projects
+    folder: src/content/projects
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: description, label: Description, widget: text, required: false }
+      - { name: blurb, label: Blurb, widget: text, required: false }
+      - { name: icon, label: Icon, widget: string, required: false }
+      - { name: tag, label: Tag, widget: string, required: false }
+      - { name: sign, label: Sign (SVG path), widget: string, required: false }
+      - { name: image, label: Image, widget: image, required: false }
+      - name: color
+        label: Color
+        widget: select
+        default: accent
+        options:
+          - { label: Accent, value: accent }
+          - { label: Teal, value: teal }
+          - { label: Gold, value: gold }
+          - { label: Purple, value: purple }
+          - { label: Pink, value: pink }
+          - { label: Ink, value: ink }
+      - { name: sortOrder, label: Sort Order, widget: number, required: false }
+      - name: buttons
+        label: Buttons
+        widget: list
+        required: false
+        fields:
+          - { name: label, label: Label, widget: string }
+          - { name: link, label: URL, widget: string }
+      - { name: body, label: Body, widget: markdown }
+
+  - name: people
+    label: People
+    folder: src/content/people
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { name: title, label: Name, widget: string }
+      - { name: pronouns, label: Pronouns, widget: string, required: false }
+      - { name: image, label: Image, widget: image, required: false }
+      - { name: osm, label: OSM Username, widget: string, required: false }
+      - { name: website, label: Website, widget: string, required: false }
+      - { name: mastodon, label: Mastodon URL, widget: string, required: false }
+      - { name: github, label: GitHub Username, widget: string, required: false }
+      - { name: linkedin, label: LinkedIn Username, widget: string, required: false }
+      - name: roles
+        label: Roles
+        widget: list
+        required: false
+        fields:
+          - { name: title, label: Role Title, widget: string }
+          - { name: at, label: Project Slug, widget: string }
+          - { name: personal, label: Personal Project, widget: boolean, required: false }
+      - { name: body, label: Bio, widget: markdown }
+
+  - name: pages
+    label: Pages
+    files:
+      - name: about
+        label: About
+        file: src/pages/about.md
+        fields:
+          - { name: layout, label: Layout, widget: hidden, default: ../layouts/MarkdownLayout.astro }
+          - { name: title, label: Title, widget: string }
+          - { name: body, label: Body, widget: markdown }
+      - name: resources
+        label: Resources
+        file: src/pages/resources.md
+        fields:
+          - { name: layout, label: Layout, widget: hidden, default: ../layouts/MarkdownLayout.astro }
+          - { name: title, label: Title, widget: string }
+          - { name: body, label: Body, widget: markdown }
+      - name: contact
+        label: Contact
+        file: src/pages/contact.md
+        fields:
+          - { name: layout, label: Layout, widget: hidden, default: ../layouts/MarkdownLayout.astro }
+          - { name: title, label: Title, widget: string }
+          - { name: body, label: Body, widget: markdown }
+      - name: slack
+        label: Slack
+        file: src/pages/slack.md
+        fields:
+          - { name: layout, label: Layout, widget: hidden, default: ../layouts/MarkdownLayout.astro }
+          - { name: title, label: Title, widget: string }
+          - { name: body, label: Body, widget: markdown }
+
+  - name: project-categories
+    label: Project Categories
+    files:
+      - name: project-categories
+        label: Project Categories
+        file: src/content/project-categories.yaml
+        fields:
+          - name: items
+            label: Categories
+            widget: list
+            fields:
+              - { name: name, label: Category Name, widget: string }
+              - name: projects
+                label: Projects
+                widget: list
+                field: { name: slug, label: Project Slug, widget: string }
+
+  - name: news
+    label: News
+    files:
+      - name: news
+        label: News & Press
+        file: src/content/news.yaml
+        fields:
+          - name: items
+            label: News Items
+            widget: list
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: link, label: Link, widget: string }
+              - { name: publisher, label: Publisher, widget: string }
+              - { name: date, label: "Date (DD-MM-YYYY)", widget: string }

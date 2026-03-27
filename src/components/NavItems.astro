@@ -1,0 +1,43 @@
+---
+import { base } from "../utils/base";
+
+interface Props {
+    /** Extra classes for the dropdown submenu <ul> */
+    submenuClass?: string;
+}
+
+const navItems = [
+    {
+        label: "About Us",
+        children: [
+            { href: base("/about"), label: "About" },
+            { href: base("/people"), label: "People" },
+            { href: base("/contact"), label: "Contact" },
+            { href: base("/slack"), label: "Slack" },
+            { href: base("/in-the-news"), label: "In the News" },
+        ],
+    },
+    { href: base("/events"), label: "Events" },
+    { href: base("/projects"), label: "Projects" },
+    { href: base("/resources"), label: "Resources" },
+];
+
+const { submenuClass } = Astro.props;
+---
+
+{navItems.map((item) =>
+    item.children ? (
+        <li>
+            <details>
+                <summary>{item.label}</summary>
+                <ul class={submenuClass}>
+                    {item.children.map((child) => (
+                        <li><a href={child.href}>{child.label}</a></li>
+                    ))}
+                </ul>
+            </details>
+        </li>
+    ) : (
+        <li><a href={item.href}>{item.label}</a></li>
+    )
+)}

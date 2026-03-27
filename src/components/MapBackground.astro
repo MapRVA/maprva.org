@@ -1,0 +1,39 @@
+---
+interface Props {
+    center?: [number, number];
+    zoom?: number;
+    pitch?: number;
+    bearing?: number;
+}
+
+const {
+    center = [-77.43, 37.53],
+    zoom = 12,
+    pitch = 0,
+    bearing = 0,
+} = Astro.props;
+
+const mapConfig = JSON.stringify({ center, zoom, pitch, bearing });
+---
+
+<div id="map-background" class="!absolute top-0 inset-x-0 z-0 h-screen pointer-events-none"></div>
+<script type="application/json" id="map-config" set:html={mapConfig} />
+<script>
+    import maplibregl from "maplibre-gl";
+    import "maplibre-gl/dist/maplibre-gl.css";
+
+    const config = JSON.parse(
+        document.getElementById("map-config")!.textContent!,
+    );
+
+    const map = new maplibregl.Map({
+        container: "map-background",
+        style: "https://styles.maprva.org/positron.json",
+        center: config.center,
+        zoom: config.zoom,
+        pitch: config.pitch,
+        bearing: config.bearing,
+        interactive: false,
+        attributionControl: false,
+    });
+</script>

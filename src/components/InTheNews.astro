@@ -1,0 +1,58 @@
+---
+import fs from "node:fs";
+import yaml from "js-yaml";
+import { base } from "../utils/base";
+
+interface Props {
+    limit?: number;
+}
+
+const { limit = 5 } = Astro.props;
+
+const newsItems = yaml.load(fs.readFileSync("src/content/news.yaml", "utf-8")) as Array<{ title: string; link: string; publisher: string; date: string }>;
+
+function formatDate(dateStr: string): string {
+    const [day, month, year] = dateStr.split("-");
+    const date = new Date(Number(year), Number(month) - 1, Number(day));
+    return date.toLocaleDateString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+    });
+}
+
+const items = newsItems
+    .slice()
+    .sort((a, b) => {
+        const [ad, am, ay] = a.date.split("-").map(Number);
+        const [bd, bm, by] = b.date.split("-").map(Number);
+        return new Date(by, bm - 1, bd).getTime() - new Date(ay, am - 1, ad).getTime();
+    })
+    .slice(0, limit);
+---
+
+<section class="max-w-5xl mx-auto mb-6 px-4">
+    <div class="card bg-base-100 shadow-lg p-6 md:p-8">
+        <h2 class="font-[family-name:var(--logo-font)] text-[1.75rem] font-bold text-center mb-6">In the News</h2>
+
+        <ul class="space-y-3">
+            {items.map((item) => (
+                <li>
+                    <a href={item.link} target="_blank" rel="noopener" class="link link-hover text-base-content hover:text-primary transition-colors font-semibold">{item.title}</a>
+                    {" "}<em>{item.publisher}</em>, {formatDate(item.date)}
+                </li>
+            ))}
+        </ul>
+
+        <div class="divider"></div>
+
+        <div class="text-center">
+            <a href={base("/in-the-news")} class="btn btn-primary">
+                More
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>

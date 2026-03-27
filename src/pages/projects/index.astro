@@ -1,0 +1,72 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import ProjectList from "../../components/ProjectList.astro";
+import { getCollection } from "astro:content";
+import yaml from "js-yaml";
+import { readFileSync } from "node:fs";
+
+const allProjects = await getCollection("projects");
+const people = await getCollection("people");
+const peopleLookup = Object.fromEntries(people.map((p) => [p.id, p.data]));
+
+/* Load category ordering from the YAML data file */
+const categoriesRaw = yaml.load(
+    readFileSync("src/content/project-categories.yaml", "utf-8"),
+) as { name: string; projects: string[] }[];
+
+/*
+  Collect personal project slugs and group by member,
+  based on the `personal` flag in each project's roles.
+*/
+const personalSlugs = new Set<string>();
+const memberMap = new Map<string, string[]>();
+
+for (const project of allProjects) {
+    for (const role of project.data.roles) {
+        if (!role.personal) continue;
+        personalSlugs.add(project.id);
+        const slugs = memberMap.get(role.person) ?? [];
+        if (!slugs.includes(project.id)) slugs.push(project.id);
+        memberMap.set(role.person, slugs);
+    }
+}
+
+const memberProjects = [...memberMap.entries()]
+    .map(([personSlug, projectSlugs]) => ({
+        name: peopleLookup[personSlug]?.title ?? personSlug,
+        slug: personSlug,
+        projectSlugs,
+    }));
+
+/* Filter out personal projects from categories */
+const categories = categoriesRaw.map((cat) => ({
+    name: cat.name,
+    projects: cat.projects.filter((s) => !personalSlugs.has(s)),
+})).filter((cat) => cat.projects.length > 0);
+---
+
+<PageLayout title="Projects · MapRVA">
+    <h1 class="text-4xl font-bold mb-8">Our Work</h1>
+
+    {categories.map((cat) => (
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold mb-2">{cat.name}</h2>
+            <ProjectList slugs={cat.projects} />
+        </section>
+    ))}
+
+    {memberProjects.length > 0 && (
+        <section class="py-8">
+            <h2 class="text-4xl font-bold mb-6">Member Projects</h2>
+            <p class="opacity-60 mb-4">
+                These projects are each maintained by a member of MapRVA.
+            </p>
+            {memberProjects.map(({ name, slug, projectSlugs }) => (
+                <h3 class="text-xl font-bold mt-5">
+                    <a href={`/people/${slug}`}>{name}</a>
+                </h3>
+                <ProjectList slugs={projectSlugs} />
+            ))}
+        </section>
+    )}
+</PageLayout>

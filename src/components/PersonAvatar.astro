@@ -1,0 +1,53 @@
+---
+/*
+  PersonAvatar.astro
+  Reusable circular avatar with optional name and title.
+  Used in PeopleGrid, person profile pages, and project pages.
+*/
+import { base } from "../utils/base";
+
+interface Props {
+    /** Person's display name (rendered below avatar if provided) */
+    name?: string;
+    /** Title/role shown in italics under the name */
+    title?: string;
+    /** URL to the person's photo */
+    image?: string;
+    /** Link destination (wraps the whole component in an <a>) */
+    href?: string;
+}
+
+const { name, title, image, href } = Astro.props;
+const initial = name?.charAt(0) ?? "?";
+const imageSrc = image && image.startsWith("/") ? base(image) : image;
+---
+
+{href ? (
+    <a href={href} class="flex flex-col items-center min-w-0 no-underline text-base-content">
+        <div class="avatar placeholder w-full">
+            <div class="avatar-circle aspect-square max-w-[10em] mx-auto rounded-full overflow-hidden border-3 border-base-content/8 bg-primary/10 flex items-center justify-center">
+                {image ? (
+                    <img src={imageSrc} alt={name ? `Photo of ${name}` : ""} class="w-full h-full object-cover" />
+                ) : (
+                    <span class="text-6xl text-primary">{initial}</span>
+                )}
+            </div>
+        </div>
+        {name && <span class="mt-3 text-[1.4rem] font-semibold text-center tracking-tight max-w-full">{name}</span>}
+        {title && <span class="italic text-center text-base-content/55 font-light max-w-full">{title}</span>}
+    </a>
+) : (
+    <div class="flex flex-col items-center min-w-0 no-underline text-base-content">
+        <div class="avatar placeholder w-full">
+            <div class="avatar-circle aspect-square max-w-[10em] mx-auto rounded-full overflow-hidden border-3 border-base-content/8 bg-primary/10 flex items-center justify-center">
+                {image ? (
+                    <img src={imageSrc} alt={name ? `Photo of ${name}` : ""} class="w-full h-full object-cover" />
+                ) : (
+                    <span class="text-6xl text-primary">{initial}</span>
+                )}
+            </div>
+        </div>
+        {name && <span class="mt-3 text-[1.4rem] font-semibold text-center tracking-tight max-w-full">{name}</span>}
+        {title && <span class="italic text-center text-base-content/55 font-light max-w-full">{title}</span>}
+    </div>
+)}

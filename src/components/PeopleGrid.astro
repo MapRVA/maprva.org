@@ -1,0 +1,72 @@
+---
+/*
+  PeopleGrid.astro
+  Queries the `people` content collection and renders a grid of
+  circular portraits with names. Used on the /people index page
+  and optionally on the homepage with a limit.
+*/
+import { getCollection } from "astro:content";
+import PersonAvatar from "./PersonAvatar.astro";
+import { base } from "../utils/base";
+
+interface PersonItem {
+    name: string;
+    title?: string;
+    image?: string;
+    href?: string;
+}
+
+interface Props {
+    /** Cap the number of people shown (e.g. 4 on the homepage) */
+    limit?: number;
+    /** Pass explicit items instead of loading from the collection */
+    items?: PersonItem[];
+    /** Grid justification: "center" (default) or "left" */
+    justify?: "center" | "left";
+}
+
+const { limit, items, justify = "center" } = Astro.props;
+const justifyClass = justify === "center" ? "justify-center" : "justify-start";
+
+let people: PersonItem[];
+
+if (items) {
+    people = items;
+} else {
+    const collection = (await getCollection("people")).sort((a, b) =>
+        a.data.title.localeCompare(b.data.title),
+    );
+    people = collection.map((p) => ({
+        name: p.data.title,
+        image: p.data.image,
+        href: base(`/people/${p.id}`),
+    }));
+}
+
+if (limit) {
+    people = people.slice(0, limit);
+}
+---
+
+<section class="pb-20" id="people">
+    <div class:list={["grid grid-cols-[repeat(auto-fill,minmax(3em,10em))] justify-items-center gap-6 mx-auto", justifyClass]}>
+        {
+            people.map((person) => (
+                <PersonAvatar
+                    name={person.name}
+                    title={person.title}
+                    image={person.image}
+                    href={person.href}
+                />
+            ))
+        }
+    </div>
+
+    {
+        limit && people.length >= limit && (
+            <div class="text-center mt-7">
+                <a href={base("/people")} class="btn btn-outline btn-primary">Meet everyone &rarr;</a>
+            </div>
+        )
+    }
+</section>

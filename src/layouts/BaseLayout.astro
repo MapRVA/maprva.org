@@ -1,0 +1,35 @@
+---
+/*
+  BaseLayout.astro
+  Wraps every page with <html>, <head>, global CSS, and the content slot.
+*/
+import "../styles/global.css";
+import { base } from "../utils/base";
+
+interface Props {
+    title: string;
+    description?: string;
+}
+
+const {
+    title,
+    description = "We are geospatial enthusiasts in Richmond, VA who make our city better one map at a time.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content={description} />
+        <title>{title}</title>
+        <link rel="icon" type="image/x-icon" href={base("/img/favicon/favicon.ico")} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@700&family=Nunito:wght@500&display=swap" rel="stylesheet" />
+    </head>
+    <body>
+        <slot />
+    </body>
+</html>

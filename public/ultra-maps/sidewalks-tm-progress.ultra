@@ -1,0 +1,31 @@
+---
+style:
+  extends: https://styles.trailsta.sh/positron.json
+  sources:
+    mask:
+      type: geojson
+      data: https://maprva.org/map-data/rva-mask.geojson
+    tasks:
+      type: geojson
+      data: https://tasks.openstreetmap.us/backend/api/v2/projects/438/tasks/
+      attribution: Data from OpenStreetMap US Tasking Manager
+  layers:
+    - type: fill
+      source: mask
+      fill-opacity: 0.3
+    - type: line
+      source: mask
+      line-width: 1.5
+    - type: fill
+      source: tasks
+      fill-opacity:
+        - case
+        - [ in, [ get, taskStatus ], "MAPPED|VALIDATED"]
+        - 0.9
+        - 0
+      fill-color:
+        - case
+        - [ ==, [ get, taskStatus ], "VALIDATED" ]
+        - [ "rgb", 64, 172, 140 ]
+        - [ "rgb", 173, 230, 239 ]
+---

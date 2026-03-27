@@ -1,0 +1,49 @@
+---
+popupTemplate: >
+  <h2>
+    {%- if tags['stop_id'] %}
+    <a href="https://www.openstreetmap.org/edit#map=20/{{ tags['stop_lat'] }}/{{ tags['stop_lon'] }}" target="_blank">Open editor here ✏️</a>
+    {%- else %}
+    Node <a href="https://openstreetmap.org/edit?{{ type }}={{ id }}" target="_blank">{{ id }} ✏️</a>
+    {%- endif %}
+  </h2>
+  {%- for tag in tags %}
+    <code>{{ tag[0] }} = {{ tag[1] }}</code>
+    <br>
+  {%- endfor %}
+querySources: [ultra, grtc]
+options:
+  bounds: [-77.6093101501465,37.43670283999782,-77.38194465637208,37.60423624970319]
+  hash: m
+style:
+  sources:
+    grtc:
+      type: geojson
+      data: https://catbriar.org/data/grtc_stops.geojson
+    mask:
+      type: geojson
+      data: https://maprva.org/map-data/greater-rva-mask.geojson
+  layers:
+    - type: fill
+      source: mask
+      fill-opacity: 0.3
+    - type: line
+      source: mask
+      line-width: 3
+    - type: circle
+      source: grtc
+      circle-radius: 5
+      circle-color: purple
+    - type: circle
+      circle-radius: 5
+      circle-color: blue
+---
+area[wikidata=Q43421][type=boundary] -> .richmond;
+area[wikidata=Q341639][type=boundary] -> .henrico;
+area[wikidata=Q340608][type=boundary] -> .chesterfield;
+(
+nwr[highway=bus_stop](area.richmond);
+nwr[highway=bus_stop](area.henrico);
+nwr[highway=bus_stop](area.chesterfield);
+);
+out center;

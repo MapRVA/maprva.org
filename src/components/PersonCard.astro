@@ -1,0 +1,65 @@
+---
+/*
+  PersonCard.astro
+  Compact card showing a person's avatar, name, pronouns, and
+  primary role. Links through to their full profile page.
+*/
+import { getCollection } from 'astro:content';
+
+interface Props {
+  name: string;
+  slug: string;
+  pronouns?: string;
+  image?: string;
+  roles: { title: string; at: string }[];
+}
+
+const { name, slug, pronouns, image, roles } = Astro.props;
+
+/*
+  Resolve the first role's project slug into its human-readable title
+  so we can display e.g. "Project Lead · Bike Lane Audit" instead of
+  "Project Lead · bike-lane-audit".
+*/
+const projects = await getCollection('projects');
+const projectLookup = Object.fromEntries(
+  projects.map((p) => [p.id, p.data.title]),
+);
+
+const primaryRole = roles[0];
+const primaryProjectName = primaryRole
+  ? projectLookup[primaryRole.at] ?? primaryRole.at
+  : null;
+---
+
+<a class="person-card card card-side items-center gap-4 p-4 px-5 backdrop-blur-md border border-base-content/8 rounded-2xl no-underline text-base-content transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-0.5 hover:shadow-lg hover:border-base-content/12" href={`/people/${slug}`}>
+  <div class="avatar placeholder shrink-0">
+    <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden">
+      {image ? (
+        <img src={image} alt={`Photo of ${name}`} loading="lazy" class="w-full h-full object-cover" />
+      ) : (
+        <span class="font-[family-name:var(--logo-font)] text-xl text-primary">{name.charAt(0)}</span>
+      )}
+    </div>
+  </div>
+  <div class="flex-1 min-w-0">
+    <strong class="block text-[15px] font-semibold tracking-tight">
+      {name}
+      {pronouns && <span class="font-normal text-[13px] text-base-content/40 ml-1.5">{pronouns}</span>}
+    </strong>
+    {primaryRole && (
+      <span class="block text-[13px] text-base-content/50 mt-0.5 truncate">
+        {primaryRole.title} · {primaryProjectName}
+      </span>
+    )}
+  </div>
+  <div class="person-arrow shrink-0 w-7 h-7 rounded-full bg-base-content/4 flex items-center justify-center text-sm text-base-content/30 transition-all duration-300" aria-hidden="true">→</div>
+</a>
+
+<style>
+  .person-card:hover .person-arrow {
+    background: var(--color-base-content);
+    color: white;
+    transform: translateX(3px);
+  }
+</style>

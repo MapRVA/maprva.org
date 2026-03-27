@@ -1,0 +1,46 @@
+---
+type: geojson
+options:
+  bounds: [-77.6093101501465,37.43670283999782,-77.38194465637208,37.60423624970319]
+  hash: m
+controls:
+  - type: HTMLControl
+    position: bottom-left
+    options:
+      html: >
+        <div>
+        <b>Legend:</b>
+        <br>
+        🟢 Under limit
+        <br>
+        🟡 0-5 over limit
+        <br>
+        🟠 5-10 over limit
+        <br>
+        🔴 10+ over limit
+        </div>
+      css: >
+        div {
+          background: white;
+          padding: 5px;
+        }
+style:
+  layers:
+    - type: line
+      line-width: 3
+      line-color:
+        - case
+        - [ ==, [ get, posted_speed ], 0 ]
+        - black
+        - - step
+          - [ '-', [ get, Totall_Average ], [ get, posted_speed ] ]
+          - green
+          - 0
+          - yellow
+          - 5
+          - orange
+          - 10
+          - red
+  extends: https://api.protomaps.com/styles/v5/black/en.json?key=f8eceeaad6896c92
+---
+https://maprva.org/ultra-maps/UrbanSDK_Join_Layer.geojson

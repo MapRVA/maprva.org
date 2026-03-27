@@ -1,0 +1,16 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+const { src, alt, caption } = Astro.props;
+---
+
+<figure class="relative w-full h-full">
+  <img src={src} alt={alt} class="w-full h-full object-cover" />
+  {caption && (
+    <figcaption class="absolute bottom-0 right-0 bg-black/50 text-white text-sm px-2 py-1" set:html={caption} />
+  )}
+</figure>

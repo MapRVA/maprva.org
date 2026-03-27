@@ -1,0 +1,30 @@
+---
+import { base } from "../utils/base";
+---
+
+<section class="hero min-h-[60vh] flex items-center justify-center text-center">
+    <div class="card bg-base-100 shadow-lg p-8" id="hero-box">
+        <div class="flex justify-center items-center mb-3 gap-4">
+            <img src={base("/img/logo.svg")} alt="MapRVA" class="hero-logo" />
+            <p class="hero-title">MapRVA</p>
+        </div>
+        <p class="text-lg opacity-70">
+            We are geospatial enthusiasts in Richmond, VA who make our city better one map at a time.
+        </p>
+    </div>
+</section>
+
+<style>
+    #hero-box {
+        width: 30em;
+        max-width: 95%;
+    }
+    .hero-logo {
+        height: clamp(48px, 7vw, 80px);
+        width: auto;
+    }
+    .hero-title {
+        font-family: var(--logo-font);
+        font-size: clamp(42px, 7vw, 80px);
+    }
+</style>

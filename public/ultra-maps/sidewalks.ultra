@@ -1,0 +1,80 @@
+---
+style:
+  extends: https://tiles.stadiamaps.com/styles/alidade_satellite.json
+  layers:
+    - type: line
+      line-width: 8
+    - &line
+      type: line
+      filter:
+        - all
+        - ["!=", [get, informal], yes]
+        - ["!=", [get, footway], link]
+        - - match
+          - [ get, surface ]
+          - [ unpaved, gravel, dirt ]
+          - false
+          - true
+      line-width: 4
+      line-color: &color
+        - match
+        - [ get, footway ]
+        - sidewalk
+        - green
+        - crossing
+        - orange
+        - yellow
+    - <<: *line
+      filter:
+        - all
+        - ["!=", [get, informal], yes]
+        - ["!=", [get, footway], link]
+        - - match
+          - [ get, surface ]
+          - [ unpaved, gravel, dirt ]
+          - true
+          - false
+      line-dasharray: [ 2, 1 ]
+    - <<: *line
+      filter:
+        - all
+        - [==, [get, informal], yes]
+        - ["!=", [get, footway], link]
+      line-dasharray: [ 2, 1, .5, 1 ]
+    - <<: *line
+      filter:
+        - all
+        - ["!=", [get, informal], yes]
+        - [==, [get, footway], link]
+      line-dasharray: [ .5, 1 ]
+    - type: symbol
+      filter: [ ==, [ geometry-type ], Point ]
+      icon-halo-color: white
+      icon-halo-width: 2
+      icon-overlap: always
+      icon-size:
+        - case
+        - [ has, noexit ]
+        - 0.5
+        - 0.75
+      icon-image:
+        - case
+        - [ has, noexit ]
+        - maki:roadblock
+        - [ ==, [ get, barrier ], kerb ]
+        - - concat
+          - 'temaki:kerb-'
+          - - coalesce
+            - [ get, kerb ]
+            - unspecified
+        - maki:barrier
+---
+[bbox:{{bbox}}];
+(
+  node[barrier];
+  node[noexit];
+  way[highway=footway];
+  way[highway=path];
+  way[highway=cycleway];
+);
+out geom;
