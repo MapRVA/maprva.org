@@ -1,0 +1,118 @@
+---
+title: Murals
+server: https://overpass.maprva.org/api
+options:
+  bounds: [-77.6093101501465,37.43670283999782,-77.38194465637208,37.60423624970319]
+transform: |
+  export default function(geojson) {
+    const newFeatures = [];
+    for (const feature of geojson.features) {
+      if (feature.geometry.type === 'LineString') {
+        // Keep original LineString for high-zoom rendering
+        newFeatures.push({...feature, properties: {...feature.properties, _isLine: true}});
+
+        // Create centroid point for low-zoom circle rendering
+        const coords = feature.geometry.coordinates;
+        const mid = coords[Math.floor(coords.length / 2)];
+        newFeatures.push({
+          type: 'Feature',
+          properties: {...feature.properties, _isCentroid: true},
+          geometry: {type: 'Point', coordinates: mid}
+        });
+      } else {
+        newFeatures.push({...feature, properties: {...feature.properties, _isNode: true}});
+      }
+    }
+    return {...geojson, features: newFeatures};
+  }
+style:
+  layers:
+    # === LOW ZOOM: Way centroids as circles ===
+    - type: circle
+      filter: ["==", ["get", "_isCentroid"], true]
+      maxzoom: 15
+      circle-color: ["case", ["has", "wikimedia_commons"], "#6b77ff", "#ff1a66"]
+      circle-radius: 6
+      circle-stroke-color: white
+      circle-stroke-width: 2
+
+    # === HIGH ZOOM: Full glow effect for ways ===
+    - type: line
+      filter: ["==", ["get", "_isLine"], true]
+      minzoom: 15
+      line-color: ["case", ["has", "wikimedia_commons"], "#6b77ff", "#ff6b9d"]
+      line-width: 16
+      line-blur: 8
+      line-opacity: 0.15
+      line-offset: 8
+
+    - type: line
+      filter: ["==", ["get", "_isLine"], true]
+      minzoom: 15
+      line-color: ["case", ["has", "wikimedia_commons"], "#6b77ff", "#ff6b9d"]
+      line-width: 10
+      line-blur: 4
+      line-opacity: 0.3
+      line-offset: 5
+
+    - type: line
+      filter: ["==", ["get", "_isLine"], true]
+      minzoom: 15
+      line-color: ["case", ["has", "wikimedia_commons"], "#6b77ff", "#ff6b9d"]
+      line-width: 6
+      line-blur: 2
+      line-opacity: 0.5
+      line-offset: 3
+
+    - type: line
+      filter: ["==", ["get", "_isLine"], true]
+      minzoom: 15
+      line-color: ["case", ["has", "wikimedia_commons"], "#6b77ff", "#ff1a66"]
+      line-width: 3
+      line-opacity: 1
+
+    # === ALL ZOOMS: Node murals as circles ===
+    - type: circle
+      filter: ["==", ["get", "_isNode"], true]
+      circle-color: ["case", ["has", "wikimedia_commons"], "#6b77ff", "#ff1a66"]
+      circle-radius: 6
+      circle-stroke-color: white
+      circle-stroke-width: 2
+popupTemplate: >
+  {% if tags.name %}
+    <h2> {{tags.name }} </h2>
+  {% endif %}
+  {% if tags.wikimedia_commons %}
+    <a href="https://commons.wikimedia.org/wiki/{{ tags.wikimedia_commons }}" target="_blank">
+      <img style="width: 100%; max-width: 25em;" src="https://commons.wikimedia.org/wiki/Special:{{ tags.wikimedia_commons | replace: "File:", "FilePath/" }}">
+    </a>
+  {% endif %}
+  <br>
+  <a href="https://openstreetmap.org/{{ type }}/{{ id }}" target="_blank">View on OSM</a>
+  <br>
+  <a href="https://openstreetmap.org/edit?{{ type }}={{ id }}" target="_blank">Edit on OSM</a>
+  <details>
+  <summary>OSM Tags</summary>
+  {%- for tag in tags %}
+    {%- if tag[0] contains "website" %}
+      <code>{{ tag[0] }} = <a href="{{ tag[1] }}" target="_blank">{{ tag[1] }}</a></code>
+    {%- elsif tag[0] contains "wikidata" %}
+      <code>{{ tag[0] }} = <a href="https://wikidata.org/wiki/{{ tag[1] }}" target="_blank">{{ tag[1] }}</a></code>
+    {%- elsif tag[0] contains "wikipedia" %}
+      {% assign lang = tag[1] | split: ":" | first %}
+      <code>{{ tag[0] }} = <a href="https://{{ lang }}.wikipedia.org/wiki/{{ tag[1] | replace_first: lang, "" | replace_first: ":", "" }}" target="_blank">{{ tag[1] }}</a></code>
+    {%- elsif tag[0] contains "wikimedia_commons" %}
+      <code>{{ tag[0] }} = <a href="https://commons.wikimedia.org/wiki/{{ tag[1] }}" target="_blank">{{ tag[1] }}</a></code>
+    {%- elsif tag[0] contains "_is" %}
+    {%- else %}
+      <code>{{ tag[0] }} = {{ tag[1] }}</code>
+    {%- endif %}
+    <br>
+  {%- endfor %}
+  </details>
+---
+(
+  node[artwork_type=mural];
+  way[artwork_type=mural];
+);
+out geom;
