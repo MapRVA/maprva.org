@@ -1,4 +1,5 @@
 ---
+server: https://overpass.maprva.org/api
 options:
   bounds: [-77.6093101501465,37.43670283999782,-77.38194465637208,37.60423624970319]
   hash: m
@@ -47,7 +48,7 @@ style:
       icon-image: maki:shelter
       filter: [==, [get, shelter], yes]
       icon-offset: [50, -25]
-       
+
 ---
 area[wikidata=Q43421][type=boundary] -> .richmond;
 area[wikidata=Q341639][type=boundary] -> .henrico;

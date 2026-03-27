@@ -1,6 +1,5 @@
 ---
-type: sparql
-server: https://qlever.cs.uni-freiburg.de/api/osm-planet
+type: qlever
 ---
 PREFIX osm2rdfkey: <https://osm2rdf.cs.uni-freiburg.de/rdf/key#>
 PREFIX osmkey: <https://www.openstreetmap.org/wiki/Key:>

@@ -1,6 +1,6 @@
 ---
 style:
-  extends: https://styles.trailsta.sh/positron.json
+  extends: https://styles.maprva.org/positron.json
   sources:
     mask:
       type: geojson
