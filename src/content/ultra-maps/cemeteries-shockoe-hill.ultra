@@ -3,10 +3,21 @@ server: https://overpass.maprva.org/api
 options:
   zoom: 17.5
   center: [ -77.432, 37.552 ]
+  bearing: 37.5
 style:
   layers:
   - type: symbol
     icon-image: pinhead:gravestone
+    icon-overlap: always
+    icon-size:
+      - interpolate
+      - [exponential, 2]
+      - [zoom]
+      - 16
+      - .125
+      - 22
+      - 8
+    
 popupTemplate: >
   <div style="max-width: 25em; overflow-wrap: break-word; font-family: sans-serif;">
   {% if tags.name %}
