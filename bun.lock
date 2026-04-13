@@ -6,8 +6,8 @@
       "dependencies": {
         "@astrojs/mdx": "^5.0.2",
         "@tailwindcss/typography": "^0.5.19",
-        "astro": "^6.0.4",
-        "maplibre-gl": "^5.20.1",
+        "astro": "^6.0.8",
+        "maplibre-gl": "^5.21.0",
       },
       "devDependencies": {
         "@tailwindcss/vite": "^4.2.2",
