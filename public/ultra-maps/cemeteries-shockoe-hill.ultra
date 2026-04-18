@@ -1,0 +1,76 @@
+---
+server: https://overpass.maprva.org/api
+options:
+  zoom: 17.5
+  center: [ -77.432, 37.552 ]
+  bearing: 37.5
+style:
+  extends: https://styles.maprva.org/henrico-aerial-imagery-latest.json
+  layers:
+    - type: symbol
+      icon-image: pinhead:gravestone
+      icon-overlap: always
+      icon-color: gray
+      icon-halo-color: yellow
+      icon-halo-width: 2 
+      icon-opacity:
+        - interpolate
+        - [ exponential, 2 ]
+        - [ zoom ]
+        - 18
+        - 1
+        - 20.5
+        - 0.2
+      icon-size:
+        - interpolate
+        - [ exponential, 2 ]
+        - [ zoom ]
+        - 16
+        - 0.125
+        - 22
+        - 8
+
+controls:
+  - type: GeolocateControl
+    options:
+      positionOptions:
+        enableHighAccuracy: true
+      trackUserLocation: true
+      
+popupTemplate: >
+  <div style="max-width: 25em; overflow-wrap: break-word; font-family:
+  sans-serif;"> {% if tags.name %}
+    <h2> {{tags.name }} </h2>
+  {% endif %}  {% if tags.wikimedia_commons %}
+    <a href="https://commons.wikimedia.org/wiki/{{ tags.wikimedia_commons }}" target="_blank">
+      <img style="width: 100%; max-width: 25em; height: auto; max-height: 25em; object-fit: contain; display: block;" src="https://commons.wikimedia.org/wiki/Special:FilePath/{{ tags.wikimedia_commons | remove: 'File:' | remove: 'file' }}">
+    </a>
+  {% endif %} {% if tags.inscription %}
+    {{tags.inscription }} <br>
+  {% endif %}  {% if tags["subject:wikipedia"] %}
+      {% assign lang = tags["subject:wikipedia"] | split: ":" | first %}
+      <a href="https://{{ lang }}.wikipedia.org/wiki/{{ tags["subject:wikipedia"] | replace_first: lang, "" | replace_first: ":", "" }}" target="_blank">Read about me on Wikipedia</a><br>
+  {% endif %} {% if tags.mapillary %}
+     <a href="https://www.mapillary.com/app/?focus=photo&pKey={{ tags.mapillary }}"
+  target="_blank">View Grave at Street Level</a><br> {% endif %} <br> <a
+  href="https://openstreetmap.org/{{ type }}/{{ id }}" target="_blank">View on
+  OSM</a> <br> <a href="https://openstreetmap.org/edit?{{ type }}={{ id }}"
+  target="_blank">Edit on OSM</a> <details> <summary>OSM Tags</summary> {%- for
+  tag in tags %}
+    {%- if tag[0] contains "wikidata" %}
+      <code>{{ tag[0] }} = <a href="https://wikidata.org/wiki/{{ tag[1] }}" target="_blank">{{ tag[1] }}</a></code>
+    {%- elsif tag[0] contains "wikipedia" %}
+      {% assign lang = tag[1] | split: ":" | first %}
+      <code>{{ tag[0] }} = <a href="https://{{ lang }}.wikipedia.org/wiki/{{ tag[1] | replace_first: lang, "" | replace_first: ":", "" }}" target="_blank">{{ tag[1] }}</a></code>
+    {%- elsif tag[0] contains "wikimedia_commons" %}
+      <code>{{ tag[0] }} = <a href="https://commons.wikimedia.org/wiki/{{ tag[1] }}" target="_blank">{{ tag[1] }}</a></code>
+    {%- elsif tag[0] contains "_is" %}
+    {%- else %}
+      <code>{{ tag[0] }} = {{ tag[1] }}</code>
+    {%- endif %}
+    <br>
+  {%- endfor %} </details> </div>
+---
+area[wikidata=Q3959678] -> .shockoe_cemetery;
+node[cemetery=grave](area.shockoe_cemetery);
+out geom;
