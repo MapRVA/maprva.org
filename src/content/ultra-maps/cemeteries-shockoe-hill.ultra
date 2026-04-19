@@ -72,5 +72,8 @@ popupTemplate: >
   {%- endfor %} </details> </div>
 ---
 area[wikidata=Q3959678] -> .shockoe_cemetery;
-node[cemetery=grave](area.shockoe_cemetery);
+(
+  node[cemetery=grave](area.shockoe_cemetery);
+  node[tomb](area.shockoe_cemetery);
+);
 out geom;

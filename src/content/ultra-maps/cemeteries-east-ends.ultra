@@ -84,6 +84,9 @@ area[wikidata=Q139279400] -> .paupers;
   node[cemetery=grave](area.east_end);
   node[cemetery=grave](area.evergreen);
   node[cemetery=grave](area.paupers);
+  node[tomb](area.east_end);
+  node[tomb](area.evergreen);
+  node[tomb](area.paupers);
 );
 out geom;
 (
