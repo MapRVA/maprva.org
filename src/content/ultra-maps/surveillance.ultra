@@ -5,8 +5,15 @@ popupTemplate: >
   {%- if tags["boundary"] -%}
   <h3>{{ tags["name"] }}</h3>
   {%- else -%}
-  <h3 style="text-transform:capitalize;">Type: {{tags["surveillance:type"] | default: "(Unknown)" | replace: "_", " "}}</h3>
-  <h3 >Brand: {{tags.brand | default: "(Unknown)"}}</h3>
+  <h3 style="text-transform:capitalize;">Type:&nbsp;
+    {%- if tags["surveillance"] == "red_light" -%}
+      {{tags["surveillance"] | replace: "_", " "}}
+    {%- else -%}
+      {{tags["surveillance:type"] | default: "(Unknown)" | replace: "_", " "}}
+    {%- endif -%}</h3>
+  {%- if tags.model -%}
+  <h3>Model: {{ tags.model }}</h3>
+  {%- endif -%}
   <h3>Manufacturer: {{tags.manufacturer | default: "(Unknown)"}}</h3>
   <h3>Operator: {{tags.operator | default: "(Unknown)"}}</h3>
   <a href="https://openstreetmap.org/{{ type }}/{{ id }}" target="_blank">View on OSM</a>
@@ -38,16 +45,17 @@ controls:
     options:
       html: >
         <div>
-        <b>Legend:</b>
+        <b>Surveillance type:</b>
         <br>
-        🟢 ALPR
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="#882255"/></svg>  ALPR
         <br>
-        🔵 Camera
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="#FE6100"/></svg>  Red Light Camera
         <br>
-        🔴 Gunshot Detector
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="#DDCC77"/></svg>  Misc. Camera
         <br>
-        ⚫ Unknown/Other
-        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="#648FFF"/></svg>  Gunshot Detector
+        <br>
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="black"/></svg>  Unknown/Other
       css: >
         div {
           background: white;
@@ -57,7 +65,7 @@ style:
   sources:
     mask:
       type: geojson
-      data: https://maprva.org/map-data/greater-rva-mask.geojson
+      data: https://data.maprva.org/greater-rva-mask.geojson
   layers:
     - type: fill
       source: mask
@@ -81,11 +89,19 @@ style:
       circle-color:
         - case
         - [ ==, [ get, surveillance:type ],  gunshot_detector ]
-        - red
+        - "#648FFF" 
         - [ ==, [ get, surveillance:type ],  ALPR ]
-        - green
-        - [ ==, [ get, surveillance:type ],  camera ]
-        - blue
+        - "#882255"
+        - [ all,
+            [ ==, [ get, surveillance:type ],  camera ],
+            [ ==, [ get, surveillance ], red_light ]
+          ]
+        - "#FE6100"
+        - [ all,
+            [ ==, [ get, surveillance:type ],  camera ],
+            [ "!=", [ get, surveillance ], red_light ]
+          ]
+        - "#DDCC77"
         - black
 ---
 // fetch Richmond, Henrico, and Chesterfild to search in

@@ -1,0 +1,43 @@
+---
+type: overpass
+server: https://overpass.maprva.org/api
+transform: |
+  import { length } from "https://esm.sh/@turf/length";
+  import { tin } from "https://esm.sh/@turf/tin";
+  export default (data) => {
+    const tinData = tin(data);
+    tinData.features = tinData.features.filter(f => (f.properties.length = length(f)) < 3);
+    return tinData;
+  };
+style:
+  sources:
+    mask:
+      type: geojson
+      data: https://data.maprva.org/rva-mask.geojson
+  layers:
+    - type: fill
+      source: mask
+      fill-opacity: 0.3
+    - type: line
+      line-dasharray:
+        - case
+        - [ ">", [get, length], 1]
+        - ["literal", [3, 6]]
+        - ["literal", [1, 0]]
+      line-width:
+        - case
+        - [ ">", [get, length], 1]
+        - 1.75
+        - 0.75
+    - type: circle
+options:
+  bounds: [-77.4628,37.51062,-77.38341,37.56610]
+  hash: m
+---
+// fetch Richmond to search in
+area[wikidata=Q43421][type=boundary] -> .richmond;
+// fetch Flock gunshot detectors
+(
+  nwr["surveillance:type"=gunshot_detector][manufacturer="Flock Safety"](area.richmond);
+);
+out center;
