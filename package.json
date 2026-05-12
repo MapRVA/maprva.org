@@ -12,14 +12,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^5.0.2",
+    "@astrojs/mdx": "^5.0.4",
     "@tailwindcss/typography": "^0.5.19",
-    "astro": "^6.0.8",
-    "maplibre-gl": "^5.21.0"
+    "astro": "^6.3.1",
+    "maplibre-gl": "^5.24.0"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.2.2",
+    "@tailwindcss/vite": "^4.3.0",
     "daisyui": "^5.5.19",
-    "tailwindcss": "^4.2.2"
+    "tailwindcss": "^4.3.0"
   }
 }
