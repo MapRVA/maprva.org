@@ -22,6 +22,8 @@ const past = pastEventsRaw.sort((a, b) => {
     <section>
         <h1 class="text-4xl font-bold mb-8">Upcoming Events</h1>
 
+        Our events calendar is also available <a href="https://calendar.google.com/calendar/embed?src=mappingrva%40gmail.com&ctz=America%2FNew_York">HERE</a> via Google Calendar if you'd like to subscribe to it!
+
         {upcoming.length === 0 && (
             <div class="card bg-base-100 shadow-lg p-8">
                 <p class="text-center opacity-50">No upcoming events — check back soon!</p>
@@ -77,7 +79,7 @@ const past = pastEventsRaw.sort((a, b) => {
                                 </div>
                                 {event.data.description && (
                                     <div
-                                        class="text-sm opacity-50 mt-2 line-clamp-2 [&_a]:link"
+                                        class="text-sm opacity-50 mt-2 line-clamp-2"
                                         set:html={event.data.description}
                                     />
                                 )}
@@ -140,7 +142,7 @@ const past = pastEventsRaw.sort((a, b) => {
                                 </div>
                                 {event.data.description && (
                                     <div
-                                        class="text-sm opacity-50 mt-2 line-clamp-2 [&_a]:link"
+                                        class="text-sm opacity-50 mt-2 line-clamp-2"
                                         set:html={event.data.description}
                                     />
                                 )}
