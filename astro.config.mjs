@@ -10,8 +10,16 @@ export default defineConfig({
   output: "static",
   integrations: [mdx()],
   build: { assets: "_assets" },
+  security: {
+    // Embedded Ultra iframes fetch /ultra-maps/*.ultra cross-origin in dev
+    allowedDomains: [{ hostname: "overpass-ultra.us", protocol: "https" }],
+  },
   vite: {
     plugins: [tailwindcss()],
     css: { preprocessorOptions: {} },
+    server: {
+      // Embedded Ultra iframes fetch /ultra-maps/*.ultra from this origin
+      cors: { origin: "https://overpass-ultra.us" },
+    },
   },
 });
