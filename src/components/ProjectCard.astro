@@ -12,7 +12,7 @@ interface Props {
 const { title, slug, sign, blurb, hideTitle } = Astro.props;
 ---
 
-<a href={base(`/projects/${slug}`)}>
+<a href={base(`/projects/${slug}`)} class="block">
     <div class="card bg-base-100 shadow-md hover:shadow-lg transition-shadow">
         {sign && (
             <figure>
