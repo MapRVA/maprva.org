@@ -138,6 +138,12 @@ const past = pastEventsRaw.sort((a, b) => {
                                         </span>
                                     )}
                                 </div>
+                                {event.data.description && (
+                                    <div
+                                        class="text-sm opacity-50 mt-2 line-clamp-2 [&_a]:link"
+                                        set:html={event.data.description}
+                                    />
+                                )}
                             </div>
                         </div>
                     ))}
